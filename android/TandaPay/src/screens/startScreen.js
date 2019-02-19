@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, AppRegistry, Button, StyleSheet, Text, View } from 'react-native';
+import { Alert, AppRegistry, Button, StyleSheet, Text, View, TextInput } from 'react-native';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 
 const styles = StyleSheet.create({
@@ -27,30 +27,31 @@ const styles = StyleSheet.create({
 
 export default class startScreen extends React.Component {
 
-  _onPressCreateAccount() {
-    Alert.alert('BRING UP CREATE ACCOUNT PAGE')
-  }
+  constructor(props){
+    super(props)
 
-  _onPressLogIn() {
-    Alert.alert('BRING UP LOG IN')
+    this.state = {
+      console: ''
+    }
+  }
+  
+  _onPressSubmit() {
+    this.props.navigation.navigate('Login')
+    console.log(this.state.code);
   }
 
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.bigBlue}>TandaPay</Text>
-        <View style={styles.buttonContainer}>         
-          <Button
-             onPress={() => this.props.navigation.navigate('Login')}
-            title="Create Account"
+        <TextInput
+          placeholder="Enter code here."
+          onChangeText={(text) => this.setState({code:text})}
+        />
+        <Button
+            onPress={() => this._onPressSubmit()}
+            title="Submit Code"
           />
-        </View>
-        <View style={styles.buttonContainer}>         
-          <Button
-            onPress={() => this.props.navigation.navigate('Login')}
-            title="Log In"
-          />
-        </View>
       </View>
     );
   }
