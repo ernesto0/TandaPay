@@ -1,6 +1,5 @@
 import React from 'react';
-import { Alert, AppRegistry, Button, StyleSheet, Text, View, TextInput } from 'react-native';
-import {createStackNavigator, createAppContainer} from 'react-navigation';
+import { Button, StyleSheet, Text, View, TextInput } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -9,19 +8,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  bigBlue: {
+  tandaLogo: {
     color: '#5f9ea0',
     fontWeight: 'bold',
     fontSize: 70,
-  },
-  bigGrey: {
-    color: '#A9A9A9',
-    fontSize: 20,
-  },
-  buttonContainer: {
-    margin: 10,
-    flexDirection: 'row',
-    justifyContent: 'center'
   },
 });
 
@@ -37,13 +27,14 @@ export default class startScreen extends React.Component {
   
   _onPressSubmit() {
     this.props.navigation.navigate('Login')
+    // only for dev purposes - delete later!
     console.log(this.state.code);
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.bigBlue}>TandaPay</Text>
+        <Text style={styles.tandaLogo}>TandaPay</Text>
         <TextInput
           placeholder="Enter code here."
           onChangeText={(text) => this.setState({code:text})}
