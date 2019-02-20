@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class startScreen extends React.Component {
+export default class StartScreen extends React.Component {
 
   _onPressCreateAccount() {
     Alert.alert('BRING UP CREATE ACCOUNT PAGE')
@@ -41,7 +41,7 @@ export default class startScreen extends React.Component {
         <Text style={styles.bigBlue}>TandaPay</Text>
         <View style={styles.buttonContainer}>         
           <Button
-             onPress={() => this.props.navigation.navigate('Login')}
+             onPress={() => this.props.navigation.navigate('Register')}
             title="Create Account"
           />
         </View>
