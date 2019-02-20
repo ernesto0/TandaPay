@@ -41,7 +41,7 @@ export default class startScreen extends React.Component {
         <Text style={styles.bigBlue}>TandaPay</Text>
         <View style={styles.buttonContainer}>         
           <Button
-             onPress={() => this.props.navigation.navigate('Login')}
+             onPress={() => this.props.navigation.navigate('Register')}
             title="Create Account"
           />
         </View>
