@@ -1,5 +1,8 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, View, TextInput } from 'react-native';
+import { Container, Header, Content, Button, Text, Label, Input } from 'native-base';
+import { Font } from 'expo';
+import { Ionicons } from '@expo/vector-icons';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,6 +15,8 @@ const styles = StyleSheet.create({
     color: '#5f9ea0',
     fontWeight: 'bold',
     fontSize: 70,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 });
 
@@ -21,29 +26,49 @@ export default class startScreen extends React.Component {
     super(props)
 
     this.state = {
-      console: ''
+      loading: true,
+      code: ''
     }
+  }
+
+  async componentWillMount() {
+    await Expo.Font.loadAsync({
+      Roboto: require("native-base/Fonts/Roboto.ttf"),
+      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
+      Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
+    });
+    this.setState({ loading: false });
   }
   
   _onPressSubmit() {
+    this.setState({code:text})
     this.props.navigation.navigate('Login')
-    // only for dev purposes - delete later!
+    // only for dev purposes - delete laater!
     console.log(this.state.code);
   }
 
   render() {
+    if (this.state.loading) {
+      return <Expo.AppLoading />;
+    }
     return (
-      <View style={styles.container}>
-        <Text style={styles.tandaLogo}>TandaPay</Text>
-        <TextInput
-          placeholder="Enter code here."
-          onChangeText={(text) => this.setState({code:text})}
-        />
-        <Button
+      <Container style={styles.container}>
+        {/* <Header></Header> */}
+        <Content >
+          <Label style={styles.tandaLogo} >TandaPay</Label>
+          <Input 
+          bordered
+          placeholder ='Enter code here.'
+          >
+          </Input>
+          <Button 
+            block
             onPress={() => this._onPressSubmit()}
-            title="Submit Code"
-          />
-      </View>
+            >
+            <Text>Submit</Text>
+          </Button>
+        </Content>
+      </Container>
     );
   }
 }
