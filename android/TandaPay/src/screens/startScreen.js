@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class startScreen extends React.Component {
+export default class StartScreen extends React.Component {
 
   constructor(props){
     super(props)

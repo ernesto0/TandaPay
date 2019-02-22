@@ -11,4 +11,4 @@ export default class logInScreen extends React.Component {
         </View>
       );
     }
-  }
+}

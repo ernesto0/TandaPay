@@ -18,11 +18,13 @@
   },
   "homepage": "https://github.com/ernesto0/TandaPay#readme",
   "dependencies": {
+    "@material-ui/icons": "^3.0.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "mongoose": "^5.4.12",
     "passport": "^0.4.0",
-    "passport-jwt": "^4.0.0"
+    "passport-jwt": "^4.0.0",
+    "validator": "^10.11.0"
   }
 }
