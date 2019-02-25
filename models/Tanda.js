@@ -7,17 +7,15 @@ const UserSchema = new Schema({
         required: true
     },
     secretary: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'users',
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'users',
         required: true
     },
-    members: [
-        {
+    members: [{
             type: Schema.Types.ObjectId,
             ref : 'users',
-        }
-    ],
+    }],
     registrationCodes: [{
         type: String
     }]
-
 })
