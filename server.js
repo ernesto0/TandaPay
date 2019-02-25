@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 
 const users = require('./routes/api/users');
+const tanda = require('./routes/api/tanda');
 const app = express();
 
 //body parser middleware
@@ -26,6 +27,7 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 app.use('/api/users', users);
+app.use('/api/tanda', tanda);
 
 const port = process.env.PORT || 5000;
 
