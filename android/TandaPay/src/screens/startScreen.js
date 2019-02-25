@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, TextInput } from 'react-native';
-import { Container, Header, Content, Button, Text, Label, Input } from 'native-base';
+import { StyleSheet, View, TextInput, Button, Text } from 'react-native';
+// import { Container, Header, Content, Button, Text, Label, Input } from 'native-base';
 import { Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -26,49 +26,28 @@ export default class StartScreen extends React.Component {
     super(props)
 
     this.state = {
-      loading: true,
       code: ''
     }
   }
-
-  async componentWillMount() {
-    await Expo.Font.loadAsync({
-      Roboto: require("native-base/Fonts/Roboto.ttf"),
-      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
-      Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
-    });
-    this.setState({ loading: false });
-  }
   
   _onPressSubmit() {
-    this.setState({code:text})
-    this.props.navigation.navigate('Login')
-    // only for dev purposes - delete laater!
+    this.props.navigation.navigate('Register')
     console.log(this.state.code);
   }
 
   render() {
-    if (this.state.loading) {
-      return <Expo.AppLoading />;
-    }
     return (
-      <Container style={styles.container}>
-        {/* <Header></Header> */}
-        <Content >
-          <Label style={styles.tandaLogo} >TandaPay</Label>
-          <Input 
-          bordered
-          placeholder ='Enter code here.'
-          >
-          </Input>
-          <Button 
-            block
-            onPress={() => this._onPressSubmit()}
-            >
-            <Text>Submit</Text>
-          </Button>
-        </Content>
-      </Container>
+      <View style={styles.container}>
+        <Text style={styles.tandaLogo}>TandaPay</Text>
+        <TextInput
+          placeholder="Enter code here."
+          onChangeText={(text) => this.setState({code:text})}
+        />
+        <Button
+          title="Submit Code"
+          onPress={() => this._onPressSubmit()}
+          />
+      </View>
     );
   }
 }
