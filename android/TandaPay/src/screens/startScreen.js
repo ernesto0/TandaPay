@@ -1,7 +1,7 @@
 import React from 'react';
 import { Alert, AppRegistry, Button, StyleSheet, Text, View } from 'react-native';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
-import { COLOR, ThemeContext, getTheme } from 'react-native-material-ui';
+
 
 
 const styles = StyleSheet.create({
@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     margin: 10,
-    flexDirection: 'row',
+    color: '#A9A9A9',
+    alignItems: 'stretch',
     justifyContent: 'center'
   },
 });
@@ -50,6 +51,7 @@ export default class startScreen extends React.Component {
         <View style={styles.buttonContainer}>         
           <Button
             onPress={() => this.props.navigation.navigate('Login')}
+            style={styles.buttonContainer}
             title="Log In"
           />
         </View>

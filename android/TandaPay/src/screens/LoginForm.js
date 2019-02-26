@@ -4,7 +4,7 @@ import {StyleSheet, View, TextInput, Text, TouchableOpacity} from 'react-native'
 export default class LoginForm extends React.Component{
     render(){
         return(
-            <View style={StyleSheet.container}>
+            <View style={styles.container}>
                 <TextInput 
                     placeholder="username or email"
                     style={styles.input} 
@@ -12,6 +12,7 @@ export default class LoginForm extends React.Component{
                 <TextInput 
                     placeholder="password"
                     style={styles.input} 
+                    secureTextEntry={true}
                     />
 
                 <TouchableOpacity style = {styles.buttonContainer}>
