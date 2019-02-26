@@ -1,21 +1,32 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
-    name:{
+const TandaSchema = new Schema ({
+    name: {
         type: String,
         required: true
     },
     secretary: {
-        type: mongoose.Schema.Types.ObjectId, 
+        type: Schema.Types.ObjectId,
         ref: 'users',
         required: true
     },
-    members: [{
-            type: Schema.Types.ObjectId,
-            ref : 'users',
-    }],
+    members: [
+        {
+            user : {type: Schema.Types.ObjectId, ref : 'users'},
+        }
+    ],
+    invited:[
+        {
+            user: {type: Schema.Types.ObjectId, ref : 'users'},
+            status: {type: String, default: 'invited'},
+        }
+    ],
     registrationCodes: [{
-        type: String
+        code: {type: Schema.Types.ObjectId, ref: 'users'},
+        email: {type: String, required: true},
     }]
+
 })
+
+module.exports = Tanda = mongoose.model('tanda', TandaSchema);
