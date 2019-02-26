@@ -1,6 +1,8 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
+import { COLOR, ThemeContext, getTheme } from 'react-native-material-ui';
+
 
 export default class registerScreen extends React.Component {
     render() {

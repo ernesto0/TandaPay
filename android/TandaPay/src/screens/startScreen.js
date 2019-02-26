@@ -1,16 +1,18 @@
 import React from 'react';
 import { Alert, AppRegistry, Button, StyleSheet, Text, View } from 'react-native';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
+import { COLOR, ThemeContext, getTheme } from 'react-native-material-ui';
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#00cec9',
     alignItems: 'center',
     justifyContent: 'center',
   },
   bigBlue: {
-    color: '#5f9ea0',
+    color: '#fff',
     fontWeight: 'bold',
     fontSize: 70,
   },
