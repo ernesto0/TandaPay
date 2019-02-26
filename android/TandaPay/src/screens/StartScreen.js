@@ -71,9 +71,9 @@ export default class StartScreen extends React.Component {
   
   _onPressSubmit() {
     const value = this._form.getValue();
-    this.setState({value});
-    // console.log('value: ', value);
-    console.log(this.state.code);
+    // this.setState({value});
+    console.log('value: ', value);
+    // console.log(this.state.code);
     this.props.navigation.navigate('Register')
   }
 
