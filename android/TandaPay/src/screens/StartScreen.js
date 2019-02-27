@@ -1,8 +1,5 @@
 import React from 'react';
 import { StyleSheet, View, TextInput, Button, Text } from 'react-native';
-// import { Container, Header, Content, Button, Text, Label, Input } from 'native-base';
-import { Font } from 'expo';
-import { Ionicons } from '@expo/vector-icons';
 
 import t from 'tcomb-form-native';
 
@@ -64,16 +61,18 @@ export default class StartScreen extends React.Component {
   constructor(props){
     super(props)
 
-    // this.state = {
-    //   tanda = const
-    // }
+    this.state = {
+      value: {
+        email: '',
+        code: ''
+      },
+    }
   }
   
   _onPressSubmit() {
     const value = this._form.getValue();
-    // this.setState({value});
     console.log('value: ', value);
-    // console.log(this.state.code);
+    
     this.props.navigation.navigate('Register')
   }
 

@@ -18,7 +18,7 @@ const styles = StyleSheet.create(
     }
   );
 
-export default class TandaStatusScreen extends React.Component {
+export default class StatusScreen extends React.Component {
 
   constructor(props){
     super(props)
