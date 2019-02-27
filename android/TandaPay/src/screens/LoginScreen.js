@@ -3,7 +3,7 @@ import {View, KeyboardAvoidingView, StyleSheet } from 'react-native';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 import LoginForm from './LoginForm';
 
-export default class logInScreen extends React.Component {
+export default class LoginScreen extends React.Component {
     render() {
       return (
         <View style={style.container}>
