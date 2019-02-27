@@ -3,7 +3,7 @@ import {View, KeyboardAvoidingView, StyleSheet } from 'react-native';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 import LoginForm from './LoginForm';
 
-export default class logInScreen extends React.Component {
+export default class LogInScreen extends React.Component {
     render() {
       return (
         <View style={style.container}>
@@ -14,9 +14,6 @@ export default class logInScreen extends React.Component {
         </View>
       );
     }
-<<<<<<< HEAD
-}
-=======
   }
   
   const style = StyleSheet.create({
@@ -31,4 +28,3 @@ export default class logInScreen extends React.Component {
       alignItems: 'stretch',
     }
   });
->>>>>>> 627935675de97962f6840bb4a2e404c6ee9a804a
