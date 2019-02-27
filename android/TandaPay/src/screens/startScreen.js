@@ -2,15 +2,17 @@ import React from 'react';
 import { Alert, AppRegistry, Button, StyleSheet, Text, View } from 'react-native';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#00cec9',
     alignItems: 'center',
     justifyContent: 'center',
   },
   bigBlue: {
-    color: '#5f9ea0',
+    color: '#fff',
     fontWeight: 'bold',
     fontSize: 70,
   },
@@ -20,7 +22,8 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     margin: 10,
-    flexDirection: 'row',
+    color: '#A9A9A9',
+    alignItems: 'stretch',
     justifyContent: 'center'
   },
 });
@@ -42,12 +45,17 @@ export default class StartScreen extends React.Component {
         <View style={styles.buttonContainer}>         
           <Button
              onPress={() => this.props.navigation.navigate('Register')}
+<<<<<<< HEAD
             title="Create Account"
+=======
+             title="Create Account"
+>>>>>>> 627935675de97962f6840bb4a2e404c6ee9a804a
           />
         </View>
         <View style={styles.buttonContainer}>         
           <Button
             onPress={() => this.props.navigation.navigate('Login')}
+            style={styles.buttonContainer}
             title="Log In"
           />
         </View>
