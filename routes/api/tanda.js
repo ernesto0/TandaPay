@@ -80,7 +80,7 @@ router.get('/member', (req, res) => {
 
 //Delete Tanda
 
-//
+//invite members
 
 module.exports = router;
 

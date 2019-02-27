@@ -14,6 +14,7 @@ const TandaSchema = new Schema ({
     members: [
         {
             user : {type: Schema.Types.ObjectId, ref : 'users'},
+            status: {type: String, default: 'waiting'},
         }
     ],
     invited:[
