@@ -1,5 +1,4 @@
 import React from 'react';
-import { Alert, AppRegistry, Button, StyleSheet, Text, View } from 'react-native';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 import StartScreen from './src/screens/StartScreen';
 import LoginScreen from './src/screens/LoginScreen';
