@@ -73,7 +73,7 @@ export default class StartScreen extends React.Component {
     const value = this._form.getValue();
     console.log('value: ', value);
     
-    this.props.navigation.navigate('Register')
+    this.props.navigation.navigate('Login')
   }
 
   render() {

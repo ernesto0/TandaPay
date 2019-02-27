@@ -2,6 +2,29 @@ import React from 'react';
 import {StyleSheet, View, TextInput, Text, TouchableOpacity} from 'react-native'; 
 
 export default class LoginForm extends React.Component{
+
+    constructor(props){
+        super(props)
+    
+        this.state = {
+          username: '',
+          pasword: '',
+          navigation: this.props.navigation
+        }
+
+        // this._onPressSubmit = this._onPressSubmit.bind(this);
+
+
+    }
+
+    _onPressSubmit() {
+        console.log(this.state.username);
+        console.log(this.state.password);
+        
+        this.state.navigation.navigate('Status');
+    }
+
+
     render(){
         return(
             <View style={styles.container}>
@@ -9,15 +32,18 @@ export default class LoginForm extends React.Component{
                     placeholder="username or email"
                     placeholderTextColor="#fff" 
                     style={styles.input} 
-                    />
+                    onChangeText={(text) => this.setState({username:text})}
+                />
                 <TextInput 
                     placeholder="password"
                     placeholderTextColor="#fff" 
                     style={styles.input} 
                     secureTextEntry={true}
-                    />
+                    onChangeText={(text) => this.setState({password:text})}
+                />
 
-                <TouchableOpacity style = {styles.buttonContainer}>
+                <TouchableOpacity style = {styles.buttonContainer}
+                    onPress={() => this._onPressSubmit()}>
                     <Text style = {styles.buttonText}>
                         LOGIN
                     </Text>
