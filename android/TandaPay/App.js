@@ -3,28 +3,21 @@ import {createStackNavigator, createAppContainer} from 'react-navigation';
 import StartScreen from './src/screens/StartScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
+import StatusScreen from './src/screens/StatusScreen';
+import LoginForm from './src/screens/LoginForm';
 
 
-
-<<<<<<< HEAD
-
-const style ={
-
-}
-
-=======
->>>>>>> 627935675de97962f6840bb4a2e404c6ee9a804a
 const RootStack = createStackNavigator(
   {
     Start: StartScreen,
     Login: LoginScreen,
     Register: RegisterScreen, 
+    Status: StatusScreen
   },
   {
     initialRouteName: 'Start',
   }
 );
-
 
 export default class App extends React.Component {
   render() {
