@@ -45,7 +45,7 @@ export default class startScreen extends React.Component {
         <View style={styles.buttonContainer}>         
           <Button
              onPress={() => this.props.navigation.navigate('Register')}
-            title="Create Account"
+             title="Create Account"
           />
         </View>
         <View style={styles.buttonContainer}>         

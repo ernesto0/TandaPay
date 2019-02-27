@@ -7,10 +7,12 @@ export default class LoginForm extends React.Component{
             <View style={styles.container}>
                 <TextInput 
                     placeholder="username or email"
+                    placeholderTextColor="#fff" 
                     style={styles.input} 
                     />
                 <TextInput 
                     placeholder="password"
+                    placeholderTextColor="#fff" 
                     style={styles.input} 
                     secureTextEntry={true}
                     />
@@ -31,11 +33,13 @@ const styles = StyleSheet.create({
     },
     input:{
         height: 40,
-        backgroundColor: 'rgba(255,255,255,0.7)',
+        //backgroundColor: 'rgba(255,255,255,0.7)',
         marginBottom: 20,
-        color: '#FFF',
+        color: '#2d3436',
         paddingHorizontal: 10,
-        fontWeight: '700'
+        fontWeight: '700',
+        borderBottomColor: '#fdcb6e', // Add this to specify bottom border color
+        borderBottomWidth: 2     // Add this to specify bottom border thickness
     },
     buttonContainer:{
         backgroundColor: '#fdcb6e',

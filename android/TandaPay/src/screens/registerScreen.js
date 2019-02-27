@@ -25,6 +25,5 @@ export default class registerScreen extends React.Component {
     inputContainer:{
       flex: 3,
       justifyContent:'center',
-      alignItems: 'stretch',
     }
   });
