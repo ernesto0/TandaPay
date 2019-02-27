@@ -11,6 +11,7 @@
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-check-app-install": "0.0.5",
+    "react-native-trust-sdk": "0.0.6",
     "react-navigation": "^3.3.0"
   },
   "devDependencies": {
