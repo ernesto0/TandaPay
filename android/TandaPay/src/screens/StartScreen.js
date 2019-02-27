@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Button, Text } from 'react-native';
+import { StyleSheet, View, Button, Text } from 'react-native';
 
 import t from 'tcomb-form-native';
 
