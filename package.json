@@ -25,10 +25,7 @@
     "mongoose": "^5.4.12",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
-<<<<<<< HEAD
-    "validator": "^10.11.0"
-=======
+    "validator": "^10.11.0",
     "react-native-vector-icons": "^6.3.0"
->>>>>>> 627935675de97962f6840bb4a2e404c6ee9a804a
   }
 }
