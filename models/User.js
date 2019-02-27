@@ -19,6 +19,14 @@ const UserSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    isInTanda: {
+        type: boolean,
+        default: false
+    },
+    memberOf: {
+        type: Schema.Types.ObjectId, 
+        ref : 'tanda'
+    }
 });
 
 module.exports = User = mongoose.model('users', UserSchema);
