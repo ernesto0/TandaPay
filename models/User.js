@@ -20,7 +20,7 @@ const UserSchema = new Schema({
         default: Date.now
     },
     isInTanda: {
-        type: boolean,
+        type: Boolean,
         default: false
     },
     memberOf: {

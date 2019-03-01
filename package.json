@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/ernesto0/TandaPay#readme",
   "dependencies": {
-    "@material-ui/icons": "^3.0.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",

@@ -36,19 +36,16 @@ router.post('/create', passport.authenticate('jwt', {session: false}), (req,res)
 //@access   Public 
 router.post('/addMember', passport.authenticate('jwt', {session: false}), (req, res) =>{
     const errors = {};
-    Tanda.find()
-    .where('members')
-    .in(req.body.code)
+    Tanda.findOneAndUpdate({'registrationCodes.email': req.body.email}, 
+    {$push: {members: req.body.newMemberID}})
     .then(tanda => {
-        if(tanda.members.find(req.body.email)){
-            tanda.members.push(req.body.newMemberID);
-            tanda.save();
+            console.log(tanda);
+            
             return res.json(tanda);
-        }
-        errors.code = 'Email is not associated with code';
-
+      
     })
     .catch(err => res.status(404).json({tandaDNE: 'Invalid code'}));
+
 });
 
 //Delete members
