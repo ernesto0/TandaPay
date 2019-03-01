@@ -1,7 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, TextInput, Text, TouchableOpacity, KeyboardAvoidingView} from 'react-native'; 
-import {createStackNavigator, createAppContainer} from 'react-navigation';
-import RegistrationForm from './RegistrationForm';
+import {StyleSheet, View, TextInput, Text, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
 
 
 export default class RegisterScreen extends React.Component {
@@ -30,6 +28,9 @@ export default class RegisterScreen extends React.Component {
     return (
       <View style={style.container}>
         <KeyboardAvoidingView style={style.inputContainer} behavior="padding" >
+        <Text style={style.tandaLogo}>
+                Register
+          </Text>
           <View style = {style.rowContainer}>
             <View>
               <TextInput 
@@ -134,5 +135,13 @@ export default class RegisterScreen extends React.Component {
     buttonText:{
         textAlign: 'center',
         color:'#FFF',
+    },
+    tandaLogo:{
+      textAlign: 'center',
+      color:'#FFF',
+      fontWeight: 'bold',
+      fontSize: 40,
+      justifyContent: 'center',
+      padding: 30,
     }
   });

@@ -41,7 +41,15 @@ const styles = StyleSheet.create({
     fontSize: 70,
     alignItems: 'center',
     justifyContent: 'center'
-  }
+  },
+  buttonContainer:{
+    backgroundColor: '#fdcb6e',
+    paddingVertical: 10,
+  },
+  buttonText:{
+    textAlign: 'center',
+    color:'#FFF',
+  },
 });
 
 const options = {
@@ -66,12 +74,36 @@ export default class StartScreen extends React.Component {
         email: '',
         code: ''
       },
+      isLoaded: false,
+      resp: ''   
     }
   }
   
   _onPressSubmit() {
     const value = this._form.getValue();
+    this.setState({ isLoaded: true })
     console.log('value: ', value);
+
+    // fetch('http://10.21.48.110:5000/api/tanda/test')
+    // .then(response => {
+    //   return response.json();
+    // }).then(response => {
+    //   // this.setState({resp: data})
+    //   console.log('resp: ', response);
+    // }).catch((error) => {
+    //   console.log(error)
+    // })
+
+    // fetch('http://10.21.61.179:5000/api/tanda/addMember', {method: "POST",
+    //   body: JSON.stringify({email: value['email'], code: value['code']})
+    // })
+    // .then(response => {
+    //   return response.json();
+    // }).then(response => {
+    //   console.log('resp: ', response);
+    // }).catch((error) => {
+    //   console.log(error)
+    // })
     
     this.props.navigation.navigate('Login')
   }

@@ -1,5 +1,4 @@
 import React from 'react';
-// import {View, KeyboardAvoidingView, StyleSheet } from 'react-native';
 import {StyleSheet, View, TextInput, Text, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
 
 export default class LoginScreen extends React.Component {
@@ -24,6 +23,9 @@ export default class LoginScreen extends React.Component {
     return (
       <View style={style.container}>
         <KeyboardAvoidingView style={style.inputContainer} behavior="padding" >
+              <Text style={style.tandaLogo}>
+                Login
+              </Text>
               <TextInput 
                 placeholder="username or email"
                 placeholderTextColor="#fff" 
@@ -85,5 +87,13 @@ export default class LoginScreen extends React.Component {
     buttonText:{
         textAlign: 'center',
         color:'#FFF',
+    },
+    tandaLogo:{
+      textAlign: 'center',
+      color:'#FFF',
+      fontWeight: 'bold',
+      fontSize: 40,
+      justifyContent: 'center',
+      padding: 30
     }
   });
