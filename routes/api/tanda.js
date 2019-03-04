@@ -18,6 +18,31 @@ router.get('/', (req, res) => {
     .catch(err => res.status(404).json({noTandasFound: 'no tandas found'}));
 })
 
+//@route    GET api/tanda
+//@desc     Get tandas - returns tandas
+//@body     
+//@access   Public
+router.post('/getTandaByMember', (req, res) => {
+    Tanda.findOne({'member.email': req.body.email})
+    .then(tanda => {
+        return res.json(tanda);
+    })
+    .catch(err => res.status(404).json({noTandasFound: 'no tandas found'}));
+})
+
+//@route    GET api/tanda
+//@desc     Get tandas - returns tandas
+//@body     
+//@access   Public
+router.post('/checkCode', (req, res) => {
+    Tanda.findOne({'registrationCodes.email': req.body.email, 'registrationCodes.code': req.body.code})
+    .then(tanda => {
+        // console.log(req.body.email);
+        return res.json(tanda);
+    })
+    .catch(err => res.status(404).json({tandaDNE: 'Invalid code'}));
+})
+
 //Craete Tanda
 router.post('/create', passport.authenticate('jwt', {session: false}), (req,res) =>{
     const newTanda = new Tanda({
@@ -35,14 +60,11 @@ router.post('/create', passport.authenticate('jwt', {session: false}), (req,res)
 //@body     email, newMemberID, code
 //@access   Public 
 router.post('/addMember', passport.authenticate('jwt', {session: false}), (req, res) =>{
-    const errors = {};
-    Tanda.findOneAndUpdate({'registrationCodes.email': req.body.email}, 
+    Tanda.findOneAndUpdate({'registrationCodes.email': req.body.email},
     {$push: {members: req.body.newMemberID}})
     .then(tanda => {
-            console.log(tanda);
-            
-            return res.json(tanda);
-      
+        console.log(tanda);
+        return res.json(tanda);
     })
     .catch(err => res.status(404).json({tandaDNE: 'Invalid code'}));
 
@@ -76,6 +98,13 @@ router.get('/member', (req, res) => {
 })
 
 //Delete Tanda
+router.post('/delete', (req, res) => {
+
+    console.log(req.body.name);
+
+    Tanda.deleteOne({'name': req.body.name})
+    .then(tanda => res.json(tanda))
+})
 
 //invite members
 

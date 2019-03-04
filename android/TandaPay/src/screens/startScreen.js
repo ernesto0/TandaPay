@@ -41,7 +41,15 @@ const styles = StyleSheet.create({
     fontSize: 70,
     alignItems: 'center',
     justifyContent: 'center'
-  }
+  },
+  buttonContainer:{
+    backgroundColor: '#fdcb6e',
+    paddingVertical: 10,
+  },
+  buttonText:{
+    textAlign: 'center',
+    color:'#FFF',
+  },
 });
 
 const options = {
@@ -66,14 +74,36 @@ export default class StartScreen extends React.Component {
         email: '',
         code: ''
       },
+      isLoaded: false,
+      resp: ''   
     }
   }
   
   _onPressSubmit() {
     const value = this._form.getValue();
+    this.setState({ isLoaded: true })
     console.log('value: ', value);
+
+    fetch('http://192.168.1.27:5000/api/tanda/checkCode', 
+    {
+      method: 'POST',
+      headers: {'Accept': 'application/json','Content-Type': 'application/json'},
+      body: JSON.stringify(value)
+    })
+    .then(response => {
+      return response.json();
+    }).then(response => {
+      console.log('resp: ', response);
+      if (response != null){
+        this.props.navigation.navigate('Login')
+      }
+      else{
+        console.log('Wrong email and code!')
+      }
+    }).catch((error) => {
+      console.log(error)
+    })
     
-    this.props.navigation.navigate('Login')
   }
 
   render() {

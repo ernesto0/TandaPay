@@ -13,20 +13,30 @@ const User = require('../../models/User');
 
 router.get('/test', (req, res) => res.json({msg: "Users works"}));
   
+
+router.get('/', (req, res) => {
+    User.find()
+    .then(users => res.json(users))
+    .catch(err => res.status(404).json({noUsersFound: 'no users found'}));
+})
+
+
 //@route    POST api/users/register
 //@desc     Register user
 //@body     name, email, password
 //@access   Public   
 router.post('/register', (req,res) => {
-    const {errors, isValid} = validateRegisterInput(req.body);
+    // const {errors, isValid} = validateRegisterInput(req.body);
 
-    //check validation
-    if(!isValid){
-        return res.status(400).json(errors);
-    }
+    // //check validation
+    // if(!isValid){
+    //     return res.status(400).json(errors);
+    // }
+    let errors = {};
 
     User.findOne({email: req.body.email})
     .then(user => {
+        console.log("here");
         if(user){
             errors.email = 'An account is already registered with this email address';
             return res.status(400).json(errors);
@@ -55,13 +65,16 @@ router.post('/register', (req,res) => {
 //@body     email, password
 //@access   Public  
 router.post('/login', (req, res) => {
-    const { errors, isValid } = validateLoginInput(req.body);
+    // const { errors, isValid } = validateLoginInput(req.body);
 
     //check validation
-    if(!isValid){
-        return res.status(400) .json(errors) ;
-    }
+    // if(!isValid){
+    //     return res.status(400) .json(errors) ;
+    // }
 
+    let errors = {};
+
+    console.log(req.body.email);
     const email = req.body.email;
     const password = req.body.password;
 
@@ -104,6 +117,13 @@ router.post('/login', (req, res) => {
 //@access   Private
 router.get('/current', passport.authenticate('jwt', { session: false}), (req, res) => {
     res.json(req.user);
+})
+
+//Delete User
+router.post('/delete', (req, res) => {
+
+    User.deleteOne({'email': req.body.email})
+    .then(user => res.json(user))
 })
 
 

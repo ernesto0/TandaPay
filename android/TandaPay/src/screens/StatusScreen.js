@@ -27,33 +27,37 @@ export default class StatusScreen extends React.Component {
     this.state = {
       isLoaded: false,
       tableHead: ['Member', 'Status'],
-      tableData: [
-        ['Member1', 'waiting'],
-        ['Member2', 'waiting'],
-        ['Member3', 'paid']
-      ],
-      tanda: 'test3',
+      // tableData: [
+      //   ['Member1', 'waiting'],
+      //   ['Member2', 'waiting'],
+      //   ['Member3', 'paid']
+      // ],
+      tableData: [],
+      // tanda: 'test3',
       members: []
     }
   }
 
   componentDidMount() {
-    // get user tanda and member list 
-    // fetch('http://10.21.61.179:5000/api/tanda')
-    // .then(response => {
-    //   return response.json();
-    // }).then(response => {
-    //   let num_tandas = Object.keys(response).length;
-    //   for(let i = 0; i < num_tandas; i++){
-    //     if (response[i]['name'] == 'test3'){
-    //       this.setState({members: response[i]['members']});
-    //       this.setState({isLoaded: true});
-    //       console.log(this.state.members);
-    //     }
-    //   }
-    // }).catch((error) => {
-    //   console.log(error)
-    // })
+
+    fetch('http://192.168.1.27:5000/api/tanda/getTandaByMember', 
+    {
+      method: 'POST',
+      headers: {'Accept': 'application/json','Content-Type': 'application/json'},
+      body: JSON.stringify({email: this.props.navigation.state.params.data})
+    })
+    .then(response => {
+      return response.json();
+    }).then(response => {
+      if(response != null){
+        // set table data to arrays of member name and status
+      }
+      else{
+        console.log("empty member list")
+      }
+    }).catch((error) => {
+      console.log(error)
+    })
   }
 
   render() {
