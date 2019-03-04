@@ -7,50 +7,16 @@ export default class LoginScreen extends React.Component {
     super(props)
 
     this.state = {
-      email: '',
-      pasword: '',
-      memberID: ''
+      username: '',
+      pasword: ''
     }
   }
 
   _onPressSubmit() {
-      console.log(this.state.email);
+      console.log(this.state.username);
       console.log(this.state.password);
-
-      fetch('http://192.168.1.27:5000/api/users/login', 
-      {
-        method: 'POST',
-        headers: {'Accept': 'application/json','Content-Type': 'application/json'},
-        body: JSON.stringify({email: this.state.email, password: this.state.password})
-      })
-      .then(response => {
-        return response.json();
-      }).then(response => {
-        console.log('resp: ', response);
-        if (response['password'] == 'Password incorrect'){
-          console.log('Wrong login info!');
-        }
-        else{
-          // this.setState({memberID: request['invited']['user']});
-        this.props.navigation.navigate('Status', {data: this.state.email});
-        }
-      }).catch((error) => {
-        console.log(error)
-      })
-
-      // fetch('http://192.168.1.27:5000/api/tanda/addMember', 
-      // {
-      //   method: 'POST',
-      //   headers: {'Accept': 'application/json','Content-Type': 'application/json'},
-      //   body: JSON.stringify({email: this.state.email, newMemberID: this.state.memberID})
-      // })
-      // .then(response => {
-      //   return response.json();
-      // }).then(response => {
-      //   this.props.navigation.navigate('Status');
-      // }).catch((error) => {
-      //   console.log(error)
-      // })
+      
+      this.props.navigation.navigate('Status');
   }
 
   render() {
@@ -61,10 +27,10 @@ export default class LoginScreen extends React.Component {
                 Login
               </Text>
               <TextInput 
-                placeholder="email"
+                placeholder="username or email"
                 placeholderTextColor="#fff" 
                 style={style.input} 
-                onChangeText={(text) => this.setState({email:text})}
+                onChangeText={(text) => this.setState({username:text})}
               />
               <TextInput 
                 placeholder="password"
@@ -82,7 +48,7 @@ export default class LoginScreen extends React.Component {
               <TouchableOpacity style = {style.buttonContainer}
                 onPress={() => this.props.navigation.navigate('Register')}>
                 <Text style = {style.buttonText}>
-                    REGISTER
+                    Register
                 </Text>
               </TouchableOpacity>
         </KeyboardAvoidingView>
