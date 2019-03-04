@@ -1,27 +1,34 @@
 import React from 'react';
 import {StyleSheet, View, TextInput, Text, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
 
-
 export default class RegisterScreen extends React.Component {
 
   constructor(props){
     super(props)
 
     this.state = {
-      firstName: '',
-      lastName: '',
-      userName: '',
+      name: '',
       email: '',
-      password: '',
-      password2: ''
+      password: ''
     }
   }
 
   _onPressSubmit() {
-    console.log(this.state.username);
-    console.log(this.state.password);
-    
-    this.props.navigation.navigate('Login');
+
+    fetch('http://192.168.1.27:5000/api/users/register', 
+      {
+        method: 'POST',
+        headers: {'Accept': 'application/json','Content-Type': 'application/json'},
+        body: JSON.stringify({name: this.state.name, email: this.state.email, password: this.state.password})
+      })
+      .then(response => {
+        return response.json();
+      }).then(response => {
+        console.log('resp: ', response);
+        this.props.navigation.navigate('Login');
+      }).catch((error) => {
+        console.log(error)
+      })
   }
 
   render() {
@@ -31,30 +38,12 @@ export default class RegisterScreen extends React.Component {
         <Text style={style.tandaLogo}>
                 Register
           </Text>
-          <View style = {style.rowContainer}>
-            <View>
-              <TextInput 
-                  placeholder="first name"
-                  placeholderTextColor="#fff" 
-                  style={style.rowInput} 
-                  onChangeText={(text) => this.setState({firstName:text})}
-              />
-            </View>   
-            <View>
-              <TextInput 
-                  placeholder="last name"
-                  placeholderTextColor="#fff" 
-                  style={style.rowInput}
-                  onChangeText={(text) => this.setState({lastName:text})}
-                  />     
-            </View> 
-          </View>           
           <TextInput 
-              placeholder="user name"
-              placeholderTextColor="#fff" 
-              style={style.input} 
-              onChangeText={(text) => this.setState({userName:text})}
-          />
+                  placeholder="name"
+                  placeholderTextColor="#fff" 
+                  style={style.input} 
+                  onChangeText={(text) => this.setState({name:text})}
+              />
           <TextInput 
               placeholder="email"
               placeholderTextColor="#fff" 
@@ -68,16 +57,8 @@ export default class RegisterScreen extends React.Component {
               secureTextEntry={true}
               onChangeText={(text) => this.setState({password:text})}
           />
-          <TextInput 
-              placeholder="verify password"
-              placeholderTextColor="#fff" 
-              style={style.input} 
-              secureTextEntry={true}
-              onChangeText={(text) => this.setState({password2:text})}
-          />
-
           <TouchableOpacity style = {style.buttonContainer}
-            onPress={() => this.props.navigation.navigate('Login')}>
+            onPress={() => this._onPressSubmit()}>
             <Text style = {style.buttonText}>
                 NEXT
             </Text>
