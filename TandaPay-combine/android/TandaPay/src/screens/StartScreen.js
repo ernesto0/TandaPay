@@ -72,15 +72,7 @@ export default class StartScreen extends React.Component {
   _onPressSubmit() {
     const value = this._form.getValue();
     console.log('value: ', value);
-    fetch('http://10.21.69.113:5000/api/tanda/test')
-.then(response => {
-return response.json();
-}).then(response => {
-// this.setState({resp: data})
-console.log('resp: ', response);
-}).catch((error) => {
-console.log(error)
-})
+    
     this.props.navigation.navigate('Login')
   }
 

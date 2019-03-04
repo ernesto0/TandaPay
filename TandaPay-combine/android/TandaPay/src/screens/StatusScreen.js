@@ -1,9 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, TextInput, Button, Text, ListView } from 'react-native';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
-//import {DrawerNavigator} from'react-navigation';
-import {DrawerNavigator,DrawerItems} from 'react-navigation';
-import LoginScreen from './LoginScreen';
+
 
 const styles = StyleSheet.create(
   {
@@ -19,20 +17,6 @@ const styles = StyleSheet.create(
     }
   }
 );
-
-//const App =DrawerNavigator({
-  //home:{
-    //screen: LoginScreen,
-  //},
-//}, {
-  //  contentComponent: (props) => (
-    //  <View>
-      //  <Text>Menu</Text>
-        //<DrawerItems {...props} />
-        //<Text></Text>
-      //</View>
-   // )
-//});
 
 export default class StatusScreen extends React.Component {
 
