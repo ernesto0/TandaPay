@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Button, Text, ListView } from 'react-native';
+import { StyleSheet, View, TextInput, Button, Text, ListView, TouchableOpacity } from 'react-native';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 //import {DrawerNavigator} from'react-navigation';
 import {DrawerNavigator,DrawerItems} from 'react-navigation';
@@ -20,6 +20,8 @@ const styles = StyleSheet.create(
   }
 );
 
+
+
 export default class HomeScreen extends React.Component {
 
   constructor(props){
@@ -32,7 +34,12 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.tandaLogo}>HomeScreen</Text>
-       
+        <Button 
+          onPress={() => {
+            console.log('Joining a subgroup');
+          }}
+          title="Join a subgroup"
+        />
       </View>
     );
   }

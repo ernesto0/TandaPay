@@ -16,11 +16,36 @@ class MyDrawer extends React.Component {
         
         <Button 
           onPress={() => {
-            console.log('Changing screens');
+            console.log('Changing screens to Status');
             this.props.navigation.navigate("Status");
           }}
           title="Status"
         />
+
+          <Button 
+          onPress={() => {
+            console.log('Changing screens to Pay');
+            //this.props.navigation.navigate("Status");
+          }}
+          title="Pay"
+        />
+
+          <Button 
+          onPress={() => {
+            console.log('Changing screens to chat');
+            //this.props.navigation.navigate("Status");
+          }}
+          title="Chat"
+        />  
+
+            <Button 
+          onPress={() => {
+            console.log('Changing screens to settings');
+            //this.props.navigation.navigate("Status");
+          }}
+          title="Settings"
+        />
+
       </View>
 
     );
