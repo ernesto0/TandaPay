@@ -13,8 +13,8 @@ const TandaSchema = new Schema ({
     },
     members: [
         {
-            type: Schema.Types.ObjectId,
-            ref: 'users',
+            user: {type: Schema.Types.ObjectId, ref: 'users'},
+            status: {type: String, default: 'waiting'}
         },
            
           

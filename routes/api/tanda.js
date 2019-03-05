@@ -60,11 +60,15 @@ router.post('/create', passport.authenticate('jwt', {session: false}), (req,res)
 //@body     email, newMemberID, code
 //@access   Public 
 router.post('/addMember', passport.authenticate('jwt', {session: false}), (req, res) =>{
-    Tanda.findOneAndUpdate({'registrationCodes.email': req.body.email},
-    {$push: {members: req.body.newMemberID}})
+    const errors = {};
+    Tanda.findOneAndUpdate({'registrationCodes.email': req.body.email}, 
+    {$push: {members: {'user' : req.body.newMemberID}}})
     .then(tanda => {
-        console.log(tanda);
-        return res.json(tanda);
+            console.log(tanda);
+            tanda.invited
+            
+            return res.json(tanda);
+      
     })
     .catch(err => res.status(404).json({tandaDNE: 'Invalid code'}));
 
