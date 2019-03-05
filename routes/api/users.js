@@ -80,7 +80,7 @@ router.post('/login', (req, res) => {
                     //password is correct
                     if(isMatch){
                        //create payload
-                       const payload = { id: user.id, name: user.name }
+                       const payload = { id: user.id, name: user.name, isInTanda: user.isInTanda, email: user.email, memberOf: user.memberOf }
                        
                        //sign token
                        jwt.sign(payload, keys.secretOrKey, {expiresIn: 86400}, (err, token)=>{

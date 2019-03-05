@@ -37,9 +37,10 @@ router.post('/create', passport.authenticate('jwt', {session: false}), (req,res)
 router.post('/addMember', passport.authenticate('jwt', {session: false}), (req, res) =>{
     const errors = {};
     Tanda.findOneAndUpdate({'registrationCodes.email': req.body.email}, 
-    {$push: {members: req.body.newMemberID}})
+    {$push: {members: {'user' : req.body.newMemberID}}})
     .then(tanda => {
             console.log(tanda);
+            tanda.invited
             
             return res.json(tanda);
       
