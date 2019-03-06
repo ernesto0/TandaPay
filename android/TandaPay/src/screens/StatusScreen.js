@@ -52,6 +52,18 @@ export default class StatusScreen extends React.Component {
       if(response != null){
         // set table data to arrays of member name and status
         console.log(response['members']);
+        let members = response['members'];
+        let y = members.length;
+        let table = [];
+        for(x=0; x<y; x++ ){
+          let b = [];
+          b.push([members[x].user, members[x].status]);
+          table.push(b);
+        }
+        console.log("HERE");
+        console.log(table);
+        this.setState({tableData: table});
+        this.setState({isLoaded: true});
       }
       else{
         console.log("empty member list")
@@ -63,14 +75,14 @@ export default class StatusScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.tandaLogo}>Tanda Status</Text>
-        <Table 
-            borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
-          <Row data={this.state.tableHead} style={styles.head} textStyle={styles.text}/>
-          <Rows data={this.state.tableData} textStyle={styles.text}/>
-        </Table>
-      </View>
+        <View style={styles.container}>
+          <Text style={styles.tandaLogo}>Tanda Status</Text>
+          <Table 
+              borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
+            <Row data={this.state.tableHead} style={styles.head} textStyle={styles.text}/>
+            <Rows data={this.state.tableData} textStyle={styles.text}/>
+          </Table>
+        </View>
     );
   }
 }

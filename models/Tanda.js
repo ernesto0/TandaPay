@@ -14,15 +14,16 @@ const TandaSchema = new Schema ({
     members: [
         {
             user: {type: Schema.Types.ObjectId, ref: 'users'},
-            status: {type: String, default: 'waiting'}
+            status: {type: String, default: 'waiting'},
+            name: {type: String}
         },
            
           
     ],
     invited:[
         {
-            email: {type: String, required: true},
-            status: {type: String, default: 'invited'},
+            email: {type: String, required: false},
+            status: {type: String},
         }
     ],
     registrationCodes: [
