@@ -1,0 +1,57 @@
+v1.7.0
+
+* L'assistance pour Bech32 adresse
+* Déplacer Edge Core au processus indépendant afin de booster les performances et la réactivité de GUI
+* Sell crypto to credit card using Simplex
+* Add LibertyX to support buying Bitcoin from physical merchants in US
+
+v1.6.0
+
+* Assistance d'EOS
+* Implémentation des liens de Bitcoin, ethereum, bitcoincash, dash et edge URIs
+* Add Wyre plugin to support buy/sell of Bitcoin from US bank account
+* Add Bitrefill plugin to support buying gift cards and mobile top ups
+* Add Chinese, Korean, French, and Vietnamese translations
+* Add support for IMP and IRR fiat currencies
+
+v1.5.0
+
+* Ajouter "Changer tout de suite" comme un fournisseur d'échange
+* Utiliser les nouvelles monnaies d'Icôns coulerées
+* Permettre la connexion et la déconnexion de ShapeShift via votre écran de réglage
+
+v1.4.4
+
+* Ajouter la fonction pour séparer BCH Wallets dans BSV Wallets
+* Ajouter une réponse pour sécuriser BCH/BSV wallets
+*Améliorer la sécurité et la performance de la connexion
+* Corréction du bug qui obligeait XRP et XLM à ré-interroger toutes les transactions à chaque connexion
+* Amélioration des connectivités aux nœuds pour bitcoin relatifs des monnaies (BTC, BCH, FLC, DQSH, etc.)
+
+v1.4.3
+
+* Booste les performances lors de la connexion et de la synchronisation des portefeuilles de cryptomonnaies
+* Ajouter l'assistance pour Monero pare-balles qui fixe la dépense de Monero 
+*Permettre les utilisateurs à activer/ déactvier les fournisseurs d'échanges
+*Fixer l'erreur qui s'affichie "Token n'est pas assisté " occasionnellement dans le fond d'échange
+* Activer l'image xpub pour plus de monnaies
+* Réparer le chute dans les comptes en volume quand vous cliquez dans le menue à droite immédiatement après la connexion
+* Réparer le hang quand vous utilisez Simplex depuis certains appareils Androids
+
+v1.4.2
+
+* Assitance pour Stellar
+* Ajouter la fonctionne à sélectionner des nodes personalisés pour Bitcoin ou des monnaies similaires
+* Aide pour l'adésion de ShapeShift
+* Assitance Changelly.com avec la fonctionne d'échange
+*Ajouter en espagnole, italian et la tranduction en russe
+
+v1.3.4
+
+* Empêcher que le bouton de création de Wallet ne soit pas exploité 
+*Répare le fond blanc qui s'affiche qand vous êtes connecté si la transaction entrant arrive
+* Répare l'address qui est couverte en Simplex plugin
+* Réparer les bugs casués par les doubles clics dans le gestionnaire de mots de passe.   
+* Réparer le montant Fiat quand vous utilisez les autres monnaies 
+* Mise à l’échelle supplémentaires et améliorations visuelles
+* Réparation des autres bugs mineurs 

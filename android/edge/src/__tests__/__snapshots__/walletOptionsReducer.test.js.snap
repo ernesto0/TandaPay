@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reducer initial state 1`] = `
+Object {
+  "viewXPubWalletModalVisible": false,
+  "walletArchivesVisible": false,
+  "walletId": "",
+  "xPubSyntax": "",
+}
+`;
+
+exports[`reducer open viewxpub wallet modal 1`] = `
+Object {
+  "viewXPubWalletModalVisible": true,
+  "walletArchivesVisible": false,
+  "walletId": "VIEWXPUB WALLET ID",
+  "xPubSyntax": "VIEWXPUB xpub1892736451987263r",
+}
+`;

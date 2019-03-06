@@ -1,0 +1,57 @@
+v1.7.0
+
+* Bech32 address support
+* Move Edge Core to independent process to boost performance and GUI responsiveness
+* Sell crypto to credit card using Simplex
+* Add LibertyX to support buying Bitcoin from physical merchants in US
+
+v1.6.0
+
+* EOS support
+* Implementing deep linking of bitcoin, ethereum, bitcoincash, dash, and edge URIs
+* Add Wyre plugin to support buy/sell of Bitcoin from US bank account
+* Add Bitrefill plugin to support buying gift cards and mobile top ups
+* Add Chinese, Korean, French, and Vietnamese translations
+* Add support for IMP and IRR fiat currencies
+
+v1.5.0
+
+* Add Changenow as an exchange provider
+* Use new colored currency icons
+* Allow signin/singout of ShapeShift via Settings screen
+
+v1.4.4
+
+* Add ability to split BCH wallets into BSV wallets
+* Add replay protection to BCH/BSV wallets
+* Improve login performance
+* Fix bug that caused XRP and XLM to re-query all transactions at each login
+* Improve connectivity to nodes for bitcoin related currencies (BTC, BCH, LTC, DASH, etc)
+
+v1.4.3
+
+* Big performance boost when logging in and syncing wallets
+* Add support for Monero bulletproofs which fixes Monero spending
+* Allow users to enable/disable exchange providers
+* Fix occasional "Token is not supported" error in Exchange screen
+* Enable viewing xpub for more currencies
+* Fix crash on large accounts when tapping top right menu button immediately after login
+* Fix hang when using Simplex from some Android devices
+
+v1.4.2
+
+* Suporte para Stellar
+* Adicionar habilidade de selecionar nós para Bitcoin e moedas similares
+* Suporte para membros ShapeShift
+* Suporte para Changelly.com na funcionalidade Exchange
+* Adicione tradução em Espanhol, Italiano e Russo
+
+v1.3.4
+
+* Prevenir que o botão de criação de carteira seja clicado várias vezes
+* Consertar tela branca sobre a área do login se ocorrer o recebimento de uma transação
+* Consertar quebra de endereço no plugin Simplex
+Consertar o erro de toque duplo no modo Alterar Senha
+* Consertar os valores da moeda fiduciária ao usar moedas de outros países
+* Adicionar melhorias na escalabilidade e no visual
+* Consertar bugs menores
