@@ -1,5 +1,8 @@
 import React from 'react';
 import {StyleSheet, View, TextInput, Text, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
+// import decode from '../../../../decodeJwt';
+import decode from '../../decode';
+
 
 export default class LoginScreen extends React.Component {
 
@@ -9,7 +12,11 @@ export default class LoginScreen extends React.Component {
     this.state = {
       email: '',
       pasword: '',
-      memberID: ''
+      memberID: '',
+      isInTanda: '',
+      name: '',
+      memberOf: '',
+      jwt: ''
     }
   }
 
@@ -25,46 +32,49 @@ export default class LoginScreen extends React.Component {
       })
       .then(response => {
         return response.json();
+
       }).then(response => {
         console.log('resp: ', response);
-        if (response['password'] == 'Password incorrect'){
-          console.log('Wrong login info!');
+
+        if (response['password'] != 'Password incorrect'){
+          let s = [];
+          s = response['token'].replace('Bearer', '');
+          let usr = decode(s);
+          console.log(s);
+          this.setState({name: usr['name']});
+          this.setState({memberID: usr['id']});
+          this.setState({isInTanda: usr['isInTanda']});
+          this.setState({email: usr['email']});
+          this.setState({jwt: response['token']});
+
+          console.log(this.state.memberID);
+
+          if(this.state.isInTanda){
+            this.setState({memberOf: usr['memberOf']});
+            this.props.navigation.navigate('Status', {data: this.state.memberOf});
+          }
+          
+          fetch('http://10.21.39.108:5000/api/tanda/addMember', 
+          {
+            method: 'POST',
+            headers: {'Accept': 'application/json','Content-Type': 'application/json', 
+              'Authorization': this.state.jwt},
+            body: JSON.stringify({email: this.state.email, newMemberID: this.state.memberID})
+          })
+          .then(response => {
+            return response.json();
+          }).then(response => {
+            this.setState({memberOf: response['_id']});
+            this.props.navigation.navigate('Status', {data: this.state.memberOf});
+          }).catch((error) => {
+            console.log(error)
+          })
+
         }
-        else{
-          // fetch('http://10.21.39.108:5000/api/users/getUserByEmail', 
-          // {
-          //   method: 'POST',
-          //   headers: {'Accept': 'application/json','Content-Type': 'application/json'},
-          //   body: JSON.stringify({email: this.state.email})
-          // })
-          // .then(response2 => {
-          //   return response2.json();
-          // }).then(response2 => {
-          //   console.log("HERE");
-          //   console.log(response2['isInTanda']);
-          // }).catch((error) => {
-          //   console.log(error)
-          // })
-          // this.setState({memberID: request['invited']['user']});
-          this.props.navigation.navigate('Status', {data: this.state.email});
-        }
+
       }).catch((error) => {
         console.log(error)
       })
-
-      // fetch('http://10.21.39.108:5000/api/tanda/addMember', 
-      // {
-      //   method: 'POST',
-      //   headers: {'Accept': 'application/json','Content-Type': 'application/json'},
-      //   body: JSON.stringify({email: this.state.email, newMemberID: this.state.memberID})
-      // })
-      // .then(response => 
-      //   return response.json();
-      // }).then(response => {
-      //   this.props.navigation.navigate('Status');
-      // }).catch((error) => {
-      //   console.log(error)
-      // })
   }
 
   render() {

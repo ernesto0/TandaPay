@@ -22,8 +22,8 @@ router.get('/', (req, res) => {
 //@desc     Get tandas - returns tandas
 //@body     
 //@access   Public
-router.post('/getTandaByMember', (req, res) => {
-    Tanda.findOne({'member.email': req.body.email})
+router.post('/getTandaByID', (req, res) => {
+    Tanda.findOne({'_id': req.body.id})
     .then(tanda => {
         return res.json(tanda);
     })
@@ -65,8 +65,11 @@ router.post('/addMember', passport.authenticate('jwt', {session: false}), (req, 
     {$push: {members: {'user' : req.body.newMemberID}}})
     .then(tanda => {
             console.log(tanda);
-            tanda.invited
-            
+            var index = tanda.invited.indexOf(req.body.newMemberID);
+            if(index!== -1){
+                tanda.invited.splice(index, 1);
+            }
+            tanda.save;
             return res.json(tanda);
       
     })

@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-
 const users = require('./routes/api/users');
 const tanda = require('./routes/api/tanda');
 const tan = require('./models/Tanda');
@@ -50,5 +49,6 @@ const t = new tan({
     registrationCodes : [{code: 'abc', email: 'ernesto.taylor0@gmail.com'}]
 
 });
+
 // t.save();
 

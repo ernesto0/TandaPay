@@ -21,7 +21,7 @@ const TandaSchema = new Schema ({
     ],
     invited:[
         {
-            user: {type: Schema.Types.ObjectId, ref : 'users'},
+            email: {type: String, required: true},
             status: {type: String, default: 'invited'},
         }
     ],

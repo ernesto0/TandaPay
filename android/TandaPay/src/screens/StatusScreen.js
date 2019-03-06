@@ -40,17 +40,18 @@ export default class StatusScreen extends React.Component {
 
   componentDidMount() {
 
-    fetch('http://10.21.39.108:5000/api/tanda/getTandaByMember', 
+    fetch('http://10.21.39.108:5000/api/tanda/getTandaByID', 
     {
       method: 'POST',
       headers: {'Accept': 'application/json','Content-Type': 'application/json'},
-      body: JSON.stringify({email: this.props.navigation.state.params.data})
+      body: JSON.stringify({id: this.props.navigation.state.params.data})
     })
     .then(response => {
       return response.json();
     }).then(response => {
       if(response != null){
         // set table data to arrays of member name and status
+        console.log(response['members']);
       }
       else{
         console.log("empty member list")
