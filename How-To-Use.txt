@@ -1,0 +1,23 @@
+
+EVan's guide to use:
+
+go to cmd, type ipconfig and get your IP address
+
+files to edit: copy and paste adress in lines that look like this "http://[your address]:5000/api/users/login',"
+loginscreen ( 2x)
+statusscreen
+start screen
+register screen
+
+now  be in the ..\GitHub\TandaPay> folder
+type node server
+
+open new terminal 
+cd to ..\GitHub\TandaPay\android\TandaPay>
+expo start
+
+use email: green@green.com code 123
+
+login with
+green@green.com
+pass: green

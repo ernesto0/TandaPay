@@ -37,6 +37,7 @@ export default class HomeScreen extends React.Component {
         <Button 
           onPress={() => {
             console.log('Joining a subgroup');
+            this.props.navigation.navigate("Subgroup");
           }}
           title="Join a subgroup"
         />

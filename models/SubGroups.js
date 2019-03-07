@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
+const SubgroupSchema = new Schema({
     name:{
         type: String,
         required: true
@@ -19,6 +19,12 @@ const UserSchema = new Schema({
     isLocked:{
         type: boolean,
         default: false
+    },
+    tanda: {
+        type: Schema.Types.ObjectId,
+        ref : 'tanda', 
     }
 
 })
+
+module.exports = Subgroup = mongoose.model('subgroup', SubgroupSchema);

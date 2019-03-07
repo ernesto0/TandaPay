@@ -13,16 +13,17 @@ const TandaSchema = new Schema ({
     },
     members: [
         {
-            type: Schema.Types.ObjectId,
-            ref: 'users',
+            user: {type: Schema.Types.ObjectId, ref: 'users'},
+            status: {type: String, default: 'waiting'},
+            name: {type: String}
         },
            
           
     ],
     invited:[
         {
-            user: {type: Schema.Types.ObjectId, ref : 'users'},
-            status: {type: String, default: 'invited'},
+            email: {type: String, required: false},
+            status: {type: String},
         }
     ],
     registrationCodes: [
@@ -31,7 +32,14 @@ const TandaSchema = new Schema ({
         email: {type: String, required: true},
         tanda: this
         }
-    ]
+    ],
+    subgroups:[
+        {
+            type: Schema.Types.ObjectId,
+            ref : 'subgroup', 
+        }
+    ],
+
 })
 
 module.exports = Tanda = mongoose.model('tanda', TandaSchema);
