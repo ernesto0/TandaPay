@@ -15,7 +15,7 @@ export default class LoginScreen extends React.Component {
       memberID: '',
       isInTanda: '',
       name: '',
-      memberOf: '',
+      memberOfTanda: '',
       jwt: ''
     }
   }
@@ -50,8 +50,8 @@ export default class LoginScreen extends React.Component {
           console.log(this.state.memberID);
 
           if(this.state.isInTanda){
-            this.setState({memberOf: usr['memberOf']});
-            this.props.navigation.navigate('Status', {data: this.state.memberOf});
+            this.setState({memberOfTanda: usr['memberOfTanda']});
+            this.props.navigation.navigate('Status', {data: this.state.memberOfTanda});
           }
           
           fetch('http://10.21.39.108:5000/api/tanda/addMember', 
@@ -64,12 +64,15 @@ export default class LoginScreen extends React.Component {
           .then(response => {
             return response.json();
           }).then(response => {
-            this.setState({memberOf: response['_id']});
-            this.props.navigation.navigate('Status', {data: this.state.memberOf});
+            this.setState({memberOfTanda: response['_id']});
+            this.props.navigation.navigate('Status', {data: this.state.memberOfTanda});
           }).catch((error) => {
             console.log(error)
           })
 
+        }
+        else{
+          Alert.alert('Incorrect login information!');
         }
 
       }).catch((error) => {

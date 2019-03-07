@@ -23,9 +23,17 @@ const UserSchema = new Schema({
         type: Boolean,
         default: false
     },
-    memberOf: {
+    isInSubgroup: {
+        type: Boolean,
+        default: false
+    },
+    memberOfTanda: {
         type: Schema.Types.ObjectId, 
         ref : 'tanda'
+    },
+    memberOfSubgroup: {
+        type: Schema.Types.ObjectId, 
+        ref : 'subgroup'
     }
 });
 

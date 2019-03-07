@@ -32,7 +32,14 @@ const TandaSchema = new Schema ({
         email: {type: String, required: true},
         tanda: this
         }
-    ]
+    ],
+    subgroups:[
+        {
+            type: Schema.Types.ObjectId,
+            ref : 'subgroup', 
+        }
+    ],
+
 })
 
 module.exports = Tanda = mongoose.model('tanda', TandaSchema);

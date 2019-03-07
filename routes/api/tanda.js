@@ -92,16 +92,19 @@ router.delete('/deleteMember', passport.authenticate('jwt', {session: false}), (
 
 //Get Members
 router.get('/members', (req, res) => {
-    Tanda.findById(req.body.tanda)
-    .then(tandas => res.json(tandas.members))
-    .catch(err => res.status(404).json({noTandasFound: 'no tandas found'}));
+    Tanda.findById(req.body.id)
+    .then(tanda => res.json(tanda.members))
+    .catch(err => res.status(404).json({noTandasFound: 'no tanda found'}));
 })
 
 //Get Member
-router.get('/member', (req, res) => {
-    Tanda.findById(req.body.tanda)
-    .then(tandas => res.json(tandas.members))
-    .catch(err => res.status(404).json({noTandasFound: 'no tandas found'}));
+router.get('/memberByID', (req, res) => {
+    Tanda.findBy({'members' : req.body.user})
+    .then(tanda => {
+        let i = tanda.members.indexOf[req.body.user];
+        return res.json(tanda.members[i]);
+    })
+    .catch(err => res.status(404).json({noTandasFound: 'no tanda found'}));
 })
 
 //Delete Tanda

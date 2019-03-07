@@ -98,7 +98,8 @@ export default class StartScreen extends React.Component {
         this.props.navigation.navigate('Login')
       }
       else{
-        console.log('Wrong email and code!')
+        console.log('Wrong email or code!')
+        Alert.alert('Wrong email or code!');
       }
     }).catch((error) => {
       console.log(error)
