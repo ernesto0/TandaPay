@@ -43,6 +43,23 @@ router.post('/checkCode', (req, res) => {
     .catch(err => res.status(404).json({tandaDNE: 'Invalid code'}));
 })
 
+//@route    POST api/subgroup/addMember
+//@desc     adds user to subgroup if code and email are correct
+//@body     email, newMemberID, code
+//@access   Public 
+router.post('/addSubgroup', passport.authenticate('jwt', {session: false}), (req, res) =>{
+    const errors = {};
+    Tanda.findByIdAndUpdate(req.body.tandaID, 
+    {$push:  {'subgroups' : req.body.subgroupID}})
+    .then(tanda => {
+            console.log(tanda);
+            return res.json(tanda);
+      
+    })
+    .catch(err => res.status(404).json({tandaDNE: 'Invalid code'}));
+
+});
+
 //Craete Tanda
 router.post('/create', passport.authenticate('jwt', {session: false}), (req,res) =>{
     const newTanda = new Tanda({
@@ -103,6 +120,15 @@ router.get('/memberByID', (req, res) => {
     .then(tanda => {
         let i = tanda.members.indexOf[req.body.user];
         return res.json(tanda.members[i]);
+    })
+    .catch(err => res.status(404).json({noTandasFound: 'no tanda found'}));
+})
+
+//Get Subgroups
+router.post('/subgroupsByTandaID', (req, res) => {
+    Tanda.findOne({_id: req.body.tandaID})
+    .then(tanda => {
+        return res.json(tanda.subgroups);
     })
     .catch(err => res.status(404).json({noTandasFound: 'no tanda found'}));
 })

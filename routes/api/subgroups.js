@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const keys = require('../../config/keys');
+const passport = require('passport');
 
 const Subgroup = require('../../models/SubGroups');
 
@@ -21,7 +22,7 @@ router.get('/', (req, res) => {
 //@body     
 //@access   Public
 router.post('/getSubgroupByID', (req, res) => {
-    Subgroup.findOne({'_id': req.body.id})
+    Subgroup.findOne({'_id': req.body.subgroupID})
     .then(subgroup => {
         return res.json(subgroup);
     })
@@ -33,7 +34,8 @@ router.post('/create', passport.authenticate('jwt', {session: false}), (req,res)
     const newSubgroup = new Subgroup({
         name: req.body.name,
         admin: req.user.id,
-        members: [req.user.id]
+        members: [req.user.id],
+        tanda: req.body.tandaID
 
     })
     

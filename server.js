@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const users = require('./routes/api/users');
 const tanda = require('./routes/api/tanda');
+const subgroup = require('./routes/api/subgroups');
 const tan = require('./models/Tanda');
 const app = express();
 
@@ -28,6 +29,7 @@ require('./config/passport')(passport);
 
 app.use('/api/users', users);
 app.use('/api/tanda', tanda);
+app.use('/api/subgroup', subgroup);
 
 
 const port = process.env.PORT || 5000;

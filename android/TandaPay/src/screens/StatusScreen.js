@@ -40,7 +40,7 @@ export default class StatusScreen extends React.Component {
 
   componentDidMount() {
 
-    fetch('http://10.21.39.108:5000/api/tanda/getTandaByID', 
+    fetch('http://10.21.51.112:5000/api/tanda/getTandaByID', 
     {
       method: 'POST',
       headers: {'Accept': 'application/json','Content-Type': 'application/json'},

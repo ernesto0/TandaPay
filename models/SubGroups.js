@@ -17,7 +17,7 @@ const SubgroupSchema = new Schema({
         }
     ],
     isLocked:{
-        type: boolean,
+        type: Boolean,
         default: false
     },
     tanda: {
