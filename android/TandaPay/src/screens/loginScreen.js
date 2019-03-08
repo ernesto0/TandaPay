@@ -72,7 +72,7 @@ export default class LoginScreen extends React.Component {
     input:{
       height: 40,
       marginBottom: 20,
-      color: '#fff',
+      color: '#2d3436',
       paddingHorizontal: 10,
       fontWeight: '700',
       borderBottomColor: '#fdcb6e', // Add this to specify bottom border color
@@ -81,7 +81,6 @@ export default class LoginScreen extends React.Component {
     buttonContainer:{
         backgroundColor: '#fdcb6e',
         paddingVertical: 10,
-        marginBottom: 20,
     },
     buttonText:{
         textAlign: 'center',
