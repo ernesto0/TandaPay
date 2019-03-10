@@ -1,4 +1,0 @@
-#Sun Mar 10 12:00:19 CDT 2019
-base.0=/Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/build/intermediates/transforms/dexMerger/debug/0
-path.0=classes.dex
-renamed.0=classes.dex
