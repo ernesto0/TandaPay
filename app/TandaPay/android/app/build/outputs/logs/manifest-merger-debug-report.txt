@@ -1,0 +1,156 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:1:1-26:12
+INJECTED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:1:1-26:12
+INJECTED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:1:1-26:12
+INJECTED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:1:1-26:12
+MERGED from [:react-native-gesture-handler] /Users/haneyakhan/projects/TandaPay/app/TandaPay/node_modules/react-native-gesture-handler/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [com.facebook.react:react-native:0.57.8] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/react-native-0.57.8.aar/73cec81622e2d60cac90f0a8aaa7c709/AndroidManifest.xml:2:1-15:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/c60c41be087fe78f22baad1bdff84284/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/c8541820c847d158fdb98fa2f2938328/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/bcdd2f6d5605123542cfe2b835417302/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/15bb65da632d94388280b2d01b6ccd44/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/48ffea44edc04dd916cfd3ac2ea34418/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/974489e3d27d7a52b4ebf4a5f3f5db1c/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/a162368b356f78efb94864ae1d0afeef/AndroidManifest.xml:17:1-22:12
+MERGED from [com.facebook.fresco:fresco:1.10.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/fresco-1.10.0.aar/96db8c3e47ba66a24c90c422b7856744/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.10.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.10.0.aar/512196b458da3ff701c9533b5fd2ae68/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:drawee:1.10.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/drawee-1.10.0.aar/1adced45f07cbb3cedc940c5d24df491/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline:1.10.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.10.0.aar/78c08e7ea64256b36a446060110afdb2/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.10.0.aar/c075f64b9de96934a4b326c1fedf6f07/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/ecd0d827377ba1e36bfe9c6db97136a9/AndroidManifest.xml:2:1-13:12
+MERGED from [org.webkit:android-jsc:r174650] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/69ae0a5f4276c48ba08b88dbab90826d/AndroidManifest.xml:1:1-3:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/ddd0dd11b87f3a4e2e4e07b66c924cb7/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/462ce83b768f9a9614dced1d3592e9da/AndroidManifest.xml:17:1-22:12
+MERGED from [com.facebook.fresco:fbcore:1.10.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/fbcore-1.10.0.aar/cd94276b2786b672fc377e3d767c097d/AndroidManifest.xml:2:1-9:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/a5ee22da53a1ceed560e63bea0f0de43/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/06936cabb3a9613917afea48e5090600/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:1:1-26:12
+INJECTED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:1:1-26:12
+INJECTED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:1:1-26:12
+	package
+		ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:2:5-27
+		INJECTED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:1:1-26:12
+		INJECTED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:1:1-26:12
+		INJECTED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:4:5-67
+	android:name
+		ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:4:22-64
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:5:5-77
+MERGED from [com.facebook.react:react-native:0.57.8] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/react-native-0.57.8.aar/73cec81622e2d60cac90f0a8aaa7c709/AndroidManifest.xml:11:5-78
+MERGED from [com.facebook.react:react-native:0.57.8] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/react-native-0.57.8.aar/73cec81622e2d60cac90f0a8aaa7c709/AndroidManifest.xml:11:5-78
+	android:name
+		ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:5:22-75
+application
+ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:7:5-24:19
+MERGED from [com.facebook.react:react-native:0.57.8] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/react-native-0.57.8.aar/73cec81622e2d60cac90f0a8aaa7c709/AndroidManifest.xml:13:5-20
+MERGED from [com.facebook.react:react-native:0.57.8] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/react-native-0.57.8.aar/73cec81622e2d60cac90f0a8aaa7c709/AndroidManifest.xml:13:5-20
+MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/ecd0d827377ba1e36bfe9c6db97136a9/AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/ecd0d827377ba1e36bfe9c6db97136a9/AndroidManifest.xml:11:5-20
+MERGED from [org.webkit:android-jsc:r174650] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/69ae0a5f4276c48ba08b88dbab90826d/AndroidManifest.xml:2:3-17
+MERGED from [org.webkit:android-jsc:r174650] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/69ae0a5f4276c48ba08b88dbab90826d/AndroidManifest.xml:2:3-17
+	android:label
+		ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:9:7-39
+	android:icon
+		ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:10:7-41
+	android:allowBackup
+		ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:11:7-34
+	android:theme
+		ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:12:7-38
+	android:name
+		ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:8:7-38
+activity#com.tandapay.MainActivity
+ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:13:7-22:18
+	android:label
+		ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:15:9-41
+	android:windowSoftInputMode
+		ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:17:9-51
+	android:configChanges
+		ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:16:9-79
+	android:name
+		ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:14:9-37
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:18:9-21:25
+action#android.intent.action.MAIN
+ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:19:13-65
+	android:name
+		ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:19:21-62
+category#android.intent.category.LAUNCHER
+ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:20:13-73
+	android:name
+		ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:20:23-70
+activity#com.facebook.react.devsupport.DevSettingsActivity
+ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:23:7-84
+	android:name
+		ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:23:17-81
+uses-sdk
+INJECTED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml
+MERGED from [:react-native-gesture-handler] /Users/haneyakhan/projects/TandaPay/app/TandaPay/node_modules/react-native-gesture-handler/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-gesture-handler] /Users/haneyakhan/projects/TandaPay/app/TandaPay/node_modules/react-native-gesture-handler/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.57.8] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/react-native-0.57.8.aar/73cec81622e2d60cac90f0a8aaa7c709/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.57.8] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/react-native-0.57.8.aar/73cec81622e2d60cac90f0a8aaa7c709/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/c60c41be087fe78f22baad1bdff84284/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/c60c41be087fe78f22baad1bdff84284/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/c8541820c847d158fdb98fa2f2938328/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/c8541820c847d158fdb98fa2f2938328/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/bcdd2f6d5605123542cfe2b835417302/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/bcdd2f6d5605123542cfe2b835417302/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/15bb65da632d94388280b2d01b6ccd44/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/15bb65da632d94388280b2d01b6ccd44/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/48ffea44edc04dd916cfd3ac2ea34418/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/48ffea44edc04dd916cfd3ac2ea34418/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/974489e3d27d7a52b4ebf4a5f3f5db1c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/974489e3d27d7a52b4ebf4a5f3f5db1c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/a162368b356f78efb94864ae1d0afeef/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/a162368b356f78efb94864ae1d0afeef/AndroidManifest.xml:20:5-44
+MERGED from [com.facebook.fresco:fresco:1.10.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/fresco-1.10.0.aar/96db8c3e47ba66a24c90c422b7856744/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fresco:1.10.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/fresco-1.10.0.aar/96db8c3e47ba66a24c90c422b7856744/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.10.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.10.0.aar/512196b458da3ff701c9533b5fd2ae68/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.10.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.10.0.aar/512196b458da3ff701c9533b5fd2ae68/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:1.10.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/drawee-1.10.0.aar/1adced45f07cbb3cedc940c5d24df491/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:1.10.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/drawee-1.10.0.aar/1adced45f07cbb3cedc940c5d24df491/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:1.10.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.10.0.aar/78c08e7ea64256b36a446060110afdb2/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:1.10.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.10.0.aar/78c08e7ea64256b36a446060110afdb2/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.10.0.aar/c075f64b9de96934a4b326c1fedf6f07/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.10.0.aar/c075f64b9de96934a4b326c1fedf6f07/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/ecd0d827377ba1e36bfe9c6db97136a9/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/ecd0d827377ba1e36bfe9c6db97136a9/AndroidManifest.xml:7:5-9:41
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/ddd0dd11b87f3a4e2e4e07b66c924cb7/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/ddd0dd11b87f3a4e2e4e07b66c924cb7/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/462ce83b768f9a9614dced1d3592e9da/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/462ce83b768f9a9614dced1d3592e9da/AndroidManifest.xml:20:5-44
+MERGED from [com.facebook.fresco:fbcore:1.10.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/fbcore-1.10.0.aar/cd94276b2786b672fc377e3d767c097d/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fbcore:1.10.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/fbcore-1.10.0.aar/cd94276b2786b672fc377e3d767c097d/AndroidManifest.xml:5:5-7:41
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/a5ee22da53a1ceed560e63bea0f0de43/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/a5ee22da53a1ceed560e63bea0f0de43/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/06936cabb3a9613917afea48e5090600/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /Users/haneyakhan/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/06936cabb3a9613917afea48e5090600/AndroidManifest.xml:20:5-44
+INJECTED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+IMPLIED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:1:1-26:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
+uses-permission#android.permission.READ_PHONE_STATE
+IMPLIED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:1:1-26:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+IMPLIED from /Users/haneyakhan/projects/TandaPay/app/TandaPay/android/app/src/main/AndroidManifest.xml:1:1-26:12 reason: org.webkit.android_jsc requested WRITE_EXTERNAL_STORAGE
