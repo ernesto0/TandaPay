@@ -2,9 +2,17 @@ import React from 'react';
 import {StyleSheet, View, TextInput, Text, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
 // import decode from '../../../../decodeJwt';
 import decode from '../../decode';
+import { connect } from 'react-redux';
+import {setUser} from '../actions';
 
 
-export default class LoginScreen extends React.Component {
+function mapDispatchToProps(dispatch){
+  return{
+    setUser: user => dispatch(setUser(user))
+  };
+}
+
+class LoginScreen extends React.Component {
 
   constructor(props){
     super(props)
@@ -31,6 +39,7 @@ export default class LoginScreen extends React.Component {
         body: JSON.stringify({email: this.state.email, password: this.state.password})
       })
       .then(response => {
+
         return response.json();
 
       }).then(response => {
@@ -40,6 +49,7 @@ export default class LoginScreen extends React.Component {
           let s = [];
           s = response['token'].replace('Bearer', '');
           let usr = decode(s);
+          this.props.setUser(usr);
           console.log(s);
           this.setState({name: usr['name']});
           this.setState({memberID: usr['id']});
@@ -117,7 +127,9 @@ export default class LoginScreen extends React.Component {
     );
   }
   }
-  
+
+  const Login = connect(null, mapDispatchToProps)(LoginScreen);
+  export default Login;
   const style = StyleSheet.create({
     container: {
       flex: 1,
