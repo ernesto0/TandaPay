@@ -37,7 +37,7 @@ router.post('/getTandaByID', (req, res) => {
 router.post('/checkCode', (req, res) => {
     Tanda.findOne({'registrationCodes.email': req.body.email, 'registrationCodes.code': req.body.code})
     .then(tanda => {
-        // console.log(req.body.email);
+        console.log(req.body.email);
         return res.json(tanda);
     })
     .catch(err => res.status(404).json({tandaDNE: 'Invalid code'}));

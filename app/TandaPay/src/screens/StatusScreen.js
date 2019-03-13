@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, TextInput, Button, Text, ListView } from 'react-native';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
+import { connect } from 'react-redux';
 
 
 const styles = StyleSheet.create(
@@ -19,7 +20,14 @@ const styles = StyleSheet.create(
   }
 );
 
-export default class StatusScreen extends React.Component {
+const mapStateToProps = state => {
+  return {
+    user: state.user,
+    tanda: state.tanda
+  };
+};
+
+class StatusScreen extends React.Component {
 
   constructor(props){
     super(props)
@@ -40,7 +48,7 @@ export default class StatusScreen extends React.Component {
 
   componentDidMount() {
 
-    fetch('http://192.168.1.27:5000/api/tanda/getTandaByID', 
+    fetch('http://10.21.62.231:5000/api/tanda/getTandaByID', 
     {
       method: 'POST',
       headers: {'Accept': 'application/json','Content-Type': 'application/json'},
@@ -86,3 +94,6 @@ export default class StatusScreen extends React.Component {
     );
   }
 }
+
+const Status = connect(null, mapStateToProps)(StatusScreen);
+export default Status;

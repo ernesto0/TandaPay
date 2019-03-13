@@ -6,7 +6,10 @@ import RegisterScreen from './src/screens/RegisterScreen';
 import StatusScreen from './src/screens/StatusScreen';
 import SubgroupScreen from './src/screens/SubgroupScreen'
 import {Provider } from 'react-redux';
-import store from './store';
+import reducers from './src/reducers/index';
+import {createStore, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 
 const RootStack = createStackNavigator(
   {
@@ -21,12 +24,18 @@ const RootStack = createStackNavigator(
   }
 );
 
+const Navigation = createAppContainer(RootStack);
+
+let store = createStore(reducers, applyMiddleware(thunk, logger));
+
 export default class App extends React.Component {
   render() {
-    <Provider store = {store}>
-     return <AppContainer />;
-     </Provider>
+    return(
+      <Provider store = {store}>
+        <Navigation />
+      </Provider>
+    );
+  
   }
 }
 
-const AppContainer = createAppContainer(RootStack);

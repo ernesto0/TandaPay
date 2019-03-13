@@ -1,9 +1,16 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Alert } from 'react-native';
 import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
+import { connect } from 'react-redux';
 
-export default class SubgroupScreen extends React.Component {
+const mapStateToProps = state => {
+    return {
+      user: state.user,
+      tanda: state.tanda
+    };
+  };
 
+class SubgroupScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,11 +29,12 @@ export default class SubgroupScreen extends React.Component {
     _onPress(index) {
         Alert.alert(`This is row ${index + 1}`);
     }
+    
 
     componentDidMount() {
     
         // const request = async () => {
-        //     const response = await fetch('http://192.168.1.27:5000/api/tanda/subgroupsByTandaID', 
+        //     const response = await fetch('http://10.21.62.231:5000/api/tanda/subgroupsByTandaID', 
         //     {
         //     method: 'POST',
         //     headers: {'Accept': 'application/json','Content-Type': 'application/json'},
@@ -40,11 +48,11 @@ export default class SubgroupScreen extends React.Component {
 
         // this.setState({sg_list: ["5c817ab942a9b71988d68a69", "5c817ac342a9b71988d68a6a","5c817ac542a9b71988d68a6b"]});
 
-        console.log("hi");
+        console.log("^^^^^^" + this.props.auth);
         let table = [];
         let num_sg = this.state.sg_list.length;
         for(let x = 0; x < num_sg; x++){
-            fetch('http://192.168.1.27:5000/api/subgroup/getSubgroupByID', 
+            fetch('http://10.21.62.231:5000/api/subgroup/getSubgroupByID', 
             {
                 method: 'POST',
                 headers: {'Accept': 'application/json','Content-Type': 'application/json'},
@@ -71,6 +79,8 @@ export default class SubgroupScreen extends React.Component {
         }
 
     }
+
+    
 
 
     render() {
@@ -103,6 +113,9 @@ export default class SubgroupScreen extends React.Component {
     )
     }
 }
+
+const Subgroup = connect(null, mapStateToProps)(SubgroupScreen);
+export default Subgroup;
 
   const styles = StyleSheet.create({
     container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },

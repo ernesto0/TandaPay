@@ -94,7 +94,7 @@ router.post('/login', (req, res) => {
                     if(isMatch){
                        //create payload
                        const payload = { id: user.id, name: user.name, isInTanda: user.isInTanda, email: user.email, memberOfTanda: user.memberOfTanda }
-                       
+                       console.log("boo");
                        //sign token
                        jwt.sign(payload, keys.secretOrKey, {expiresIn: 86400}, (err, token)=>{
                             res.json({

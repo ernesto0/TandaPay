@@ -3,12 +3,15 @@ import {StyleSheet, View, TextInput, Text, TouchableOpacity, KeyboardAvoidingVie
 // import decode from '../../../../decodeJwt';
 import decode from '../../decode';
 import { connect } from 'react-redux';
-import {setUser} from '../actions';
+import {setUser} from '../actions/authActions';
+import {setTanda} from '../actions/tandaAction';
 
 
 function mapDispatchToProps(dispatch){
   return{
-    setUser: user => dispatch(setUser(user))
+    setUser: user => dispatch(setUser(user)),
+    setTanda: tanda => dispatch(setTanda(tanda))
+    
   };
 }
 
@@ -32,7 +35,7 @@ class LoginScreen extends React.Component {
       console.log(this.state.email);
       console.log(this.state.password);
 
-      fetch('http://192.168.1.27:5000/api/users/login', 
+      fetch('http://10.21.62.231:5000/api/users/login', 
       {
         method: 'POST',
         headers: {'Accept': 'application/json','Content-Type': 'application/json'},
@@ -64,7 +67,7 @@ class LoginScreen extends React.Component {
             this.props.navigation.navigate('Subgroup', {data: this.state.memberOfTanda});
           }
           
-          fetch('http://192.168.1.27:5000/api/tanda/addMember', 
+          fetch('http://10.21.62.231:5000/api/tanda/addMember', 
           {
             method: 'POST',
             headers: {'Accept': 'application/json','Content-Type': 'application/json', 
@@ -74,6 +77,7 @@ class LoginScreen extends React.Component {
           .then(response => {
             return response.json();
           }).then(response => {
+            this.props.setTanda(response);
             this.setState({memberOfTanda: response['_id']});
             this.props.navigation.navigate('Subgroup', {data: this.state.memberOfTanda});
           }).catch((error) => {
@@ -130,6 +134,7 @@ class LoginScreen extends React.Component {
 
   const Login = connect(null, mapDispatchToProps)(LoginScreen);
   export default Login;
+
   const style = StyleSheet.create({
     container: {
       flex: 1,

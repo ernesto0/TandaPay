@@ -11,9 +11,7 @@
     "jwt-claims": "^1.0.1",
     "jwt-simple": "^0.5.5",
     "native-base": "^2.11.0",
-    "reac": "0.0.0",
     "react": "16.5.0",
-    "react-dom": "^16.8.2",
     "react-native": "^0.57.1",
     "react-native-gesture-handler": "^1.1.0",
     "react-native-keyboard-aware-scroll-view": "^0.8.0",
@@ -22,10 +20,14 @@
     "react-navigation": "^3.3.2",
     "react-redux": "^6.0.1",
     "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
     "tcomb-form-native": "^0.6.20"
   },
   "devDependencies": {
-    "babel-preset-expo": "^5.0.0"
+    "babel-preset-expo": "^5.0.0",
+    "@babel/runtime": "^7.0.0",
+    "schedule": "^0.4.0"
   },
   "private": true
 }
