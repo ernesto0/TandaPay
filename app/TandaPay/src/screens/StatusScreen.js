@@ -22,7 +22,7 @@ const styles = StyleSheet.create(
 
 const mapStateToProps = state => {
   return {
-    user: state.user,
+    auth: state.auth,
     tanda: state.tanda
   };
 };
@@ -48,7 +48,7 @@ class StatusScreen extends React.Component {
 
   componentDidMount() {
 
-    fetch('http://10.21.62.231:5000/api/tanda/getTandaByID', 
+    fetch('http://10.21.9.138:5000/api/tanda/getTandaByID', 
     {
       method: 'POST',
       headers: {'Accept': 'application/json','Content-Type': 'application/json'},
@@ -95,5 +95,5 @@ class StatusScreen extends React.Component {
   }
 }
 
-const Status = connect(null, mapStateToProps)(StatusScreen);
+const Status = connect(mapStateToProps, null)(StatusScreen);
 export default Status;

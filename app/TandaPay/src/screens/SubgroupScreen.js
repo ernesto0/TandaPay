@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
     return {
-      user: state.user,
+      auth: state.auth,
       tanda: state.tanda
     };
   };
@@ -22,7 +22,8 @@ class SubgroupScreen extends React.Component {
         //     ['a', 'b', 'c']
         //   ]
         tableData: [],
-        sg_list: ["5c817ab942a9b71988d68a69", "5c817ac342a9b71988d68a6a","5c817ac542a9b71988d68a6b"]
+        // subgroup_list: ["5c817ab942a9b71988d68a69", "5c817ac342a9b71988d68a6a","5c817ac542a9b71988d68a6b"],
+        subgroup_list: []
         }
     }
 
@@ -34,33 +35,36 @@ class SubgroupScreen extends React.Component {
     componentDidMount() {
     
         // const request = async () => {
-        //     const response = await fetch('http://10.21.62.231:5000/api/tanda/subgroupsByTandaID', 
+        //     const response = await fetch('http://10.21.9.138:5000/api/tanda/subgroupsByTandaID', 
         //     {
         //     method: 'POST',
         //     headers: {'Accept': 'application/json','Content-Type': 'application/json'},
         //     body: JSON.stringify({tandaID: '5c803d243c4acd485b374a64'})
         //     });
         //     const json = await response.json();
-        //     this.setState({sg_list: response});
+        //     this.setState({subgroup_list: response});
         //     console.log(json);
         // }
         // request();
 
-        // this.setState({sg_list: ["5c817ab942a9b71988d68a69", "5c817ac342a9b71988d68a6a","5c817ac542a9b71988d68a6b"]});
+        // this.setState({subgroup_list: ["5c817ab942a9b71988d68a69", "5c817ac342a9b71988d68a6a","5c817ac542a9b71988d68a6b"]});
 
-        console.log("^^^^^^" + this.props.auth);
+        console.log("^^^^^^^^^^^^" + this.props.auth.user['name']);
         let table = [];
-        let num_sg = this.state.sg_list.length;
-        for(let x = 0; x < num_sg; x++){
-            fetch('http://10.21.62.231:5000/api/subgroup/getSubgroupByID', 
+        // let num_sg = this.state.subgroup_list.length;
+        console.log("log list:"+this.state.subgroup_list);
+        console.log(this.state.subgroup_list[0]);
+        for(let x = 0; x < this.props.tanda.tanda['subgroups'].length
+        ; x++){
+            fetch('http://10.21.9.138:5000/api/subgroup/getSubgroupByID', 
             {
                 method: 'POST',
                 headers: {'Accept': 'application/json','Content-Type': 'application/json'},
-                body: JSON.stringify({subgroupID: this.state.sg_list[x]})
+                body: JSON.stringify({subgroupID: this.props.tanda.tanda['subgroups'][x]})
             }).then(response2 => {
                 return response2.json();
             }).then(response2 => {
-                console.log(response2);
+                console.log("resp: "+response2);
                 // console.log(response2['name']);
                 let name = response2['name'];
                 let num_mem = response2['members'].length;
@@ -114,7 +118,7 @@ class SubgroupScreen extends React.Component {
     }
 }
 
-const Subgroup = connect(null, mapStateToProps)(SubgroupScreen);
+const Subgroup = connect(mapStateToProps)(SubgroupScreen);
 export default Subgroup;
 
   const styles = StyleSheet.create({

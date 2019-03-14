@@ -7,7 +7,7 @@ import StatusScreen from './src/screens/StatusScreen';
 import SubgroupScreen from './src/screens/SubgroupScreen'
 import {Provider } from 'react-redux';
 import reducers from './src/reducers/index';
-import {createStore, applyMiddleware} from 'redux';
+import {createStore, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
@@ -26,7 +26,9 @@ const RootStack = createStackNavigator(
 
 const Navigation = createAppContainer(RootStack);
 
-let store = createStore(reducers, applyMiddleware(thunk, logger));
+let store = createStore(reducers, compose(
+  applyMiddleware(thunk, logger), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  ));
 
 export default class App extends React.Component {
   render() {

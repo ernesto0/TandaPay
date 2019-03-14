@@ -15,6 +15,13 @@ function mapDispatchToProps(dispatch){
   };
 }
 
+const mapStateToProps = state => {
+  return {
+    auth: state.auth,
+    tanda: state.tanda
+  };
+};
+
 class LoginScreen extends React.Component {
 
   constructor(props){
@@ -32,10 +39,11 @@ class LoginScreen extends React.Component {
   }
 
   _onPressSubmit() {
+
       console.log(this.state.email);
       console.log(this.state.password);
 
-      fetch('http://10.21.62.231:5000/api/users/login', 
+      fetch('http://10.21.9.138:5000/api/users/login', 
       {
         method: 'POST',
         headers: {'Accept': 'application/json','Content-Type': 'application/json'},
@@ -62,12 +70,14 @@ class LoginScreen extends React.Component {
 
           console.log(this.state.memberID);
 
+          console.log("^^^^^^^^^^^^" + this.props.auth.user);
+
           if(this.state.isInTanda){
             this.setState({memberOfTanda: usr['memberOfTanda']});
             this.props.navigation.navigate('Subgroup', {data: this.state.memberOfTanda});
           }
           
-          fetch('http://10.21.62.231:5000/api/tanda/addMember', 
+          fetch('http://10.21.9.138:5000/api/tanda/addMember', 
           {
             method: 'POST',
             headers: {'Accept': 'application/json','Content-Type': 'application/json', 
@@ -132,7 +142,7 @@ class LoginScreen extends React.Component {
   }
   }
 
-  const Login = connect(null, mapDispatchToProps)(LoginScreen);
+  const Login = connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
   export default Login;
 
   const style = StyleSheet.create({
