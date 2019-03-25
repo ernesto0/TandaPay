@@ -15,7 +15,7 @@ export default class RegisterScreen extends React.Component {
 
   _onPressSubmit() {
 
-    fetch('http://10.21.9.138:5000/api/users/register', 
+    fetch('http://172.31.99.155:5000/api/users/register', 
       {
         method: 'POST',
         headers: {'Accept': 'application/json','Content-Type': 'application/json'},

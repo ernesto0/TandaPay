@@ -4,8 +4,9 @@ import StartScreen from './src/screens/StartScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
 import StatusScreen from './src/screens/StatusScreen';
-import SubgroupScreen from './src/screens/SubgroupScreen'
-import {Provider } from 'react-redux';
+import SubgroupScreen from './src/screens/SubgroupScreen';
+import SubgroupInfo from './src/screens/SubgroupInfo';
+import {Provider} from 'react-redux';
 import reducers from './src/reducers/index';
 import {createStore, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
@@ -17,7 +18,8 @@ const RootStack = createStackNavigator(
     Login: LoginScreen,
     Register: RegisterScreen, 
     Status: StatusScreen,
-    Subgroup: SubgroupScreen
+    Subgroup: SubgroupScreen,
+    SubgroupInfo: SubgroupInfo
   },
   {
     initialRouteName: 'Start',
@@ -27,7 +29,7 @@ const RootStack = createStackNavigator(
 const Navigation = createAppContainer(RootStack);
 
 let store = createStore(reducers, compose(
-  applyMiddleware(thunk, logger), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  applyMiddleware(thunk, logger)
   ));
 
 export default class App extends React.Component {

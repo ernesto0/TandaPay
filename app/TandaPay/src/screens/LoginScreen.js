@@ -43,7 +43,7 @@ class LoginScreen extends React.Component {
       console.log(this.state.email);
       console.log(this.state.password);
 
-      fetch('http://10.21.9.138:5000/api/users/login', 
+      fetch('http://172.31.99.155:5000/api/users/login', 
       {
         method: 'POST',
         headers: {'Accept': 'application/json','Content-Type': 'application/json'},
@@ -77,7 +77,7 @@ class LoginScreen extends React.Component {
             this.props.navigation.navigate('Subgroup', {data: this.state.memberOfTanda});
           }
           
-          fetch('http://10.21.9.138:5000/api/tanda/addMember', 
+          fetch('http://172.31.99.155:5000/api/tanda/addMember', 
           {
             method: 'POST',
             headers: {'Accept': 'application/json','Content-Type': 'application/json', 
