@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Button, Text } from 'react-native';
+import { StyleSheet, View, Button, Text, TouchableOpacity } from 'react-native';
 
 import t from 'tcomb-form-native';
 
@@ -34,24 +34,6 @@ const formStyles = {
     }
   }
 
-const styles = StyleSheet.create({
-  tandaLogo: {
-    color: '#5f9ea0',
-    fontWeight: 'bold',
-    fontSize: 70,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  buttonContainer:{
-    backgroundColor: '#fdcb6e',
-    paddingVertical: 10,
-  },
-  buttonText:{
-    textAlign: 'center',
-    color:'#FFF',
-  },
-});
-
 const options = {
     fields: {
       email: {
@@ -85,7 +67,7 @@ export default class StartScreen extends React.Component {
     console.log('value: ', value);
     console.log("*************");
 
-    fetch('http://172.31.99.155:5000/api/tanda/checkCode', 
+    fetch('http://10.122.167.191:5000/api/tanda/checkCode', 
     {
       method: 'POST',
       headers: {'Accept': 'application/json','Content-Type': 'application/json'},
@@ -110,18 +92,64 @@ export default class StartScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.tandaLogo}>TandaPay</Text>
+      <View style={style.container}>
+        <Text style={style.tandaLogo}>TandaPay</Text>
         <Form 
           ref={c => this._form = c}
           type={Tanda} 
           options={options}
         />
-        <Button
-          title="Submit Code"
+        <TouchableOpacity
+          style = {style.buttonContainer}
           onPress={() => this._onPressSubmit()}
-          />
+          >
+          <Text style = {style.buttonText}>
+            SUBMIT CODE
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   }
 }
+
+const style = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: '#00cec9',
+  },
+  inputContainer:{
+    flex: 3,
+    justifyContent:'center',
+    alignItems: 'stretch',
+  },
+  container2: {
+    padding:20
+  },
+  input:{
+    height: 40,
+    marginBottom: 20,
+    color: '#FFF',
+    paddingHorizontal: 10,
+    fontWeight: '700',
+    borderBottomColor: '#fdcb6e', // Add this to specify bottom border color
+    borderBottomWidth: 2     // Add this to specify bottom border thickness
+  },
+  buttonContainer:{
+      backgroundColor: '#fdcb6e',
+      paddingVertical: 10,
+      marginBottom:10
+  },
+  buttonText:{
+      textAlign: 'center',
+      color:'#FFF',
+  },
+  tandaLogo:{
+    textAlign: 'center',
+    color:'#FFF',
+    fontWeight: 'bold',
+    fontSize: 40,
+    justifyContent: 'center',
+    padding: 30
+  }
+});

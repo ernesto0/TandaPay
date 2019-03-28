@@ -43,7 +43,7 @@ class LoginScreen extends React.Component {
       console.log(this.state.email);
       console.log(this.state.password);
 
-      fetch('http://172.31.99.155:5000/api/users/login', 
+      fetch('http://10.122.167.191:5000/api/users/login', 
       {
         method: 'POST',
         headers: {'Accept': 'application/json','Content-Type': 'application/json'},
@@ -77,7 +77,7 @@ class LoginScreen extends React.Component {
             this.props.navigation.navigate('Subgroup', {data: this.state.memberOfTanda});
           }
           
-          fetch('http://172.31.99.155:5000/api/tanda/addMember', 
+          fetch('http://10.122.167.191:5000/api/tanda/addMember', 
           {
             method: 'POST',
             headers: {'Accept': 'application/json','Content-Type': 'application/json', 
@@ -130,6 +130,7 @@ class LoginScreen extends React.Component {
                     LOGIN
                 </Text>
               </TouchableOpacity>
+
               <TouchableOpacity style = {style.buttonContainer}
                 onPress={() => this.props.navigation.navigate('Register')}>
                 <Text style = {style.buttonText}>
@@ -162,7 +163,7 @@ class LoginScreen extends React.Component {
     input:{
       height: 40,
       marginBottom: 20,
-      color: '#2d3436',
+      color: '#FFF',
       paddingHorizontal: 10,
       fontWeight: '700',
       borderBottomColor: '#fdcb6e', // Add this to specify bottom border color
@@ -171,6 +172,7 @@ class LoginScreen extends React.Component {
     buttonContainer:{
         backgroundColor: '#fdcb6e',
         paddingVertical: 10,
+        marginBottom:10
     },
     buttonText:{
         textAlign: 'center',
