@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Button, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TextInput, Text, TouchableOpacity } from 'react-native';
 
 import t from 'tcomb-form-native';
 
@@ -14,12 +14,13 @@ const formStyles = {
     ...Form.stylesheet,
     formGroup: {
       normal: {
-        marginBottom: 10
+        marginBottom: 10,
+        color: '#FFF'
       },
     },
     controlLabel: {
       normal: {
-        color: 'blue',
+        color: '#FFF',
         fontSize: 18,
         marginBottom: 7,
         fontWeight: '600'
@@ -37,7 +38,7 @@ const formStyles = {
 const options = {
     fields: {
       email: {
-        error: ''
+        error: '',
       },
       code: {
         error: ''
@@ -61,17 +62,26 @@ export default class StartScreen extends React.Component {
     }
   }
   
-  _onPressSubmit() {
-    const value = this._form.getValue();
-    this.setState({ isLoaded: true })
-    console.log('value: ', value);
+  handleEmail = (text) => {
+    this.setState({ email: text })
+ }
+  handleCode = (text) => {
+    this.setState({ code: text })
+ }
+
+
+  _onPressSubmit(email, code) {
+   
+    console.log(this.state.email);
+    console.log(this.state.code);
+
     console.log("*************");
 
     fetch('http://10.122.167.191:5000/api/tanda/checkCode', 
     {
       method: 'POST',
       headers: {'Accept': 'application/json','Content-Type': 'application/json'},
-      body: JSON.stringify(value)
+      body: JSON.stringify({email: this.state.email, code: this.state.code})
     })
     .then(response => {
       return response.json();
@@ -94,11 +104,19 @@ export default class StartScreen extends React.Component {
     return (
       <View style={style.container}>
         <Text style={style.tandaLogo}>TandaPay</Text>
-        <Form 
-          ref={c => this._form = c}
-          type={Tanda} 
-          options={options}
-        />
+        <TextInput 
+                placeholder="email"
+                placeholderTextColor="#fff" 
+                style={style.input} 
+                onChangeText={this.handleEmail}
+              />
+              <TextInput 
+                placeholder="code"
+                placeholderTextColor="#fff" 
+                style={style.input} 
+                secureTextEntry={true}
+                onChangeText={this.handleCode}
+              />
         <TouchableOpacity
           style = {style.buttonContainer}
           onPress={() => this._onPressSubmit()}
