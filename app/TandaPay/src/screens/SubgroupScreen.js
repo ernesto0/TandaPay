@@ -55,9 +55,10 @@ class SubgroupScreen extends React.Component {
         let cards = [];
         // let num_sg = this.state.subgroup_list.length;
         console.log("log list:"+this.state.subgroup_list);
-        // console.log(this.state.subgroup_list[0]);
-        for(let x = 0; x < this.props.tanda.tanda['subgroups'].length; x++){
-            fetch('http://10.21.40.55:5000/api/subgroup/getSubgroupByID', 
+        console.log(this.state.subgroup_list[0]);
+        for(let x = 0; x < this.props.tanda.tanda['subgroups'].length
+        ; x++){
+            fetch('http://10.122.167.191:5000/api/subgroup/getSubgroupByID', 
             {
                 method: 'POST',
                 headers: {'Accept': 'application/json','Content-Type': 'application/json'},
