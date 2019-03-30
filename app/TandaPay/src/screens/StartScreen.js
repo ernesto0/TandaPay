@@ -85,7 +85,7 @@ export default class StartScreen extends React.Component {
     console.log('value: ', value);
     console.log("*************");
 
-    fetch('http://172.31.99.155:5000/api/tanda/checkCode', 
+    fetch('http://10.21.40.55:5000/api/tanda/checkCode', 
     {
       method: 'POST',
       headers: {'Accept': 'application/json','Content-Type': 'application/json'},

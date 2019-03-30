@@ -13,6 +13,7 @@
     "native-base": "^2.11.0",
     "react": "16.6.3",
     "react-native": "^0.57.8",
+    "react-native-card-list": "^0.1.0",
     "react-native-gesture-handler": "^1.1.0",
     "react-native-keyboard-aware-scroll-view": "^0.8.0",
     "react-native-material-ui": "^1.30.1",
