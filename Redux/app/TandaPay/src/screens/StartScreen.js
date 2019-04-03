@@ -102,12 +102,11 @@ export default class StartScreen extends React.Component {
 
   render() {
     return (
-      //<Image
-        //  style={{width: '100%', height: 300, resizeMode : 'contain' }}
-          //source = {require('../../assets/tanda2v3.png')}
-       // />
       <View style={style.container}>
-        <Text style={style.tandaLogo}>TandaPay</Text>
+        <Image
+          style={{width: '100%', height: 300, resizeMode : 'contain' }}
+          source = {require('../../assets/tanda2v3.png')}
+        />
         <TextInput 
                 placeholder="email"
                 placeholderTextColor="#fff" 
@@ -117,7 +116,7 @@ export default class StartScreen extends React.Component {
               <TextInput 
                 placeholder="code"
                 placeholderTextColor="#fff" 
-                style={style.input} 
+                style={style.input}  
                 secureTextEntry={true}
                 onChangeText={this.handleCode}
               />
