@@ -14,7 +14,7 @@ router.get('/test', (req, res) => res.json({msg: "tanda works"}));
 router.get('/', (req, res) => {
     Subgroup.find()
     .then(subgroup => res.json(subgroup))
-    .catch(err => res.status(404).json({noSubgroupsFound: 'no tandas found'}));
+    .catch(err => res.status(404).json({noSubgroupsFound: 'no subgroups found'}));
 })
 
 //@route    GET api/tanda
@@ -48,8 +48,9 @@ router.post('/create', passport.authenticate('jwt', {session: false}), (req,res)
 //@access   Public 
 router.post('/addMember', passport.authenticate('jwt', {session: false}), (req, res) =>{
     const errors = {};
+    newMember = {'user' : req.body.newMemberID, 'name': req.body.name};
     Subgroup.findByIdAndUpdate(req.body.id, 
-    {$push: {members: {'user' : req.body.newMemberID}}})
+    {$push: {members: newMember}})
     .then(subgroup => {
             console.log(subgroup);
             return res.json(subgroup);

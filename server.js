@@ -45,9 +45,9 @@ const code = {
     email : 'ernesto.taylor0@gmail.com'
 }
 const t = new tan({
-    name: 'test',
+    name: 'tanda5',
     secretary: '5c69ded012796930b873b261',
-    registrationCodes : [{code: 'abc', email: 'test@test.com'}, {code: '123', email: 'blue@blue.com'}, {code: 'qwert', email: 'green@green.com'} ]
+    registrationCodes : [{code: 'dog', email: 'dog@dog.com'}, {code: 'cat', email: 'cat@cat.com'}]
 
 });
 

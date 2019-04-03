@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Alert } from 'react-native';
 import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 import { connect } from 'react-redux';
+import { CardList } from 'react-native-card-list';
+import blank from '../blank.jpeg'
 
 const mapStateToProps = state => {
     return {
@@ -14,7 +16,7 @@ class SubgroupScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          tableHead: ['Name', 'Members', 'More Info'],
+        //   tableHead: ['Name', 'Members', 'More Info'],
         //   tableData: [
         //     ['1', '2', '3'],
         //     ['a', 'b', 'c'],
@@ -22,8 +24,7 @@ class SubgroupScreen extends React.Component {
         //     ['a', 'b', 'c']
         //   ]
         tableData: [],
-        // subgroup_list: ["5c817ab942a9b71988d68a69", "5c817ac342a9b71988d68a6a","5c817ac542a9b71988d68a6b"],
-        subgroup_list: []
+        cards: []
         }
     }
 
@@ -36,7 +37,7 @@ class SubgroupScreen extends React.Component {
     componentDidMount() {
     
         // const request = async () => {
-        //     const response = await fetch('http://172.31.99.155:5000/api/tanda/subgroupsByTandaID', 
+        //     const response = await fetch('http://10.21.40.55:5000/api/tanda/subgroupsByTandaID', 
         //     {
         //     method: 'POST',
         //     headers: {'Accept': 'application/json','Content-Type': 'application/json'},
@@ -51,13 +52,13 @@ class SubgroupScreen extends React.Component {
         // this.setState({subgroup_list: ["5c817ab942a9b71988d68a69", "5c817ac342a9b71988d68a6a","5c817ac542a9b71988d68a6b"]});
 
         console.log("^^^^^^^^^^^^" + this.props.auth.user['name']);
-        let table = [];
+        let cards = [];
         // let num_sg = this.state.subgroup_list.length;
         console.log("log list:"+this.state.subgroup_list);
         console.log(this.state.subgroup_list[0]);
         for(let x = 0; x < this.props.tanda.tanda['subgroups'].length
         ; x++){
-            fetch('http://10.122.167.191:5000/api/subgroup/getSubgroupByID', 
+            fetch('http://10.21.60.160:5000/api/subgroup/getSubgroupByID', 
             {
                 method: 'POST',
                 headers: {'Accept': 'application/json','Content-Type': 'application/json'},
@@ -65,18 +66,19 @@ class SubgroupScreen extends React.Component {
             }).then(response2 => {
                 return response2.json();
             }).then(response2 => {
-                console.log("resp: "+response2);
+                // console.log("resp: "+response2);
                 // console.log(response2['name']);
                 let name = response2['name'];
                 let num_mem = response2['members'].length;
-                let b = ([name, num_mem, "more info"]);
-                // console.log(b);
-                table.push(b);
+                let mem = response2['members'];
+                let b = ({id: x.toString(), picture: blank, title: name, content:<Text>{num_mem}: {mem}</Text>});
+                console.log(b);
+                cards.push(b);
                 // console.log(table);
 
                 console.log("blue");
-                console.log(table);
-                this.setState({tableData: table});
+                console.log("cards:"+cards);
+                this.setState({cards: cards});
 
             }).catch((error) => {
                 console.log(error)
@@ -85,36 +87,36 @@ class SubgroupScreen extends React.Component {
 
     }
 
-    
-
-
     render() {
 
-        const element = (data, index) => (
-        <TouchableOpacity onPress={() => this._onPress(index)}>
-            <View style={styles.btn}>
-                <Text style={styles.btnText}>more info</Text>
-            </View>
-        </TouchableOpacity>
-    );
+        // const element = (data, index) => (
+        // <TouchableOpacity onPress={() => this._onPress(index)}>
+        //     <View style={styles.btn}>
+        //         <Text style={styles.btnText}>more info</Text>
+        //     </View>
+        // </TouchableOpacity>
+    // );
  
     return (
-        <View style={styles.container}>
-            <Table borderStyle={{borderColor: 'transparent'}}>
-            <Row data={this.state.tableHead} style={styles.head} textStyle={styles.text}/>
-            {
-                this.state.tableData.map((rowData, index) => (
-                <TableWrapper key={index} style={styles.row}>
-                    {
-                    rowData.map((cellData, cellIndex) => (
-                        <Cell key={cellIndex} data={cellIndex === 2 ? element(cellData, index) : cellData} textStyle={styles.text}/>
-                    ))
-                    }
-                </TableWrapper>
-                ))
-            }
-            </Table>
-        </View>
+        // <View style={styles.container}>
+        //     <Table borderStyle={{borderColor: 'transparent'}}>
+        //     <Row data={this.state.tableHead} style={styles.head} textStyle={styles.text}/>
+        //     {
+        //         this.state.tableData.map((rowData, index) => (
+        //         <TableWrapper key={index} style={styles.row}>
+        //             {
+        //             rowData.map((cellData, cellIndex) => (
+        //                 <Cell key={cellIndex} data={cellIndex === 2 ? element(cellData, index) : cellData} textStyle={styles.text}/>
+        //             ))
+        //             }
+        //         </TableWrapper>
+        //         ))
+        //     }
+        //     </Table>
+        // </View>
+    <View style={styles.container}>
+        <CardList cards={this.state.cards} />
+      </View>
     )
     }
 }

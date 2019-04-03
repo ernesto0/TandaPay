@@ -14,6 +14,7 @@ const SubgroupSchema = new Schema({
         {
             type: Schema.Types.ObjectId,
             ref : 'users',
+            name: String
         }
     ],
     isLocked:{
