@@ -26,7 +26,7 @@ const RootStack = createStackNavigator(
     SubgroupInfo: SubgroupInfo
   },
   {
-    initialRouteName: 'Start',
+    initialRouteName: 'Login',
   }
 );
 

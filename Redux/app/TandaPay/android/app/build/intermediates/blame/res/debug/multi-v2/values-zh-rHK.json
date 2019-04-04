@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Evan George\\Documents\\GitHub\\TandaPay\\Redux\\app\\TandaPay\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh-rHK\\values-zh-rHK.xml",
+            "outputFile": "C:\\Users\\Matthew Nguyen\\React\\TandaPay\\Redux\\app\\TandaPay\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh-rHK\\values-zh-rHK.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Evan George\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\2a9436879a0e4e2df41303f15eafa018\\res\\values-zh-rHK\\values-zh-rHK.xml",
+                    "source": "C:\\Users\\Matthew Nguyen\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\a82918322ec667d666b0356b48782eb4\\res\\values-zh-rHK\\values-zh-rHK.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Evan George\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\18fd761049848f72c29f9d824f0e9205\\res\\values-zh-rHK\\values-zh-rHK.xml",
+                    "source": "C:\\Users\\Matthew Nguyen\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\8261f45048848ba390bc18bfdfc4138b\\res\\values-zh-rHK\\values-zh-rHK.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

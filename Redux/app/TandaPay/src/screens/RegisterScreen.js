@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, TextInput, Text, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
+import {StyleSheet, View, TextInput, Text, TouchableOpacity, KeyboardAvoidingView,Image} from 'react-native';
 
 export default class RegisterScreen extends React.Component {
 
@@ -35,6 +35,10 @@ export default class RegisterScreen extends React.Component {
     return (
       <View style={style.container}>
         <KeyboardAvoidingView style={style.inputContainer} behavior="padding" >
+        <Image
+                style={{width: '100%', height: 300, resizeMode : 'contain' }}
+                source = {require('../../assets/tanda2red.png')}
+              />
         <Text style={style.tandaLogo}>
                 Register
           </Text>
@@ -103,14 +107,14 @@ export default class RegisterScreen extends React.Component {
         paddingHorizontal: 10,
         fontWeight: '700',
         alignItems: 'stretch',
-        borderBottomColor: '#fdcb6e', // Add this to specify bottom border color
+        borderBottomColor: '#ff7675', // Add this to specify bottom border color
         borderBottomWidth: 2     // Add this to specify bottom border thickness
     },
     rowContainer:{
         flexDirection:'row',
     },
     buttonContainer:{
-        backgroundColor: '#fdcb6e',
+        backgroundColor: '#ff7675',
         paddingVertical: 10,
     },
     buttonText:{

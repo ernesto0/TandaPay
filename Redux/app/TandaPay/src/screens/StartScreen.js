@@ -105,7 +105,7 @@ export default class StartScreen extends React.Component {
       <View style={style.container}>
         <Image
           style={{width: '100%', height: 300, resizeMode : 'contain' }}
-          source = {require('../../assets/tanda2v3.png')}
+          source = {require('../../assets/tanda2red.png')}
         />
         <TextInput 
                 placeholder="email"
@@ -154,11 +154,11 @@ const style = StyleSheet.create({
     color: '#FFF',
     paddingHorizontal: 10,
     fontWeight: '700',
-    borderBottomColor: '#fdcb6e', // Add this to specify bottom border color
+    borderBottomColor: '#ff7675', // Add this to specify bottom border color
     borderBottomWidth: 2     // Add this to specify bottom border thickness
   },
   buttonContainer:{
-      backgroundColor: '#fdcb6e',
+      backgroundColor: '#ff7675',
       paddingVertical: 10,
       marginBottom:10
   },
