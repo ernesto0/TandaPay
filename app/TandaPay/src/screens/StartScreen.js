@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TextInput, Text, TouchableOpacity, Image } from 'react-native';
 
 import t from 'tcomb-form-native';
 
@@ -103,7 +103,10 @@ export default class StartScreen extends React.Component {
   render() {
     return (
       <View style={style.container}>
-        <Text style={style.tandaLogo}>TandaPay</Text>
+        <Image
+          style={{width: '100%', height: 300, resizeMode : 'contain' }}
+          source = {require('../../assets/image/tanda2v3.png')}
+        />
         <TextInput 
                 placeholder="email"
                 placeholderTextColor="#fff" 
