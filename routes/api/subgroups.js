@@ -49,10 +49,10 @@ router.post('/create', passport.authenticate('jwt', {session: false}), (req,res)
 router.post('/addMember', passport.authenticate('jwt', {session: false}), (req, res) =>{
     const errors = {};
     newMember = {'user' : req.body.newMemberID, 'name': req.body.name};
-    Subgroup.findByIdAndUpdate(req.body.id, 
+    Subgroup.findByIdAndUpdate(req.body.subgroupID, 
     {$push: {members: newMember}})
     .then(subgroup => {
-            console.log(subgroup);
+            console.log(subgroup.members);
             return res.json(subgroup);
       
     })
