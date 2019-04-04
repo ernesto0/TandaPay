@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, TextInput, Text, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
+import {StyleSheet, View, TextInput, Text, TouchableOpacity, KeyboardAvoidingView, Image} from 'react-native';
 // import decode from '../../../../decodeJwt';
 import decode from '../../decode';
 import { connect } from 'react-redux';
@@ -43,7 +43,7 @@ class LoginScreen extends React.Component {
       console.log(this.state.email);
       console.log(this.state.password);
 
-      fetch('http://10.21.30.4:5000/api/users/login', 
+      fetch('http://10.122.167.191:5000/api/users/login', 
       {
         method: 'POST',
         headers: {'Accept': 'application/json','Content-Type': 'application/json'},
@@ -77,7 +77,7 @@ class LoginScreen extends React.Component {
             this.props.navigation.navigate('Subgroup', {data: this.state.memberOfTanda});
           }
           
-          fetch('http://10.21.30.4:5000/api/tanda/addMember', 
+          fetch('http://10.122.167.191:5000/api/tanda/addMember', 
           {
             method: 'POST',
             headers: {'Accept': 'application/json','Content-Type': 'application/json', 
@@ -108,6 +108,10 @@ class LoginScreen extends React.Component {
     return (
       <View style={style.container}>
         <KeyboardAvoidingView style={style.inputContainer} behavior="padding" >
+              <Image
+                style={{width: '100%', height: 300, resizeMode : 'contain' }}
+                source = {require('../../assets/tanda2v3.png')}
+              />
               <Text style={style.tandaLogo}>
                 Login
               </Text>
