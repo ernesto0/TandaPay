@@ -15,7 +15,8 @@ const TandaSchema = new Schema ({
         {
             user: {type: Schema.Types.ObjectId, ref: 'users'},
             status: {type: String, default: 'waiting'},
-            name: {type: String}
+            name: {type: String},
+            isInSubgroup: {type: Boolean}
         },
            
           

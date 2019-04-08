@@ -33,6 +33,10 @@ class SubgroupScreen extends React.Component {
         // this.viewSubgroup = viewSubgroup().bind(this);
     }
 
+    _newSubgroup(){
+        this.props.navigation.navigate('SubgroupNew');
+    }
+
     viewSubgroup(id){
         console.log("navigate pls" + id);
         this.props.navigation.navigate('SubgroupInfo', {subgroupID: id});
@@ -147,7 +151,13 @@ class SubgroupScreen extends React.Component {
     return (
       <View> 
           <ScrollView>
-            {this.cList()}  
+            {this.cList()} 
+            <TouchableOpacity
+                onPress={() => _newSubgroup()}>
+                <Text>
+                    New Subgroup
+                </Text>
+              </TouchableOpacity>
           </ScrollView>
          
       </View>
