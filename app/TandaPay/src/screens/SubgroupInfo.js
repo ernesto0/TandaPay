@@ -21,7 +21,7 @@ const mapStateToProps = state => {
     constructor(props) {
         super(props);
         this.state = {
-            subgroupID: '5c817ab942a9b71988d68a69',
+            // subgroupID: '5c817ab942a9b71988d68a69',
             name: '',
             num_mem: '',
             mem_list: ''
@@ -37,11 +37,11 @@ const mapStateToProps = state => {
     _onPressJoin(){
         console.log("Join");
 
-        fetch('http://10.21.46.50:5000/api/subgroup/addMember', 
+        fetch('http://10.21.19.214:5000/api/subgroup/addMember', 
         {
             method: 'POST',
             headers: {'Accept': 'application/json','Content-Type': 'application/json'},
-            body: JSON.stringify({subgroupID: this.state.subgroupID, newMemberID: this.props.auth.user['id'], name: this.props.auth.user['name']})
+            body: JSON.stringify({subgroupID: this.props.navigation.state.subgroupID, newMemberID: this.props.auth.user['id'], name: this.props.auth.user['name']})
         }).then(response => {
             this.props.setSubgroup(response);
             return response.json();
@@ -54,18 +54,22 @@ const mapStateToProps = state => {
     }
 
     componentDidMount() {
+
+
     
         console.log(this.props.tanda.tanda);
-        fetch('http://10.21.46.50:5000/api/subgroup/getSubgroupByID', 
+        console.log("ajsdkfjaksdjcfasdfhsdi"+ this.props.navigation.state.params.subgroupID);
+
+        fetch('http://10.21.19.214:5000/api/subgroup/getSubgroupByID', 
             {
                 method: 'POST',
                 headers: {'Accept': 'application/json','Content-Type': 'application/json'},
-                body: JSON.stringify({subgroupID: this.state.subgroupID})
+                body: JSON.stringify({subgroupID: this.props.navigation.state.params.subgroupID})
             }).then(response2 => {
                 return response2.json();
             }).then(response2 => {
                 console.log("HI: "+ response2);
-                console.log("num_mem" + response2['members'].length);
+                console.log("num_mem" + response2['members'].length-1);
                 console.log("mem" + response2['members']);
 
                 let names = [];
