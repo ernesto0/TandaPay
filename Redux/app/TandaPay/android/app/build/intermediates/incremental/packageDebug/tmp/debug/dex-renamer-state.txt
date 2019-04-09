@@ -1,4 +1,0 @@
-#Wed Apr 03 19:16:34 CDT 2019
-base.0=C\:\\Users\\Matthew Nguyen\\React\\TandaPay\\Redux\\app\\TandaPay\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
-path.0=classes.dex
-renamed.0=classes.dex
