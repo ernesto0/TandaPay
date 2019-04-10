@@ -6,6 +6,7 @@ import RegisterScreen from './src/screens/RegisterScreen';
 import StatusScreen from './src/screens/StatusScreen';
 import SubgroupScreen from './src/screens/SubgroupScreen';
 import SubgroupInfo from './src/screens/SubgroupInfo';
+import SubgroupNew from './src/screens/SubgroupNew';
 import {Provider} from 'react-redux';
 import reducers from './src/reducers/index';
 import {createStore, applyMiddleware, compose} from 'redux';
@@ -19,7 +20,8 @@ const RootStack = createStackNavigator(
     Register: RegisterScreen, 
     Status: StatusScreen,
     Subgroup: SubgroupScreen,
-    SubgroupInfo: SubgroupInfo
+    SubgroupInfo: SubgroupInfo,
+    SubgroupNew: SubgroupNew
   },
   {
     initialRouteName: 'Start',

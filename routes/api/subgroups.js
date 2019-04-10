@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const keys = require('../../config/keys');
 const passport = require('passport');
+const Tanda = require('../../models/Tanda')
 
 const Subgroup = require('../../models/SubGroups');
 
@@ -34,12 +35,26 @@ router.post('/create', passport.authenticate('jwt', {session: false}), (req,res)
     const newSubgroup = new Subgroup({
         name: req.body.name,
         admin: req.user.id,
-        members: [req.user.id],
-        tanda: req.body.tandaID
-
+        members: [{user: req.body.userID, name: req.body.userName}],
+        tanda: req.body.tandaID       
     })
     
-    newSubgroup.save().then(subgroup => res.json(subgroup)); 
+    newSubgroup.save();
+    
+        Tanda.findByIdAndUpdate(req.body.tandaID, 
+            {$push: {subgroups: newSubgroup}})
+    
+            return res.json(subgroup);   
+      
+
+
+    // Subgroup.findById(req.body.subgroupID)
+    // .then(subgroup => {
+    //     let index = subgroup.members.indexOf(req.body.newMember);
+    //     subgroup.members[index] = newMember;
+    //     subgroup.save();
+    //     return res.json(subgroup);
+    // })
 })
 
 //@route    POST api/subgroup/addMember
@@ -49,16 +64,37 @@ router.post('/create', passport.authenticate('jwt', {session: false}), (req,res)
 router.post('/addMember', passport.authenticate('jwt', {session: false}), (req, res) =>{
     const errors = {};
     newMember = {'user' : req.body.newMemberID, 'name': req.body.name};
+
+
     Subgroup.findByIdAndUpdate(req.body.subgroupID, 
     {$push: {members: newMember}})
     .then(subgroup => {
+            Tanda.findById(subgroup.tanda)
+            .then(tanda => { 
+                console.log(tanda.members);
+                let index = -1;
+                
+                for (var i = 0; i < tanda.members.length; i++){
+                    if(tanda.members[i].user === req.body.newMemberID){
+                        index = i;
+                        break;
+                    }
+                }
+
+                console.log(index);
+                const newMem = tanda.members[index];
+                newMem.isInSubgroup = true;
+                console.log(index);
+                console.log (newMem);
+                tanda.members[index] = newMem;
+                tanda.save();
+            });
             console.log(subgroup.members);
             return res.json(subgroup);
       
     })
     .catch(err => res.status(404).json({tandaDNE: 'Invalid code'}));
-
-});
+})
 
 //Delete members
 router.delete('/deleteMember', passport.authenticate('jwt', {session: false}), (req, res) => {

@@ -78,7 +78,7 @@ router.post('/create', passport.authenticate('jwt', {session: false}), (req,res)
 //@access   Public 
 router.post('/addMember', passport.authenticate('jwt', {session: false}), (req, res) =>{
     const errors = {};
-    newMember = {'user': req.body.newMemberID, 'status': 'waiting', 'name': req.body.name};
+    newMember = {'user': req.body.newMemberID, 'status': 'waiting', 'name': req.body.name, 'isInSubgroup': false, 'email': req.body.email};
     Tanda.findOneAndUpdate({'registrationCodes.email': req.body.email}, 
     {$push: {'members': newMember}})
     .then(tanda => {
