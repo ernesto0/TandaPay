@@ -43,14 +43,13 @@ class LoginScreen extends React.Component {
       console.log(this.state.email);
       console.log(this.state.password);
 
-      fetch('http://10.21.72.180:5000/api/users/login', 
+      fetch('http://10.21.57.5:5000/api/users/login', 
       {
         method: 'POST',
         headers: {'Accept': 'application/json','Content-Type': 'application/json'},
         body: JSON.stringify({email: this.state.email, password: this.state.password})
       })
       .then(response => {
-
         return response.json();
 
       }).then(response => {
@@ -72,12 +71,12 @@ class LoginScreen extends React.Component {
 
           console.log("^^^^^^^^^^^^" + this.props.auth.user);
 
-          if(this.state.isInTanda){
-            this.setState({memberOfTanda: usr['memberOfTanda']});
-            this.props.navigation.navigate('Subgroup', {data: this.state.memberOfTanda});
-          }
+          // if(this.state.isInTanda){
+          //   this.setState({memberOfTanda: usr['memberOfTanda']});
+          //   this.props.navigation.navigate('Subgroup', {data: this.state.memberOfTanda});
+          // }
           
-          fetch('http://10.21.72.180:5000/api/tanda/addMember', 
+          fetch('http://10.21.57.5:5000/api/tanda/addMember', 
           {
             method: 'POST',
             headers: {'Accept': 'application/json','Content-Type': 'application/json', 
@@ -90,6 +89,7 @@ class LoginScreen extends React.Component {
             this.props.setTanda(response);
             this.setState({memberOfTanda: response['_id']});
             this.props.navigation.navigate('Subgroup', {data: this.state.memberOfTanda});
+
           }).catch((error) => {
             console.log(error)
           })

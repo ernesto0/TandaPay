@@ -37,7 +37,7 @@ const mapStateToProps = state => {
     _onPressJoin(){
         console.log("Join");
 
-        fetch('http://10.21.72.180:5000/api/subgroup/addMember', 
+        fetch('http://10.21.57.5:5000/api/subgroup/addMember', 
         {
             method: 'POST',
             headers: {'Accept': 'application/json','Content-Type': 'application/json'},
@@ -60,7 +60,7 @@ const mapStateToProps = state => {
         console.log(this.props.tanda.tanda);
         console.log("ajsdkfjaksdjcfasdfhsdi"+ this.props.navigation.state.params.subgroupID);
 
-        fetch('http://10.21.72.180:5000/api/subgroup/getSubgroupByID', 
+        fetch('http://10.21.57.5:5000/api/subgroup/getSubgroupByID', 
             {
                 method: 'POST',
                 headers: {'Accept': 'application/json','Content-Type': 'application/json'},

@@ -43,8 +43,23 @@ router.post('/create', passport.authenticate('jwt', {session: false}), (req,res)
     
         Tanda.findByIdAndUpdate(req.body.tandaID, 
             {$push: {subgroups: newSubgroup}})
+            .then(tanda =>{
+                for (var i = 0; i < tanda.members.length; i++){
+                    if(tanda.members[i]['user'] == req.user.id){
+                        index = i;
+                        break;
+                    }
+                }
+                const newMem = tanda.members[index];
+                newMem.isInSubgroup = true;
+                console.log(index);
+                console.log (newMem);
+                tanda.members[index] = newMem;
+                tanda.save();
+                return res.json(newSubgroup);   
+            })
     
-            return res.json(subgroup);   
+            
       
 
 
@@ -71,11 +86,11 @@ router.post('/addMember', passport.authenticate('jwt', {session: false}), (req, 
     .then(subgroup => {
             Tanda.findById(subgroup.tanda)
             .then(tanda => { 
-                console.log(tanda.members);
+                console.log("members!! "+tanda.members);
                 let index = -1;
                 
                 for (var i = 0; i < tanda.members.length; i++){
-                    if(tanda.members[i].user === req.body.newMemberID){
+                    if(tanda.members[i]['user'] == req.body.newMemberID){
                         index = i;
                         break;
                     }

@@ -4,6 +4,7 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 
 const Tanda = require('../../models/Tanda');
+const Users = require('../../models/User');
 
 
 router.get('/test', (req, res) => res.json({msg: "tanda works"}));
@@ -79,20 +80,37 @@ router.post('/create', passport.authenticate('jwt', {session: false}), (req,res)
 router.post('/addMember', passport.authenticate('jwt', {session: false}), (req, res) =>{
     const errors = {};
     newMember = {'user': req.body.newMemberID, 'status': 'waiting', 'name': req.body.name, 'isInSubgroup': false, 'email': req.body.email};
-    Tanda.findOneAndUpdate({'registrationCodes.email': req.body.email}, 
-    {$push: {'members': newMember}})
+    Tanda.findOne({'members.email': req.body.email})
     .then(tanda => {
+        if(tanda){
+            console.log("Tanda"+tanda);
+            return res.json(tanda);  
+        }
+        
+        Tanda.findOneAndUpdate({'registrationCodes.email': req.body.email}, 
+        {$push: {'members': newMember}})
+        .then(tanda => {
             console.log(tanda);
             var index = tanda.invited.indexOf(req.body.newMemberID);
             if(index!== -1){
                 tanda.invited.splice(index, 1);
             }
             tanda.save;
-            return res.json(tanda);
-      
+    
+            Users.findByIdAndUpdate(req.body.newMemberID, {isInTanda: true, memberOfTanda: tanda._id})
+            .then(user =>{
+                console.log(user);
+                
+            })
+            return res.json(tanda);                
+          
+        })
+        .catch(err => res.status(404).json({tandaDNE: 'Invalid code'}));
     })
-    .catch(err => res.status(404).json({tandaDNE: 'Invalid code'}));
-
+   
+    
+    
+   
 });
 
 //Delete members
