@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Alert } from 'react-native';
 import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 import { connect } from 'react-redux';
-import {setTanda} from '../actions/tandaAction';
+import {setSubgroup} from '../actions/subgroupAction';
 
 function mapDispatchToProps(dispatch){
     return{
@@ -36,17 +36,20 @@ const mapStateToProps = state => {
 
     _onPressJoin(){
         console.log("Join");
+        console.log(this.props.navigation.state.params.subgroupID);
 
-        fetch('http://10.21.57.5:5000/api/subgroup/addMember', 
+        fetch('http://10.21.48.60:5000/api/subgroup/addMember', 
         {
             method: 'POST',
-            headers: {'Accept': 'application/json','Content-Type': 'application/json'},
-            body: JSON.stringify({subgroupID: this.props.navigation.state.subgroupID, newMemberID: this.props.auth.user['id'], name: this.props.auth.user['name']})
+            headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.auth.user['token']},
+            body: JSON.stringify({subgroupID: this.props.navigation.state.params.subgroupID, newMemberID: this.props.auth.user['id'], name: this.props.auth.user['name']})
         }).then(response => {
-            this.props.setSubgroup(response);
             return response.json();
         }).then(response => {
+
             console.log(response);
+            this.props.setSubgroup(response);
+            this.props.navigation.navigate('Home');
         }).catch((error) => {
             console.log(error)
         })
@@ -60,7 +63,7 @@ const mapStateToProps = state => {
         console.log(this.props.tanda.tanda);
         console.log("ajsdkfjaksdjcfasdfhsdi"+ this.props.navigation.state.params.subgroupID);
 
-        fetch('http://10.21.57.5:5000/api/subgroup/getSubgroupByID', 
+        fetch('http://10.21.48.60:5000/api/subgroup/getSubgroupByID', 
             {
                 method: 'POST',
                 headers: {'Accept': 'application/json','Content-Type': 'application/json'},
@@ -73,7 +76,7 @@ const mapStateToProps = state => {
                 console.log("mem" + response2['members']);
 
                 let names = [];
-                for(let x=1; x < response2['members'].length; x++){
+                for(let x=0; x < response2['members'].length; x++){
                     console.log("sg "+ x + " is " + response2['members'][x]['name']);
                     names.push(response2['members'][x]['name']);
                 }

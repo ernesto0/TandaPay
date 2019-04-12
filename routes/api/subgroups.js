@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const keys = require('../../config/keys');
 const passport = require('passport');
-const Tanda = require('../../models/Tanda')
-
+const Tanda = require('../../models/Tanda');
+const User = require('../../models/User');
 const Subgroup = require('../../models/SubGroups');
 
 router.get('/test', (req, res) => res.json({msg: "tanda works"}));
@@ -35,15 +35,21 @@ router.post('/create', passport.authenticate('jwt', {session: false}), (req,res)
     const newSubgroup = new Subgroup({
         name: req.body.name,
         admin: req.user.id,
-        members: [{user: req.body.userID, name: req.body.userName}],
+        members: [{user: req.user.id, name: req.body.userName}],
         tanda: req.body.tandaID       
     })
     
     newSubgroup.save();
+
+    User.findByIdAndUpdate(req.user.id, {isInSubgroup: true})
+            .then(user => {
+                console.log(user);
+            });
     
         Tanda.findByIdAndUpdate(req.body.tandaID, 
-            {$push: {subgroups: newSubgroup}})
+            {$push: {subgroups: newSubgroup}}, {new: true})
             .then(tanda =>{
+                let index = -1;
                 for (var i = 0; i < tanda.members.length; i++){
                     if(tanda.members[i]['user'] == req.user.id){
                         index = i;
@@ -53,10 +59,10 @@ router.post('/create', passport.authenticate('jwt', {session: false}), (req,res)
                 const newMem = tanda.members[index];
                 newMem.isInSubgroup = true;
                 console.log(index);
-                console.log (newMem);
+                console.log (tanda);
                 tanda.members[index] = newMem;
                 tanda.save();
-                return res.json(newSubgroup);   
+                return res.json(tanda);   
             })
     
             
@@ -103,6 +109,10 @@ router.post('/addMember', passport.authenticate('jwt', {session: false}), (req, 
                 console.log (newMem);
                 tanda.members[index] = newMem;
                 tanda.save();
+            });
+            User.findByIdAndUpdate(req.body.newMemberID, {isInSubgroup: true})
+            .then(user => {
+                console.log(user);
             });
             console.log(subgroup.members);
             return res.json(subgroup);

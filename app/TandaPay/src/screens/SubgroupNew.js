@@ -3,10 +3,13 @@ import { StyleSheet, View, Text, TouchableOpacity, Alert, KeyboardAvoidingView, 
 import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 import { connect } from 'react-redux';
 import {setTanda} from '../actions/tandaAction';
+import {removeTanda} from '../actions/tandaAction';
+import {NavigationActions} from 'react-navigation';
 
 function mapDispatchToProps(dispatch){
     return{
-      setSubgroup: subgroup => dispatch(setSubgroup(subgroup))
+      setTanda: tanda => dispatch(setTanda(tanda)),
+      removetanda: tanda => dispatch(removeTanda(tanda))
     };
   }
 
@@ -21,45 +24,51 @@ const mapStateToProps = state => {
     constructor(props) {
         super(props);
         this.state = {
-            avail_list: []
+            avail_list: [],
+            subgroup_name: ''
         }
     }
     
     cList() {
-        // return this.state.avail_list.map((member) => {
-        //     return(
-
-                
-        //             <Button
-        //                 onPress={() => this._onPressJoin(member._id)}
-        //                 icon={<Icon name='code' color='#ffffff' />}
-        //                 backgroundColor='#ffffff'
-        //                 buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-        //                 title={member.name} />
-                
-        //     )
-        // })
-        
-        return (
-                <Button
-                onPress={() => this._onPressJoin(member._id)}
-                icon={<Icon name='code' color='#ffffff' />}
-                backgroundColor='#000000'
-                buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-                title={this.state.avail_list[0]['name']} />
+        return this.state.avail_list.map((member) => {
+            return(
+                <TouchableOpacity
+                    onPress={() => this._onPressJoin(member._id)}
+                    icon={<Icon name='code' color='#ffffff' />}
+                    backgroundColor='#ffffff'
+                    buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                    title={member.name} />
             )
-        }
-
-    _onPressBack(){
-        this.props.navigation.navigate('SubgroupScreen');
+        })
     }
 
-    _onPressJoin(id){
-        console.log(id);
+    _onPressCreate(){
+        console.log("create");
+        fetch('http://10.21.48.60:5000/api/subgroup/create', 
+            {
+                method: 'POST',
+                headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.auth.user['token']},
+                body: JSON.stringify({name: this.state.subgroup_name, id: this.props.auth.user['_id'], tandaID: this.props.tanda.tanda['_id'], userID: this.props.auth.user['_id'], userName: this.props.auth.user['name']})
+            }).then(response => {
+                return response.json();
+            }).then(response => {
+                console.log(response);
+                console.log(response['name']);
+                console.log((response['name'] == this.props.tanda.tanda['name']));
+                console.log("oooo");
+                this.props.setTanda(response);
+                // this.props.navigation.dismiss();
+                this.props.navigation.reset([NavigationActions.navigate({routeName: 'Subgroup'})], 0);
+                // this.props.navigation.navigate('Subgroup');
+                
+            }).catch((error) => {
+                console.log(error)
+            })
+
     }
 
     componentDidMount() {
-        fetch('http://10.21.57.5:5000/api/tanda', 
+        fetch('http://10.21.48.60:5000/api/tanda', 
             {
                 method: 'GET'
             }).then(response => {
@@ -78,20 +87,32 @@ const mapStateToProps = state => {
             }).catch((error) => {
                 console.log(error)
             })
-
     }
+
+    // componentWillUnmount(){
+    //     console.log('unmount');
+        
+
+    // }
 
     
     render() {
  
         return (
             <View>
-                
-                
- 
-                    {this.cList}
-                
-               
+                <TextInput 
+                placeholder="subgroup name"
+                placeholderTextColor="#fff" 
+                style={style.input} 
+                secureTextEntry={true}
+                onChangeText={(text) => this.setState({subgroup_name:text})}
+              />
+              <TouchableOpacity style = {style.buttonContainer}
+                onPress={() => this._onPressCreate()}>
+                <Text style = {style.buttonText}>
+                    Create
+                </Text>
+              </TouchableOpacity>
             </View>
         )
     }

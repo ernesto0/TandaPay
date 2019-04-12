@@ -3,7 +3,7 @@ import {SET_CURRENT_USER} from './types';
 export const setUser = userData => dispatch =>{
     dispatch({
         type: SET_CURRENT_USER,
-        payload: userData
+        payload: {userData}
     });
 };
 

@@ -38,12 +38,16 @@ class LoginScreen extends React.Component {
     }
   }
 
+  componentDidMount(){
+    console.log(this.props.auth.user);
+  }
+
   _onPressSubmit() {
 
       console.log(this.state.email);
       console.log(this.state.password);
 
-      fetch('http://10.21.57.5:5000/api/users/login', 
+      fetch('http://10.21.48.60:5000/api/users/login', 
       {
         method: 'POST',
         headers: {'Accept': 'application/json','Content-Type': 'application/json'},
@@ -59,6 +63,7 @@ class LoginScreen extends React.Component {
           let s = [];
           s = response['token'].replace('Bearer', '');
           let usr = decode(s);
+          usr.token = response['token']
           this.props.setUser(usr);
           console.log(s);
           this.setState({name: usr['name']});
@@ -76,7 +81,7 @@ class LoginScreen extends React.Component {
           //   this.props.navigation.navigate('Subgroup', {data: this.state.memberOfTanda});
           // }
           
-          fetch('http://10.21.57.5:5000/api/tanda/addMember', 
+          fetch('http://10.21.48.60:5000/api/tanda/addMember', 
           {
             method: 'POST',
             headers: {'Accept': 'application/json','Content-Type': 'application/json', 

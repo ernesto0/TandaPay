@@ -48,7 +48,7 @@ class StatusScreen extends React.Component {
 
   componentDidMount() {
 
-    fetch('http://10.21.57.5:5000/api/tanda/getTandaByID', 
+    fetch('http://10.21.48.60:5000/api/tanda/getTandaByID', 
     {
       method: 'POST',
       headers: {'Accept': 'application/json','Content-Type': 'application/json'},

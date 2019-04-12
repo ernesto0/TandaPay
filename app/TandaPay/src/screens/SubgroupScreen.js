@@ -4,6 +4,7 @@ import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 import { connect } from 'react-redux';
 import blank from '../blank.jpeg';
 import { Card, ListItem, Button, Icon } from 'react-native-elements';
+import { withNavigationFocus } from 'react-navigation';
 
 const mapStateToProps = state => {
     return {
@@ -28,7 +29,8 @@ class SubgroupScreen extends React.Component {
             //   ]
             tableData: [],
             cards: [],
-            test: ["one", "two", "three", "four"]
+            test: ["one", "two", "three", "four"],
+            loaded: 0
         }
         // this.viewSubgroup = viewSubgroup().bind(this);
     }
@@ -85,39 +87,70 @@ class SubgroupScreen extends React.Component {
         // this.setState({subgroup_list: ["5c817ab942a9b71988d68a69", "5c817ac342a9b71988d68a6a","5c817ac542a9b71988d68a6b"]});
 
         console.log("^^^^^^^^^^^^" + this.props.auth.user['name']);
-        let cards = [];
-        // let num_sg = this.state.subgroup_list.length;
-        // console.log("log list:"+this.state.subgroup_list);
-        for(let x = 0; x < this.props.tanda.tanda['subgroups'].length; x++){
-            fetch('http://10.21.57.5:5000/api/subgroup/getSubgroupByID', 
-            {
-                method: 'POST',
-                headers: {'Accept': 'application/json','Content-Type': 'application/json'},
-                body: JSON.stringify({subgroupID: this.props.tanda.tanda['subgroups'][x]})
-            }).then(response2 => {
-                return response2.json();
-            }).then(response2 => {
-                // console.log("resp: "+response2);
-                console.log("UJJJJJJJJJ" +response2['id']);
-                let b = {name: response2['name'], num_mem: response2['members'].length-1, mem_list: response2['members'], subgroup_id: this.props.tanda.tanda['subgroups'][x]};
-                console.log(b);
-                cards.push(b);
-                // console.log(table);
+            let cards = [];
+            // let num_sg = this.state.subgroup_list.length;
+            // console.log("log list:"+this.state.subgroup_list);
+            for(let x = 0; x < this.props.tanda.tanda['subgroups'].length; x++){
+                fetch('http://10.21.48.60:5000/api/subgroup/getSubgroupByID', 
+                {
+                    method: 'POST',
+                    headers: {'Accept': 'application/json','Content-Type': 'application/json'},
+                    body: JSON.stringify({subgroupID: this.props.tanda.tanda['subgroups'][x]})
+                }).then(response2 => {
+                    return response2.json();
+                }).then(response2 => {
+                    // console.log("resp: "+response2);
+                    console.log("UJJJJJJJJJ" +response2['_id']);
+                    let b = {name: response2['name'], num_mem: response2['members'].length, mem_list: response2['members'], subgroup_id: this.props.tanda.tanda['subgroups'][x]};
+                    console.log(b);
+                    cards.push(b);
+                    // console.log(table);
 
-                console.log("blue");
-                console.log("cards:"+cards);
-                this.setState({cards: cards});
+                    console.log("blue");
+                    console.log("cards:"+cards);
+                    this.setState({cards: cards});
 
-            }).catch((error) => {
-                console.log(error)
-            })
-        }
+                }).catch((error) => {
+                    console.log(error)
+                })
+            }
 
+    }
+
+    load(){
+        console.log("^^^^^^^^^^^^" + this.props.auth.user['name']);
+            let cards = [];
+            // let num_sg = this.state.subgroup_list.length;
+            // console.log("log list:"+this.state.subgroup_list);
+            for(let x = 0; x < this.props.tanda.tanda['subgroups'].length; x++){
+                fetch('http://10.21.48.60:5000/api/subgroup/getSubgroupByID', 
+                {
+                    method: 'POST',
+                    headers: {'Accept': 'application/json','Content-Type': 'application/json'},
+                    body: JSON.stringify({subgroupID: this.props.tanda.tanda['subgroups'][x]})
+                }).then(response2 => {
+                    return response2.json();
+                }).then(response2 => {
+                    // console.log("resp: "+response2);
+                    console.log("UJJJJJJJJJ" +response2['_id']);
+                    let b = {name: response2['name'], num_mem: response2['members'].length, mem_list: response2['members'], subgroup_id: this.props.tanda.tanda['subgroups'][x]};
+                    console.log(b);
+                    cards.push(b);
+                    // console.log(table);
+
+                    console.log("blue");
+                    console.log("cards:"+cards);
+                    this.setState({cards: cards});
+
+                }).catch((error) => {
+                    console.log(error)
+                })
+            }
+            this.setState({loaded: 1});
     }
 
   
     render() {
-
         // const element = (data, index) => (
         // <TouchableOpacity onPress={() => this._onPress(index)}>
         //     <View style={styles.btn}>
@@ -153,13 +186,12 @@ class SubgroupScreen extends React.Component {
           <ScrollView>
             {this.cList()} 
             <TouchableOpacity
-                onPress={() => this._newSubgroup()}>
-                <Text>
+                style = {style.buttonContainer} onPress={() => this._newSubgroup()}>
+                <Text style={style.buttonText}>
                     New Subgroup
                 </Text>
-              </TouchableOpacity>
+            </TouchableOpacity>
           </ScrollView>
-         
       </View>
     );
     }
@@ -169,3 +201,46 @@ class SubgroupScreen extends React.Component {
 
 const Subgroup = connect(mapStateToProps)(SubgroupScreen);
 export default Subgroup;
+
+const style = StyleSheet.create({
+   
+    container: {
+        flex: 1,
+        padding: 20,
+        backgroundColor: '#00cec9',
+      },
+      inputContainer:{
+        flex: 3,
+        justifyContent:'center',
+        alignItems: 'stretch',
+      },
+      container2: {
+        padding:20
+      },
+      input:{
+        height: 40,
+        marginBottom: 20,
+        color: '#FFF',
+        paddingHorizontal: 10,
+        fontWeight: '700',
+        borderBottomColor: '#fdcb6e', // Add this to specify bottom border color
+        borderBottomWidth: 2     // Add this to specify bottom border thickness
+      },
+      buttonContainer:{
+          backgroundColor: '#fdcb6e',
+          paddingVertical: 10,
+          marginBottom:10
+      },
+      buttonText:{
+          textAlign: 'center',
+          color:'#FFF',
+      },
+      tandaLogo:{
+        textAlign: 'center',
+        color:'#FFF',
+        fontWeight: 'bold',
+        fontSize: 40,
+        justifyContent: 'center',
+        padding: 30
+      }
+  });
