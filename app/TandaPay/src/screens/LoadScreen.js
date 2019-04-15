@@ -39,7 +39,7 @@ function mapDispatchToProps(dispatch){
       fetch('http://10.21.48.60:5000/api/users/current', 
       {
         method: 'GET',
-        headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': "hh"}
+        headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.reducer.auth.user['token']}
       }).then(response => {
           return response.json();
       }).then(response => {

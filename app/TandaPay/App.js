@@ -9,7 +9,8 @@ import SubgroupScreen from './src/screens/SubgroupScreen';
 import SubgroupInfo from './src/screens/SubgroupInfo';
 import SubgroupNew from './src/screens/SubgroupNew';
 import HomeScreen from './src/screens/HomeScreen';
-import LoadScreen from './src/screens/LoadScreen'
+import LoadScreen from './src/screens/LoadScreen';
+import PayScreen from './src/screens/PayScreen';
 import {Provider} from 'react-redux';
 import reducers from './src/reducers/index';
 import {createStore, applyMiddleware, compose} from 'redux';
@@ -29,7 +30,8 @@ const RootStack = createStackNavigator(
     SubgroupInfo: SubgroupInfo,
     SubgroupNew: SubgroupNew,
     Home: HomeScreen,
-    Load: LoadScreen
+    Load: LoadScreen,
+    Pay: PayScreen
   },
   {
     initialRouteName: 'Load',

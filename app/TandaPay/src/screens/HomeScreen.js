@@ -1,84 +1,88 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Alert, KeyboardAvoidingView, TextInput, ScrollView} from 'react-native';
-import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
-import { connect } from 'react-redux';
-import {setTanda} from '../actions/tandaAction';
-import {removeTanda} from '../actions/tandaAction';
-import {NavigationActions} from 'react-navigation';
+import { StyleSheet, View, TextInput, Button, Text, ListView, TouchableOpacity } from 'react-native';
+import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
+//import {DrawerNavigator} from'react-navigation';
+import {DrawerNavigator,DrawerItems} from 'react-navigation';
+import LoginScreen from './LoginScreen';
 
-function mapDispatchToProps(dispatch){
-    return{
-      setTanda: tanda => dispatch(setTanda(tanda)),
-      removetanda: tanda => dispatch(removeTanda(tanda))
-    };
-  }
 
-  const mapStateToProps = state => {
-    return {
-      reducer: state.reducer
-    };
-  };
 
- class HomeScreen extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        }
-    }
+export default class HomeScreen extends React.Component {
 
-    render() {
+  constructor(props){
+    super(props);
  
-        return (
-            <View>
-                <Text>home</Text>
-            </View>
-        )
-    }
+ }
+ 
+
+  render() {
+    return (
+      <View style={style.container}>
+        <Text style={style.tandaLogo}>HomeScreen</Text>
+        <TouchableOpacity
+              onPress={() => {
+                console.log('Status');
+                this.props.navigation.navigate("Status");
+              }}
+              style={style.buttonContainer}
+          > 
+            <Text style={style.buttonText}>View Status</Text>
+          </TouchableOpacity>
+
+
+		    <TouchableOpacity 
+              onPress={() => {
+                console.log('going to Pay Page');
+                this.props.navigation.navigate("Pay");
+              }}
+              style={style.buttonContainer}
+        >
+        <Text style={style.buttonText}>Pay secretary</Text> 
+        </TouchableOpacity>
+
+      </View>
+    );
+  }
 }
 
-Home = connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
-export default Home;
-
-
 const style = StyleSheet.create({
-   
-    container: {
-        flex: 1,
-        padding: 20,
-        backgroundColor: '#00cec9',
-      },
-      inputContainer:{
-        flex: 3,
-        justifyContent:'center',
-        alignItems: 'stretch',
-      },
-      container2: {
-        padding:20
-      },
-      input:{
-        height: 40,
-        marginBottom: 20,
-        color: '#FFF',
-        paddingHorizontal: 10,
-        fontWeight: '700',
-        borderBottomColor: '#fdcb6e', // Add this to specify bottom border color
-        borderBottomWidth: 2     // Add this to specify bottom border thickness
-      },
-      buttonContainer:{
-          backgroundColor: '#fdcb6e',
-          paddingVertical: 10,
-          marginBottom:10
-      },
-      buttonText:{
-          textAlign: 'center',
-          color:'#FFF',
-      },
-      tandaLogo:{
-        textAlign: 'center',
-        color:'#FFF',
-        fontWeight: 'bold',
-        fontSize: 40,
-        justifyContent: 'center',
-        padding: 30
-      }
-  });
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: '#00cec9',
+  },
+  inputContainer:{
+    flex: 3,
+    justifyContent:'center',
+    alignItems: 'stretch',
+  },
+  container2: {
+    padding:20
+  },
+  input:{
+    height: 40,
+    marginBottom: 20,
+    color: '#FFF',
+    paddingHorizontal: 10,
+    fontWeight: '700',
+    borderBottomColor: '#fdcb6e', // Add this to specify bottom border color
+    borderBottomWidth: 2     // Add this to specify bottom border thickness
+  },
+  buttonContainer:{
+      backgroundColor: '#fdcb6e',
+      paddingVertical: 10,
+      marginBottom:10
+  },
+  buttonText:{
+      textAlign: 'center',
+      color:'#FFF',
+  },
+  tandaLogo:{
+    textAlign: 'center',
+    color:'#FFF',
+    fontWeight: 'bold',
+    fontSize: 40,
+    justifyContent: 'center',
+    padding: 30
+  }
+});
