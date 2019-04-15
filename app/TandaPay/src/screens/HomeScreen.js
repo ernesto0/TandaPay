@@ -13,10 +13,9 @@ function mapDispatchToProps(dispatch){
     };
   }
 
-const mapStateToProps = state => {
+  const mapStateToProps = state => {
     return {
-      auth: state.auth,
-      tanda: state.tanda
+      reducer: state.reducer
     };
   };
 

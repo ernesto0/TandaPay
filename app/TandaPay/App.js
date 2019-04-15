@@ -1,5 +1,6 @@
 import React from 'react';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
+import { StyleSheet, View, ActivityIndicator } from 'react-native';
 import StartScreen from './src/screens/StartScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
@@ -16,7 +17,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { persistStore, persistCombineReducers } from 'redux-persist'
 import storage from 'redux-persist/es/storage';
-import {persistGate, PersistGate} from 'redux-persist/integration/react';
+import {PersistGate} from 'redux-persist/integration/react';
 
 const RootStack = createStackNavigator(
   {
@@ -31,7 +32,7 @@ const RootStack = createStackNavigator(
     Load: LoadScreen
   },
   {
-    initialRouteName: 'Start',
+    initialRouteName: 'Load',
   }
 );
 
@@ -40,7 +41,7 @@ const Navigation = createAppContainer(RootStack);
 
   const config = {
     key: 'root',
-    storage: 'AsyncStorage',
+    storage
   };
 
   const persistedReducer = persistCombineReducers(config, reducers);

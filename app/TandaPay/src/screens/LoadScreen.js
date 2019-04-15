@@ -1,10 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Alert, KeyboardAvoidingView, TextInput, ScrollView} from 'react-native';
-import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
+import { StyleSheet, View, Image, Text} from 'react-native';
 import { connect } from 'react-redux';
 import {setTanda} from '../actions/tandaAction';
 import {removeTanda} from '../actions/tandaAction';
-import {NavigationActions} from 'react-navigation';
+import authReducer from '../reducers/authReducer';
 
 function mapDispatchToProps(dispatch){
     return{
@@ -13,10 +12,9 @@ function mapDispatchToProps(dispatch){
     };
   }
 
-const mapStateToProps = state => {
+  const mapStateToProps = state => {
     return {
-      auth: state.auth,
-      tanda: state.tanda
+      reducer: state.reducer
     };
   };
 
@@ -27,11 +25,45 @@ const mapStateToProps = state => {
         }
     }
 
+    componentDidMount(){
+
+      let auth = this.props.reducer.auth.isAuthenticated;
+      let tanda = Object.keys(this.props.reducer.tanda.tanda).length != 0;
+      let subgroup = Object.keys(this.props.reducer.subgroup.subgroup).length != 0;
+      // console.log(auth + "" + tanda + "" + subgroup);
+
+      if (auth == false){
+        this.props.navigation.navigate('Start');
+      }
+      
+      if (auth == true && tanda == false){
+        this.props.navigation.navigate('Start');
+      }
+
+      if (auth == true && tanda == true && subgroup == false){
+        this.props.navigation.navigate('Subgroup');
+      }
+
+      if (auth == true && tanda == true && subgroup == true){
+        this.props.navigation.navigate('Home');
+      }
+
+    }
+
     render() {
+
+      // console.log(this.props.reducer);
+      // console.log(this.props.reducer.auth.isAuthenticated);
+      // if(this.props.reducer.auth.isAuthenticated == true){
+      //   console.log("yaaas");
+      // }
  
         return (
-            <View>
-                <Text>home</Text>
+            <View style={style.container}>
+                <Image
+                  style={{width: '100%', height: 300, resizeMode : 'contain'}}
+                  source = {require('../../assets/image/tanda2v3.png')}
+                />
             </View>
         )
     }
@@ -42,44 +74,9 @@ export default Load;
 
 
 const style = StyleSheet.create({
-   
-    container: {
-        flex: 1,
-        padding: 20,
-        backgroundColor: '#00cec9',
-      },
-      inputContainer:{
-        flex: 3,
-        justifyContent:'center',
-        alignItems: 'stretch',
-      },
-      container2: {
-        padding:20
-      },
-      input:{
-        height: 40,
-        marginBottom: 20,
-        color: '#FFF',
-        paddingHorizontal: 10,
-        fontWeight: '700',
-        borderBottomColor: '#fdcb6e', // Add this to specify bottom border color
-        borderBottomWidth: 2     // Add this to specify bottom border thickness
-      },
-      buttonContainer:{
-          backgroundColor: '#fdcb6e',
-          paddingVertical: 10,
-          marginBottom:10
-      },
-      buttonText:{
-          textAlign: 'center',
-          color:'#FFF',
-      },
-      tandaLogo:{
-        textAlign: 'center',
-        color:'#FFF',
-        fontWeight: 'bold',
-        fontSize: 40,
-        justifyContent: 'center',
-        padding: 30
-      }
-  });
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: '#00cec9',
+  }
+});

@@ -13,10 +13,9 @@ function mapDispatchToProps(dispatch){
     };
   }
 
-const mapStateToProps = state => {
+  const mapStateToProps = state => {
     return {
-      auth: state.auth,
-      tanda: state.tanda
+      reducer: state.reducer
     };
   };
 
@@ -47,14 +46,14 @@ const mapStateToProps = state => {
         fetch('http://10.21.48.60:5000/api/subgroup/create', 
             {
                 method: 'POST',
-                headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.auth.user['token']},
-                body: JSON.stringify({name: this.state.subgroup_name, id: this.props.auth.user['_id'], tandaID: this.props.tanda.tanda['_id'], userID: this.props.auth.user['_id'], userName: this.props.auth.user['name']})
+                headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.reducer.auth.user['token']},
+                body: JSON.stringify({name: this.state.subgroup_name, id: this.props.reducer.auth.user['_id'], tandaID: this.props.reducer.tanda.tanda['_id'], userID: this.props.reducer.auth.user['_id'], userName: this.props.reducer.auth.user['name']})
             }).then(response => {
                 return response.json();
             }).then(response => {
                 console.log(response);
                 console.log(response['name']);
-                console.log((response['name'] == this.props.tanda.tanda['name']));
+                console.log((response['name'] == this.props.reducer.tanda.tanda['name']));
                 console.log("oooo");
                 this.props.setTanda(response);
                 // this.props.navigation.dismiss();

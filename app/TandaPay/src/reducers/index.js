@@ -3,8 +3,12 @@ import authReducer from './authReducer';
 import tandaReducer from './tandaReducer';
 import subgroupReducer from './subgroupReducer';
 
-export default combineReducers({
+const reducers =  combineReducers({
   auth: authReducer,
   tanda: tandaReducer,
   subgroup: subgroupReducer
 });
+
+export default {
+  reducer: reducers
+};

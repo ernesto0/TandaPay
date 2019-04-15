@@ -11,14 +11,12 @@ function mapDispatchToProps(dispatch){
   return{
     setUser: user => dispatch(setUser(user)),
     setTanda: tanda => dispatch(setTanda(tanda))
-    
   };
 }
 
 const mapStateToProps = state => {
   return {
-    auth: state.auth,
-    tanda: state.tanda
+    reducer: state.reducer
   };
 };
 
@@ -39,7 +37,8 @@ class LoginScreen extends React.Component {
   }
 
   componentDidMount(){
-    console.log(this.props.auth.user);
+    console.log("blue");
+    console.log(this.props.reducer.auth.user);
   }
 
   _onPressSubmit() {
@@ -74,7 +73,7 @@ class LoginScreen extends React.Component {
 
           console.log(this.state.memberID);
 
-          console.log("^^^^^^^^^^^^" + this.props.auth.user);
+          console.log("^^^^^^^^^^^^" + this.props.reducer.auth.user);
 
           // if(this.state.isInTanda){
           //   this.setState({memberOfTanda: usr['memberOfTanda']});
@@ -92,6 +91,7 @@ class LoginScreen extends React.Component {
             return response.json();
           }).then(response => {
             this.props.setTanda(response);
+            console.log("WOOOOO"+this.props.reducer);
             this.setState({memberOfTanda: response['_id']});
             this.props.navigation.navigate('Subgroup', {data: this.state.memberOfTanda});
 

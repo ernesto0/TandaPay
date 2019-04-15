@@ -8,8 +8,7 @@ import { withNavigationFocus } from 'react-navigation';
 
 const mapStateToProps = state => {
     return {
-      auth: state.auth,
-      tanda: state.tanda
+      reducer: state.reducer
     };
   };
 
@@ -86,22 +85,22 @@ class SubgroupScreen extends React.Component {
 
         // this.setState({subgroup_list: ["5c817ab942a9b71988d68a69", "5c817ac342a9b71988d68a6a","5c817ac542a9b71988d68a6b"]});
 
-        console.log("^^^^^^^^^^^^" + this.props.auth.user['name']);
+        console.log("^^^^^^^^^^^^" + this.props.reducer.auth.user['name']);
             let cards = [];
             // let num_sg = this.state.subgroup_list.length;
             // console.log("log list:"+this.state.subgroup_list);
-            for(let x = 0; x < this.props.tanda.tanda['subgroups'].length; x++){
+            for(let x = 0; x < this.props.reducer.tanda.tanda['subgroups'].length; x++){
                 fetch('http://10.21.48.60:5000/api/subgroup/getSubgroupByID', 
                 {
                     method: 'POST',
                     headers: {'Accept': 'application/json','Content-Type': 'application/json'},
-                    body: JSON.stringify({subgroupID: this.props.tanda.tanda['subgroups'][x]})
+                    body: JSON.stringify({subgroupID: this.props.reducer.tanda.tanda['subgroups'][x]})
                 }).then(response2 => {
                     return response2.json();
                 }).then(response2 => {
                     // console.log("resp: "+response2);
                     console.log("UJJJJJJJJJ" +response2['_id']);
-                    let b = {name: response2['name'], num_mem: response2['members'].length, mem_list: response2['members'], subgroup_id: this.props.tanda.tanda['subgroups'][x]};
+                    let b = {name: response2['name'], num_mem: response2['members'].length, mem_list: response2['members'], subgroup_id: this.props.reducer.tanda.tanda['subgroups'][x]};
                     console.log(b);
                     cards.push(b);
                     // console.log(table);
@@ -118,22 +117,22 @@ class SubgroupScreen extends React.Component {
     }
 
     load(){
-        console.log("^^^^^^^^^^^^" + this.props.auth.user['name']);
+        console.log("^^^^^^^^^^^^" + this.props.reducer.auth.user['name']);
             let cards = [];
             // let num_sg = this.state.subgroup_list.length;
             // console.log("log list:"+this.state.subgroup_list);
-            for(let x = 0; x < this.props.tanda.tanda['subgroups'].length; x++){
+            for(let x = 0; x < this.props.reducer.tanda.tanda['subgroups'].length; x++){
                 fetch('http://10.21.48.60:5000/api/subgroup/getSubgroupByID', 
                 {
                     method: 'POST',
                     headers: {'Accept': 'application/json','Content-Type': 'application/json'},
-                    body: JSON.stringify({subgroupID: this.props.tanda.tanda['subgroups'][x]})
+                    body: JSON.stringify({subgroupID: this.props.reducer.tanda.tanda['subgroups'][x]})
                 }).then(response2 => {
                     return response2.json();
                 }).then(response2 => {
                     // console.log("resp: "+response2);
                     console.log("UJJJJJJJJJ" +response2['_id']);
-                    let b = {name: response2['name'], num_mem: response2['members'].length, mem_list: response2['members'], subgroup_id: this.props.tanda.tanda['subgroups'][x]};
+                    let b = {name: response2['name'], num_mem: response2['members'].length, mem_list: response2['members'], subgroup_id: this.props.reducer.tanda.tanda['subgroups'][x]};
                     console.log(b);
                     cards.push(b);
                     // console.log(table);

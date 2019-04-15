@@ -9,7 +9,7 @@ export default function(state = initialState, action) {
       case SET_CURRENT_SUBGROUP:
         return {
           ...state,
-          sugroup: action.payload
+          subgroup: action.payload
         };
       default:
         return state;

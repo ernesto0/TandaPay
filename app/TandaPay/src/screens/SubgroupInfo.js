@@ -10,10 +10,9 @@ function mapDispatchToProps(dispatch){
     };
   }
 
-const mapStateToProps = state => {
+  const mapStateToProps = state => {
     return {
-      auth: state.auth,
-      tanda: state.tanda
+      reducer: state.reducer
     };
   };
 
@@ -41,8 +40,8 @@ const mapStateToProps = state => {
         fetch('http://10.21.48.60:5000/api/subgroup/addMember', 
         {
             method: 'POST',
-            headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.auth.user['token']},
-            body: JSON.stringify({subgroupID: this.props.navigation.state.params.subgroupID, newMemberID: this.props.auth.user['id'], name: this.props.auth.user['name']})
+            headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.reducer.auth.user['token']},
+            body: JSON.stringify({subgroupID: this.props.navigation.state.params.subgroupID, newMemberID: this.props.reducer.auth.user['id'], name: this.props.reducer.auth.user['name']})
         }).then(response => {
             return response.json();
         }).then(response => {
@@ -60,7 +59,7 @@ const mapStateToProps = state => {
 
 
     
-        console.log(this.props.tanda.tanda);
+        console.log(this.props.reducer.tanda.tanda);
         console.log("ajsdkfjaksdjcfasdfhsdi"+ this.props.navigation.state.params.subgroupID);
 
         fetch('http://10.21.48.60:5000/api/subgroup/getSubgroupByID', 
@@ -85,7 +84,7 @@ const mapStateToProps = state => {
                 this.setState({num_mem : response2['members'].length});
                 this.setState({mem_list : names});
 
-                console.log(this.props.auth.user['name']);
+                console.log(this.props.reducer.auth.user['name']);
 
             }).catch((error) => {
                 console.log(error)

@@ -22,8 +22,7 @@ const styles = StyleSheet.create(
 
 const mapStateToProps = state => {
   return {
-    auth: state.auth,
-    tanda: state.tanda
+    reducer: state.reducer
   };
 };
 

@@ -7,8 +7,7 @@ import blank from '../blank.jpeg';
 
 const mapStateToProps = state => {
     return {
-      auth: state.auth,
-      tanda: state.tanda
+      reducer: state.reducer
     };
   };
 
@@ -62,12 +61,12 @@ class SubgroupScreen extends React.Component {
         let cards = [];
         // let num_sg = this.state.subgroup_list.length;
         // console.log("log list:"+this.state.subgroup_list);
-        for(let x = 0; x < this.props.tanda.tanda['subgroups'].length; x++){
+        for(let x = 0; x < this.props.reducer.tanda.tanda['subgroups'].length; x++){
             fetch('http://10.21.48.60:5000/api/subgroup/getSubgroupByID', 
             {
                 method: 'POST',
                 headers: {'Accept': 'application/json','Content-Type': 'application/json'},
-                body: JSON.stringify({subgroupID: this.props.tanda.tanda['subgroups'][x]})
+                body: JSON.stringify({subgroupID: this.props.reducer.tanda.tanda['subgroups'][x]})
             }).then(response2 => {
                 return response2.json();
             }).then(response2 => {
