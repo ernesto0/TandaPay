@@ -35,6 +35,23 @@ function mapDispatchToProps(dispatch){
       if (auth == false){
         this.props.navigation.navigate('Start');
       }
+
+      fetch('http://10.21.48.60:5000/api/users/current', 
+      {
+        method: 'GET',
+        headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': "hh"}
+      }).then(response => {
+          return response.json();
+      }).then(response => {
+        console.log(response);
+      }).catch((error) => {
+        if(tanda == true){
+          this.props.navigation.navigate('Login');
+        }
+        else{
+          this.props.navigation.navigate('Start');
+        }
+      })
       
       if (auth == true && tanda == false){
         this.props.navigation.navigate('Start');
