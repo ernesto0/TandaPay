@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "358165704798",
+    "firebase_url": "https://tandapay-701a7.firebaseio.com",
+    "project_id": "tandapay-701a7",
+    "storage_bucket": "tandapay-701a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:358165704798:android:2bc61e359ae4e4a8",
+        "android_client_info": {
+          "package_name": "com.tandapay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "358165704798-b18gq6jf3p8qk5c4ik89b36ciavn5h37.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTVW-qR4vY-7YpgbefZ9gaooN4jk7_YlQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "358165704798-b18gq6jf3p8qk5c4ik89b36ciavn5h37.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
