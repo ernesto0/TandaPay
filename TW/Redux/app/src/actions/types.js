@@ -1,2 +1,0 @@
-export const SET_CURRENT_USER = 'SET_CURRENT_USER';
-export const SET_CURRENT_TANDA = 'SET_CURRENT_TANDA';

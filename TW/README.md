@@ -1,1 +1,0 @@
-TandaPay React Native mobile application for UT Dallas Senior Design

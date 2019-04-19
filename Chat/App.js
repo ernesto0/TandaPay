@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {StyleSheet, TextInput, View, Button} from 'react-native';
 import { Text,FlatList} from 'react-native';
 import * as firebase from 'firebase';
+console.log("help")
 
 // Get a reference to the database service
 var config = {
@@ -18,6 +19,7 @@ if (!firebase.apps.length) {
 
 function writeNewPost(username, uid, body) {
   // A post entry.
+  console.log("working?")
   var postData = {
     author: username,
     uid: uid,
@@ -32,7 +34,42 @@ function writeNewPost(username, uid, body) {
   updates['/posts/' + newPostKey] = postData;
   updates['/user-posts/' + uid + '/' + newPostKey] = postData;
   return firebase.database().ref().update(updates);
-}
+};
+
+//   var ref= database.ref('body');
+//   ref.on('value',gotData,errData);
+
+//  function gotData (){
+//   var returnArr = ["Working?"];
+//   var ref = firebase.database().ref('/posts');
+//   ref.limitToLast(100).once('value',function(snap) {
+    
+//     returnArr.push(snap)
+//   //   messages = snap.val()
+//   //    for(let index in messages){
+//   //     element = trimpData[index];
+//   //  }
+//    });
+//   return returnArr
+// }
+
+// function snapshotToArray(snapshot) {
+//   var returnArr = [];
+
+//   snapshot.forEach(function(childSnapshot) {
+//       var item = childSnapshot.val();
+//       item.key = childSnapshot.key;
+
+//       returnArr.push(item);
+//   });
+
+//   return returnArr;
+// };
+
+// // function errData (err){
+// //   console.log("Error");
+// //   console.log(err);
+// // }
 
 export default class App extends Component{
   constructor(props){
@@ -46,13 +83,16 @@ export default class App extends Component{
   }
 
   AddItem(){
+    //this.setState({ texts: [...this.state.texts,...gotData()] })
     data = [this.state.user+": "+this.state.text]
     this.setState({ texts: [...this.state.texts,...data] })
     writeNewPost( this.state.user, this.state.userid, this.state.text)
   }
+
+
    
   render() {
-    return (
+     return (
       <View style={style.container}>
         <View style ={StyleSheet.msgBox}>
           <TextInput placeholder= 'Enter your message'
