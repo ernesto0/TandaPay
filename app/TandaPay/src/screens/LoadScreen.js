@@ -30,13 +30,13 @@ function mapDispatchToProps(dispatch){
       let auth = this.props.reducer.auth.isAuthenticated;
       let tanda = Object.keys(this.props.reducer.tanda.tanda).length != 0;
       let subgroup = Object.keys(this.props.reducer.subgroup.subgroup).length != 0;
-      // console.log(auth + "" + tanda + "" + subgroup);
+      console.log(auth + "" + tanda + "" + subgroup);
 
       if (auth == false){
         this.props.navigation.navigate('Start');
       }
 
-      fetch('http://10.21.48.60:5000/api/users/current', 
+      fetch('http://10.21.9.47:5000/api/users/current', 
       {
         method: 'GET',
         headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.reducer.auth.user['token']}

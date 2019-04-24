@@ -4,13 +4,15 @@ import { StyleSheet, View, ActivityIndicator } from 'react-native';
 import StartScreen from './src/screens/StartScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
-import StatusScreen from './src/screens/StatusScreen';
+import SubgroupStatus from './src/screens/SubgroupStatus';
+import TandaStatus from './src/screens/TandaStatus';
 import SubgroupScreen from './src/screens/SubgroupScreen';
 import SubgroupInfo from './src/screens/SubgroupInfo';
 import SubgroupNew from './src/screens/SubgroupNew';
 import HomeScreen from './src/screens/HomeScreen';
 import LoadScreen from './src/screens/LoadScreen';
 import PayScreen from './src/screens/PayScreen';
+import ClaimScreen from './src/screens/ClaimScreen';
 import {Provider} from 'react-redux';
 import reducers from './src/reducers/index';
 import {createStore, applyMiddleware, compose} from 'redux';
@@ -25,13 +27,15 @@ const RootStack = createStackNavigator(
     Start: StartScreen,
     Login: LoginScreen,
     Register: RegisterScreen, 
-    Status: StatusScreen,
+    SubgroupStatus: SubgroupStatus,
+    TandaStatus: TandaStatus,
     Subgroup: SubgroupScreen,
     SubgroupInfo: SubgroupInfo,
     SubgroupNew: SubgroupNew,
     Home: HomeScreen,
     Load: LoadScreen,
-    Pay: PayScreen
+    Pay: PayScreen,
+    Claim: ClaimScreen
   },
   {
     initialRouteName: 'Load',
@@ -53,6 +57,8 @@ const Navigation = createAppContainer(RootStack);
     ));
 
   let persistor = persistStore(store)
+
+  // persistor.purge();
 
 export default class App extends React.Component {
 

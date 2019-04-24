@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Button, Text, ListView, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TextInput, Button, Text, ListView, TouchableOpacity, ImageBackground } from 'react-native';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 //import {DrawerNavigator} from'react-navigation';
 import {DrawerNavigator,DrawerItems} from 'react-navigation';
@@ -21,7 +21,6 @@ export default class HomeScreen extends React.Component {
         <Text style={style.tandaLogo}>HomeScreen</Text>
         <TouchableOpacity
               onPress={() => {
-                console.log('Status');
                 this.props.navigation.navigate("Status");
               }}
               style={style.buttonContainer}
@@ -38,8 +37,34 @@ export default class HomeScreen extends React.Component {
               style={style.buttonContainer}
         >
         <Text style={style.buttonText}>Pay secretary</Text> 
-        </TouchableOpacity>
+        </TouchableOpacity> 
 
+        <TouchableOpacity 
+              onPress={() => {
+                this.props.navigation.navigate("Claim");
+              }}
+              style={style.buttonContainer}
+        >
+        <Text style={style.buttonText}>Make a Claim</Text> 
+        </TouchableOpacity>     
+
+        <TouchableOpacity 
+              onPress={() => {
+                this.props.navigation.navigate("TandaStatus");
+              }}
+              style={style.buttonContainer}
+        >
+        <Text style={style.buttonText}>My Tanda</Text> 
+        </TouchableOpacity>  
+
+        <TouchableOpacity 
+              onPress={() => {
+                this.props.navigation.navigate("SubgroupStatus");
+              }}
+              style={style.buttonContainer}
+        >
+        <Text style={style.buttonText}>My Subgroup</Text> 
+        </TouchableOpacity>    
       </View>
     );
   }

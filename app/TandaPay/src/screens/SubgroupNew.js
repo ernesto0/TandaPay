@@ -5,11 +5,13 @@ import { connect } from 'react-redux';
 import {setTanda} from '../actions/tandaAction';
 import {removeTanda} from '../actions/tandaAction';
 import {NavigationActions} from 'react-navigation';
+import {setSubgroup} from '../actions/subgroupAction';
 
 function mapDispatchToProps(dispatch){
     return{
       setTanda: tanda => dispatch(setTanda(tanda)),
-      removetanda: tanda => dispatch(removeTanda(tanda))
+      removetanda: tanda => dispatch(removeTanda(tanda)),
+      setSubgroup: subgroup => dispatch(setSubgroup(subgroup))
     };
   }
 
@@ -43,7 +45,7 @@ function mapDispatchToProps(dispatch){
 
     _onPressCreate(){
         console.log("create");
-        fetch('http://10.21.48.60:5000/api/subgroup/create', 
+        fetch('http://10.21.9.47:5000/api/subgroup/create', 
             {
                 method: 'POST',
                 headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.reducer.auth.user['token']},
@@ -51,15 +53,18 @@ function mapDispatchToProps(dispatch){
             }).then(response => {
                 return response.json();
             }).then(response => {
-                console.log(response);
-                console.log(response['name']);
-                console.log((response['name'] == this.props.reducer.tanda.tanda['name']));
-                console.log("oooo");
-                this.props.setTanda(response);
-                // this.props.navigation.dismiss();
-                this.props.navigation.reset([NavigationActions.navigate({routeName: 'Subgroup'})], 0);
-                // this.props.navigation.navigate('Subgroup');
-                
+                this.props.setSubgroup(response);
+                return fetch('http://10.21.9.47:5000/api/tanda/getTandaByID', 
+                {
+                    method: 'POST',
+                    headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.reducer.auth.user['token']},
+                    body: JSON.stringify({id: this.props.reducer.tanda.tanda['_id']})
+                }).then(response => {
+                    return response.json();
+                }).then(response => {
+                    this.props.setTanda(response);
+                    this.props.navigation.reset([NavigationActions.navigate({routeName: 'Home'})], 0);
+                })
             }).catch((error) => {
                 console.log(error)
             })
@@ -67,7 +72,7 @@ function mapDispatchToProps(dispatch){
     }
 
     componentDidMount() {
-        fetch('http://10.21.48.60:5000/api/tanda', 
+        fetch('http://10.21.9.47:5000/api/tanda', 
             {
                 method: 'GET'
             }).then(response => {
@@ -139,7 +144,7 @@ const style = StyleSheet.create({
       input:{
         height: 40,
         marginBottom: 20,
-        color: '#FFF',
+        color: '#000000',
         paddingHorizontal: 10,
         fontWeight: '700',
         borderBottomColor: '#fdcb6e', // Add this to specify bottom border color

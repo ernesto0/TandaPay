@@ -121,9 +121,17 @@ router.delete('/deleteMember', passport.authenticate('jwt', {session: false}), (
             var index = tanda.members.indexOf(req.body.user);
             tanda.members.splice(index, 1);
             tanda.save();
-            return res.json(tanda.members);
+
+            Users.findByIdAndUpdate(req.body.user, {isInTanda: false, memberOfTanda: null})
+    .then(user =>{
+        console.log(user);
+        
+    });
+    return res.json(tanda.members);
         }
-    })
+
+        
+    });
 });
 
 //Get Members

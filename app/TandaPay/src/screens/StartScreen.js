@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Text, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, View, TextInput, Text, TouchableOpacity, Image, ImageBackground } from 'react-native';
 
 import t from 'tcomb-form-native';
 
@@ -77,7 +77,7 @@ export default class StartScreen extends React.Component {
 
     console.log("*************");
 
-    fetch('http://10.21.48.60:5000/api/tanda/checkCode', 
+    fetch('http://10.21.9.47:5000/api/tanda/checkCode', 
     {
       method: 'POST',
       headers: {'Accept': 'application/json','Content-Type': 'application/json'},
@@ -107,6 +107,7 @@ export default class StartScreen extends React.Component {
           style={{width: '100%', height: 300, resizeMode : 'contain' }}
           source = {require('../../assets/image/tanda2v3.png')}
         />
+        <View style={{marginTop: 50}}>
         <TextInput 
                 placeholder="email"
                 placeholderTextColor="#fff" 
@@ -128,7 +129,8 @@ export default class StartScreen extends React.Component {
             SUBMIT CODE
           </Text>
         </TouchableOpacity>
-      </View>
+        </View>
+        </View>
     );
   }
 }
@@ -136,8 +138,9 @@ export default class StartScreen extends React.Component {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
     backgroundColor: '#00cec9',
+    width: '100%',
+    height: '100%'
   },
   inputContainer:{
     flex: 3,

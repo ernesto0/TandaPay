@@ -5,6 +5,7 @@ const passport = require('passport');
 const Tanda = require('../../models/Tanda');
 const User = require('../../models/User');
 const Subgroup = require('../../models/SubGroups');
+const Claim = require('../../models/Claim');
 
 router.get('/test', (req, res) => res.json({msg: "tanda works"}));
 
@@ -62,10 +63,10 @@ router.post('/create', passport.authenticate('jwt', {session: false}), (req,res)
                 console.log (tanda);
                 tanda.members[index] = newMem;
                 tanda.save();
-                return res.json(tanda);   
+ 
             })
     
-            
+            return res.json(newSubgroup);  
       
 
 
@@ -110,7 +111,7 @@ router.post('/addMember', passport.authenticate('jwt', {session: false}), (req, 
                 tanda.members[index] = newMem;
                 tanda.save();
             });
-            User.findByIdAndUpdate(req.body.newMemberID, {isInSubgroup: true})
+            User.findByIdAndUpdate(req.body.newMemberID, {isInSubgroup: true, memberOfSubgroup: subgroup._id})
             .then(user => {
                 console.log(user);
             });
@@ -128,16 +129,46 @@ router.delete('/deleteMember', passport.authenticate('jwt', {session: false}), (
         if(subgroup){
             var index = subgroup.members.indexOf(req.body.user);
             subgroup.members.splice(index, 1);
-            subgroup.save();
-            return res.json(subgroup.members);
+            subgroup.save(); 
+
+
+            User.findByIdAndUpdate(req.body.user, {isInSubgroup: false, memberOfSubgroup: null})
+            .then(user => {
+                console.log(user);
+            });
+            return res.json(subgroup);
         }
-    })
+    });
+
 });
 
 //Get Members
 router.get('/members', (req, res) => {
     Subgroup.findById(req.body.id)
     .then(subgroup => res.json(subgroup.members))
+    .catch(err => res.status(404).json({noSubgroupsFound: 'no subgroup found'}));
+})
+
+//Get claims
+router.get('/claims', (req, res) => {
+    Subgroup.findById(req.body.id)
+    .then(subgroup => res.json(subgroup.claims))
+    .catch(err => res.status(404).json({noSubgroupsFound: 'no subgroup found'}));
+})
+
+//Get claims
+router.get('/claimObject', (req, res) => {
+    Subgroup.findById(req.body.id)
+    .then(subgroup => {
+        let claimDetails = [];
+        for(let x=0; x<subgroup.claims.length; x++){
+            Claim.findById(subgroups.claims[x])
+            .then(claim => {
+                claimDetails.push(claim);
+            })
+        }
+        return res.json(claimDetails);
+    })
     .catch(err => res.status(404).json({noSubgroupsFound: 'no subgroup found'}));
 })
 
@@ -154,10 +185,18 @@ router.get('/memberByID', (req, res) => {
 //Delete Subgroup
 router.post('/delete', (req, res) => {
 
-    console.log(req.body.id);
+    console.log("delete: "+req.body.id);
 
     Subgroup.deleteOne({'_id': req.body.id})
-    .then(subgroup => res.json(subgroup))
+    .then(subgroup => {
+        Tanda.findById(req.body.tandaID)
+        .then(tanda => {
+            var index = tanda.subgroups.indexOf(req.body.id);
+            tanda.subgroups.splice(index, 1);
+            tanda.save(); 
+        })
+        return res.json(subgroup);
+    })
 })
 
 module.exports = router;

@@ -12,7 +12,7 @@ export const setTanda = tandaData => dispatch =>{
 
 export const removeTanda = () => dispatch => {
     dispatch({
-        type: REMOVE_CURRENT_TANDA,
+        type: SET_CURRENT_TANDA,
         payload: {}
     });
 }

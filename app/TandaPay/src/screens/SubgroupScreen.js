@@ -90,7 +90,7 @@ class SubgroupScreen extends React.Component {
             // let num_sg = this.state.subgroup_list.length;
             // console.log("log list:"+this.state.subgroup_list);
             for(let x = 0; x < this.props.reducer.tanda.tanda['subgroups'].length; x++){
-                fetch('http://10.21.48.60:5000/api/subgroup/getSubgroupByID', 
+                fetch('http://10.21.9.47:5000/api/subgroup/getSubgroupByID', 
                 {
                     method: 'POST',
                     headers: {'Accept': 'application/json','Content-Type': 'application/json'},
@@ -99,10 +99,12 @@ class SubgroupScreen extends React.Component {
                     return response2.json();
                 }).then(response2 => {
                     // console.log("resp: "+response2);
-                    console.log("UJJJJJJJJJ" +response2['_id']);
+                    // console.log("UJJJJJJJJJ" +response2['_id']);
                     let b = {name: response2['name'], num_mem: response2['members'].length, mem_list: response2['members'], subgroup_id: this.props.reducer.tanda.tanda['subgroups'][x]};
                     console.log(b);
-                    cards.push(b);
+                    if(response2['members'].length < 7){
+                        cards.push(b);
+                    }
                     // console.log(table);
 
                     console.log("blue");
@@ -116,37 +118,7 @@ class SubgroupScreen extends React.Component {
 
     }
 
-    load(){
-        console.log("^^^^^^^^^^^^" + this.props.reducer.auth.user['name']);
-            let cards = [];
-            // let num_sg = this.state.subgroup_list.length;
-            // console.log("log list:"+this.state.subgroup_list);
-            for(let x = 0; x < this.props.reducer.tanda.tanda['subgroups'].length; x++){
-                fetch('http://10.21.48.60:5000/api/subgroup/getSubgroupByID', 
-                {
-                    method: 'POST',
-                    headers: {'Accept': 'application/json','Content-Type': 'application/json'},
-                    body: JSON.stringify({subgroupID: this.props.reducer.tanda.tanda['subgroups'][x]})
-                }).then(response2 => {
-                    return response2.json();
-                }).then(response2 => {
-                    // console.log("resp: "+response2);
-                    console.log("UJJJJJJJJJ" +response2['_id']);
-                    let b = {name: response2['name'], num_mem: response2['members'].length, mem_list: response2['members'], subgroup_id: this.props.reducer.tanda.tanda['subgroups'][x]};
-                    console.log(b);
-                    cards.push(b);
-                    // console.log(table);
 
-                    console.log("blue");
-                    console.log("cards:"+cards);
-                    this.setState({cards: cards});
-
-                }).catch((error) => {
-                    console.log(error)
-                })
-            }
-            this.setState({loaded: 1});
-    }
 
   
     render() {

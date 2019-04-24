@@ -5,6 +5,7 @@ const passport = require('passport');
 const users = require('./routes/api/users');
 const tanda = require('./routes/api/tanda');
 const subgroup = require('./routes/api/subgroups');
+const claim = require('./routes/api/claim');
 const tan = require('./models/Tanda');
 const app = express();
 
@@ -30,6 +31,7 @@ require('./config/passport')(passport);
 app.use('/api/users', users);
 app.use('/api/tanda', tanda);
 app.use('/api/subgroup', subgroup);
+app.use('/api/claim', claim);
 
 
 const port = process.env.PORT || 5000;
@@ -52,4 +54,3 @@ const t = new tan({
 });
 
 // t.save();
-

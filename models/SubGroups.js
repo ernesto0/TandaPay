@@ -23,7 +23,14 @@ const SubgroupSchema = new Schema({
     tanda: {
         type: Schema.Types.ObjectId,
         ref : 'tanda', 
-    }
+    },
+
+    claims: [
+        {
+            type: Schema.Types.ObjectId,
+            ref : 'claim', 
+        }
+    ],
 
 })
 

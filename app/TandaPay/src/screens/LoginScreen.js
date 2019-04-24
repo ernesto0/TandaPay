@@ -46,7 +46,7 @@ class LoginScreen extends React.Component {
       console.log(this.state.email);
       console.log(this.state.password);
 
-      fetch('http://10.21.48.60:5000/api/users/login', 
+      fetch('http://10.21.9.47:5000/api/users/login', 
       {
         method: 'POST',
         headers: {'Accept': 'application/json','Content-Type': 'application/json'},
@@ -80,7 +80,7 @@ class LoginScreen extends React.Component {
           //   this.props.navigation.navigate('Subgroup', {data: this.state.memberOfTanda});
           // }
           
-          fetch('http://10.21.48.60:5000/api/tanda/addMember', 
+          fetch('http://10.21.9.47:5000/api/tanda/addMember', 
           {
             method: 'POST',
             headers: {'Accept': 'application/json','Content-Type': 'application/json', 
@@ -93,7 +93,12 @@ class LoginScreen extends React.Component {
             this.props.setTanda(response);
             console.log("WOOOOO"+this.props.reducer);
             this.setState({memberOfTanda: response['_id']});
-            this.props.navigation.navigate('Subgroup', {data: this.state.memberOfTanda});
+            let subgroup = Object.keys(this.props.reducer.subgroup.subgroup).length != 0;
+            if(subgroup){
+              this.props.navigation.navigate('Home');
+            }else{
+              this.props.navigation.navigate('Subgroup', {data: this.state.memberOfTanda});
+            }
 
           }).catch((error) => {
             console.log(error)
