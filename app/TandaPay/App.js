@@ -38,7 +38,7 @@ const RootStack = createStackNavigator(
     Claim: ClaimScreen
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Login',
   }
 );
 
