@@ -176,11 +176,11 @@ class LoginScreen extends React.Component {
       color: '#FFF',
       paddingHorizontal: 10,
       fontWeight: '700',
-      borderBottomColor: '#fdcb6e', // Add this to specify bottom border color
+      borderBottomColor: '#e17055', // Add this to specify bottom border color
       borderBottomWidth: 2     // Add this to specify bottom border thickness
     },
     buttonContainer:{
-        backgroundColor: '#fdcb6e',
+        backgroundColor: '#e17055',
         paddingVertical: 10,
         marginBottom:10
     },
