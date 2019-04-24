@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Button, Text, ListView, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TextInput, Button, Text, ListView, TouchableOpacity, Linking } from 'react-native';
 import { connect } from 'react-redux';
 import {removeTanda} from '../actions/tandaAction';
 import {removeSubgroup} from '../actions/subgroupAction';
@@ -31,21 +31,51 @@ class ClaimScreen extends React.Component {
     }
   }
 
-  cList() {
-    if(this.props.reducer.tanda.tanda.members){
-    return this.props.reducer.tanda.tanda.members.map((member) => {
-        return(
-            <Text>
-                {member.name}
-            </Text>
-        )
-    })
-  }
+cList() {
+  return this.state.cards.map((claim) => {
+      return(
+
+          <Card title={claim.name}>
+              <Text style={{marginBottom: 10}}>
+              Claim Amount: {claim.amount}
+              </Text>
+              <Button
+                  onPress={()=>{ Linking.openURL('https://google.com')}}
+                  icon={<Icon name='code' color='#ffffff' />}
+                  backgroundColor='#03A9F4'
+                  buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                  title='View Evidence' />
+          </Card>
+      )
+  })
+}
+
+componentDidMount() {
+
+      let cards = [];
+          fetch('http://10.21.26.202:5000/api/subgroup/claimDetails', 
+          {
+              method: 'POST',
+              headers: {'Accept': 'application/json','Content-Type': 'application/json'},
+              body: JSON.stringify({subgroupID: this.props.reducer.subgroup.subgroup['_id']})
+          }).then(response => {
+              return response2.json();
+          }).then(response => {
+              let b = {name: response['name'], amount: response['amount'], evidence: response['evidence'], user: this.props.reducer.auth.user['name']};
+              cards.push(b);
+              console.log("cards:"+cards);
+              this.setState({cards: cards});
+
+          }).catch((error) => {
+              console.log(error)
+          })
+      
+
 }
 
   _onPressLeave(){
 
-    fetch('http://10.21.9.47:5000/api/subgroup/deleteMember', 
+    fetch('http://10.21.26.202:5000/api/subgroup/deleteMember', 
     {
         method: 'DELETE',
         headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.reducer.auth.user['token']},
@@ -58,7 +88,7 @@ class ClaimScreen extends React.Component {
         console.log(error)
     })
 
-    fetch('http://10.21.9.47:5000/api/tanda/deleteMember', 
+    fetch('http://10.21.26.202:5000/api/tanda/deleteMember', 
     {
         method: 'DELETE',
         headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.reducer.auth.user['token']},

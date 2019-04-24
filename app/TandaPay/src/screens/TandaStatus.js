@@ -45,7 +45,7 @@ class TandaStatus extends React.Component {
 
   _onPressLeave(){
 
-    fetch('http://10.21.9.47:5000/api/subgroup/deleteMember', 
+    fetch('http://10.21.26.202:5000/api/subgroup/deleteMember', 
     {
         method: 'DELETE',
         headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.reducer.auth.user['token']},
@@ -58,7 +58,7 @@ class TandaStatus extends React.Component {
         console.log(error)
     })
 
-    fetch('http://10.21.9.47:5000/api/tanda/deleteMember', 
+    fetch('http://10.21.26.202:5000/api/tanda/deleteMember', 
     {
         method: 'DELETE',
         headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.reducer.auth.user['token']},

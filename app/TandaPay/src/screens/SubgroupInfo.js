@@ -37,7 +37,7 @@ function mapDispatchToProps(dispatch){
         console.log("Join");
         console.log(this.props.navigation.state.params.subgroupID);
 
-        fetch('http://10.21.9.47:5000/api/subgroup/addMember', 
+        fetch('http://10.21.26.202:5000/api/subgroup/addMember', 
         {
             method: 'POST',
             headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.reducer.auth.user['token']},
@@ -62,7 +62,7 @@ function mapDispatchToProps(dispatch){
         console.log(this.props.reducer.tanda.tanda);
         console.log("ajsdkfjaksdjcfasdfhsdi"+ this.props.navigation.state.params.subgroupID);
 
-        fetch('http://10.21.9.47:5000/api/subgroup/getSubgroupByID', 
+        fetch('http://10.21.26.202:5000/api/subgroup/getSubgroupByID', 
             {
                 method: 'POST',
                 headers: {'Accept': 'application/json','Content-Type': 'application/json'},

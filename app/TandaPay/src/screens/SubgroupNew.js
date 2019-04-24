@@ -45,7 +45,7 @@ function mapDispatchToProps(dispatch){
 
     _onPressCreate(){
         console.log("create");
-        fetch('http://10.21.9.47:5000/api/subgroup/create', 
+        fetch('http://10.21.26.202:5000/api/subgroup/create', 
             {
                 method: 'POST',
                 headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.reducer.auth.user['token']},
@@ -54,7 +54,7 @@ function mapDispatchToProps(dispatch){
                 return response.json();
             }).then(response => {
                 this.props.setSubgroup(response);
-                return fetch('http://10.21.9.47:5000/api/tanda/getTandaByID', 
+                return fetch('http://10.21.26.202:5000/api/tanda/getTandaByID', 
                 {
                     method: 'POST',
                     headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.reducer.auth.user['token']},
@@ -72,7 +72,7 @@ function mapDispatchToProps(dispatch){
     }
 
     componentDidMount() {
-        fetch('http://10.21.9.47:5000/api/tanda', 
+        fetch('http://10.21.26.202:5000/api/tanda', 
             {
                 method: 'GET'
             }).then(response => {

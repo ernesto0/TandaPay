@@ -36,7 +36,7 @@ function mapDispatchToProps(dispatch){
         this.props.navigation.navigate('Start');
       }
 
-      fetch('http://10.21.9.47:5000/api/users/current', 
+      fetch('http://10.21.26.202:5000/api/users/current', 
       {
         method: 'GET',
         headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.reducer.auth.user['token']}
