@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Button, Text, ListView, TouchableOpacity,Linking, Clipboard} from 'react-native';
+import { StyleSheet, View, TextInput, Button, Text, ListView, TouchableOpacity,Linking, Clipboard, Image} from 'react-native';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 //import {DrawerNavigator} from'react-navigation';
 import {DrawerNavigator,DrawerItems} from 'react-navigation';
@@ -30,7 +30,7 @@ const style = StyleSheet.create({
     borderBottomWidth: 2     // Add this to specify bottom border thickness
   },
   buttonContainer:{
-      backgroundColor: '#ff7675',
+    backgroundColor: 'rgba(0,0,0,0)',
       paddingVertical: 10,
       marginBottom:10,
       marginTop:10
@@ -87,6 +87,10 @@ export default class PayScreen extends React.Component {
           accessibilityLabel="Accesses Trust Wallet"
           //Linking.openURL('https://links.trustwalletapp.com/a/key_live_lfvIpVeI9TFWxPCqwU8rZnogFqhnzs4D?&event=openURL&url=https://tandahelp.weebly.com')}
         >
+        <Image
+          style={{width: '100%', height: 100, resizeMode : 'contain' }}
+          source = {require('../../assets/icons/baseline_attach_money_white_48dp.png')}
+        />
         <Text style = {style.buttonText}>Pay</Text>
         </TouchableOpacity>
       </View>

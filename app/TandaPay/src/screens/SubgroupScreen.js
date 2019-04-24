@@ -153,11 +153,15 @@ class SubgroupScreen extends React.Component {
     // )
 
     return (
-      <View> 
+      <View style={style.container}> 
           <ScrollView>
             {this.cList()} 
             <TouchableOpacity
                 style = {style.buttonContainer} onPress={() => this._newSubgroup()}>
+                <Image
+                    style={{width: '100%', height: 100, resizeMode : 'contain' }}
+                    source = {require('../../assets/icons/baseline_meeting_room_white_48dp.png')}
+                />
                 <Text style={style.buttonText}>
                     New Subgroup
                 </Text>
@@ -198,7 +202,7 @@ const style = StyleSheet.create({
         borderBottomWidth: 2     // Add this to specify bottom border thickness
       },
       buttonContainer:{
-          backgroundColor: '#fdcb6e',
+        backgroundColor: 'rgba(0,0,0,0)',
           paddingVertical: 10,
           marginBottom:10
       },
