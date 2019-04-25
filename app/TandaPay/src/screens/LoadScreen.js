@@ -62,7 +62,7 @@ function mapDispatchToProps(dispatch){
       }
 
       if (auth == true && tanda == true && subgroup == true){
-        this.props.navigation.navigate('Home');
+        this.props.navigation.navigate('Charter');
       }
 
     }

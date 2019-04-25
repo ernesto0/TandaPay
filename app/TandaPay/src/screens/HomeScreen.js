@@ -32,11 +32,23 @@ export default class HomeScreen extends React.Component {
             <Text style={style.buttonText}>View Status</Text>
           </TouchableOpacity>
 
+          <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.navigate("Pay");
+              }}
+              style={style.buttonContainer}
+          > 
+        <Image
+          style={{width: '100%', height: 75, resizeMode : 'contain' }}
+          source = {require('../../assets/icons/baseline_face_white_48dp.png')}
+        />
+            <Text style={style.buttonText}>Pay Secretary</Text>
+          </TouchableOpacity>
 
 		    <TouchableOpacity 
               onPress={() => {
                 console.log('going to Pay Page');
-                this.props.navigation.navigate("Pay");
+                this.props.navigation.navigate("PayPremium");
               }}
               style={style.buttonContainer}
         >
@@ -44,9 +56,9 @@ export default class HomeScreen extends React.Component {
           style={{width: '100%', height: 75, resizeMode : 'contain' }}
           source = {require('../../assets/icons/baseline_attach_money_white_48dp.png')}
         />
-        <Text style={style.buttonText}>Pay secretary</Text> 
+        <Text style={style.buttonText}>Pay Premium</Text> 
         </TouchableOpacity> 
-        
+
         <TouchableOpacity 
               onPress={() => {
                 this.props.navigation.navigate("Claim");
