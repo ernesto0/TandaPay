@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Button, Text, ListView, TouchableOpacity, ImageBackground } from 'react-native';
+import { StyleSheet, View, TextInput, Button, Text, ListView, TouchableOpacity, ImageBackground, Image } from 'react-native';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 //import {DrawerNavigator} from'react-navigation';
 import {DrawerNavigator,DrawerItems} from 'react-navigation';
@@ -25,18 +25,38 @@ export default class HomeScreen extends React.Component {
               }}
               style={style.buttonContainer}
           > 
+        <Image
+          style={{width: '100%', height: 75, resizeMode : 'contain' }}
+          source = {require('../../assets/icons/baseline_reorder_white_48dp.png')}
+        />
             <Text style={style.buttonText}>View Status</Text>
           </TouchableOpacity>
 
+          <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.navigate("Pay");
+              }}
+              style={style.buttonContainer}
+          > 
+        <Image
+          style={{width: '100%', height: 75, resizeMode : 'contain' }}
+          source = {require('../../assets/icons/baseline_face_white_48dp.png')}
+        />
+            <Text style={style.buttonText}>Pay Secretary</Text>
+          </TouchableOpacity>
 
 		    <TouchableOpacity 
               onPress={() => {
                 console.log('going to Pay Page');
-                this.props.navigation.navigate("Pay");
+                this.props.navigation.navigate("PayPremium");
               }}
               style={style.buttonContainer}
         >
-        <Text style={style.buttonText}>Pay secretary</Text> 
+        <Image
+          style={{width: '100%', height: 75, resizeMode : 'contain' }}
+          source = {require('../../assets/icons/baseline_attach_money_white_48dp.png')}
+        />
+        <Text style={style.buttonText}>Pay Premium</Text> 
         </TouchableOpacity> 
 
         <TouchableOpacity 
@@ -45,6 +65,10 @@ export default class HomeScreen extends React.Component {
               }}
               style={style.buttonContainer}
         >
+         <Image
+          style={{width: '100%', height: 75, resizeMode : 'contain' }}
+          source = {require('../../assets/icons/baseline_announcement_white_48dp.png')}
+        />
         <Text style={style.buttonText}>Make a Claim</Text> 
         </TouchableOpacity>     
 
@@ -54,6 +78,10 @@ export default class HomeScreen extends React.Component {
               }}
               style={style.buttonContainer}
         >
+         <Image
+          style={{width: '100%', height: 75, resizeMode : 'contain' }}
+          source = {require('../../assets/icons/baseline_recent_actors_white_48dp.png')}
+        />
         <Text style={style.buttonText}>My Tanda</Text> 
         </TouchableOpacity>  
 
@@ -63,6 +91,10 @@ export default class HomeScreen extends React.Component {
               }}
               style={style.buttonContainer}
         >
+         <Image
+          style={{width: '100%', height: 75, resizeMode : 'contain' }}
+          source = {require('../../assets/icons/baseline_group_white_48dp.png')}
+        />
         <Text style={style.buttonText}>My Subgroup</Text> 
         </TouchableOpacity>    
       </View>
@@ -94,9 +126,9 @@ const style = StyleSheet.create({
     borderBottomWidth: 2     // Add this to specify bottom border thickness
   },
   buttonContainer:{
-      backgroundColor: '#fdcb6e',
+    backgroundColor: 'rgba(0,0,0,0)',
       paddingVertical: 10,
-      marginBottom:10
+      marginBottom:5
   },
   buttonText:{
       textAlign: 'center',
@@ -108,6 +140,6 @@ const style = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 40,
     justifyContent: 'center',
-    padding: 30
+    padding: 10
   }
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Button, Text, ListView, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TextInput, Button, Text, ListView, TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
 import {removeTanda} from '../actions/tandaAction';
 import {removeSubgroup} from '../actions/subgroupAction';
@@ -78,7 +78,7 @@ class TandaStatus extends React.Component {
 
   render() {
     return (
-        <View>
+        <View style={style.container}>
           <Text>My Tanda</Text>
           <Text>{this.props.reducer.tanda.tanda['name']}</Text>
           {this.cList()}
@@ -86,6 +86,10 @@ class TandaStatus extends React.Component {
               onPress={() => this._onPressLeave()}
               style={style.buttonContainer}
         >
+        <Image
+          style={{width: '100%', height: 100, resizeMode : 'contain' }}
+          source = {require('../../assets/icons/baseline_meeting_room_white_48dp.png')}
+        />
         <Text style={style.buttonText}>Leave Tanda</Text> 
         </TouchableOpacity>
         </View>
@@ -122,7 +126,7 @@ const style = StyleSheet.create({
       borderBottomWidth: 2     // Add this to specify bottom border thickness
     },
     buttonContainer:{
-        backgroundColor: '#fdcb6e',
+        backgroundColor: 'rgba(0,0,0,0)',
         paddingVertical: 10,
         marginBottom:10
     },

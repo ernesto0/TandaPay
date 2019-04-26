@@ -146,6 +146,8 @@ const style = StyleSheet.create({
     flex: 3,
     justifyContent:'center',
     alignItems: 'stretch',
+    marginLeft: 10,
+    marginRight: 10,
   },
   container2: {
     padding:20
@@ -156,12 +158,16 @@ const style = StyleSheet.create({
     color: '#FFF',
     paddingHorizontal: 10,
     fontWeight: '700',
-    borderBottomColor: '#fdcb6e', // Add this to specify bottom border color
-    borderBottomWidth: 2     // Add this to specify bottom border thickness
+    borderBottomColor: '#e17055', // Add this to specify bottom border color
+    borderBottomWidth: 2,     // Add this to specify bottom border thickness
+    marginLeft: 10,
+    marginRight: 10,
   },
   buttonContainer:{
-      backgroundColor: '#fdcb6e',
+      backgroundColor: '#e17055',
       paddingVertical: 10,
+      marginLeft: 10,
+      marginRight: 10,
       marginBottom:10
   },
   buttonText:{

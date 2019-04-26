@@ -12,8 +12,13 @@ import SubgroupNew from './src/screens/SubgroupNew';
 import HomeScreen from './src/screens/HomeScreen';
 import LoadScreen from './src/screens/LoadScreen';
 import PayScreen from './src/screens/PayScreen';
+import PayPremium from './src/screens/PayPremium';
 import ClaimScreen from './src/screens/ClaimScreen';
+<<<<<<< HEAD
 import ClaimNew from './src/screens/ClaimNew';
+=======
+import CharterScreen from './src/screens/Charter';
+>>>>>>> 5819e061495042b9069aee35dd0a9b8ef143fa67
 import {Provider} from 'react-redux';
 import reducers from './src/reducers/index';
 import {createStore, applyMiddleware, compose} from 'redux';
@@ -25,6 +30,7 @@ import {PersistGate} from 'redux-persist/integration/react';
 
 const RootStack = createStackNavigator(
   {
+    Charter: CharterScreen,
     Start: StartScreen,
     Login: LoginScreen,
     Register: RegisterScreen, 
@@ -37,10 +43,14 @@ const RootStack = createStackNavigator(
     Load: LoadScreen,
     Pay: PayScreen,
     Claim: ClaimScreen,
+<<<<<<< HEAD
     ClaimNew: ClaimNew
+=======
+    PayPremium: PayPremium
+>>>>>>> 5819e061495042b9069aee35dd0a9b8ef143fa67
   },
   {
-    initialRouteName: 'Load',
+    initialRouteName: 'Charter',
   }
 );
 

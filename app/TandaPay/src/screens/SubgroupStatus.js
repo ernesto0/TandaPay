@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Button, Text, ListView, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TextInput, Button, Text, ListView, TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
 import {removeSubgroup} from '../actions/subgroupAction';
 import {NavigationActions} from 'react-navigation';
@@ -84,7 +84,7 @@ class SubgroupStatus extends React.Component {
 
   render() {
     return (
-        <View>
+        <View style={style.container}>
           <Text>My Subgroup</Text>
           <Text>{this.props.reducer.subgroup.subgroup['name']}</Text>
           {this.cList()}
@@ -92,6 +92,10 @@ class SubgroupStatus extends React.Component {
               onPress={() => this._onPressLeave()}
               style={style.buttonContainer}
         >
+        <Image
+                    style={{width: '100%', height: 100, resizeMode : 'contain' }}
+                    source = {require('../../assets/icons/baseline_meeting_room_white_48dp.png')}
+                />
         <Text style={style.buttonText}>Leave Subgroup</Text> 
         </TouchableOpacity>
         </View>
@@ -128,7 +132,7 @@ const style = StyleSheet.create({
       borderBottomWidth: 2     // Add this to specify bottom border thickness
     },
     buttonContainer:{
-        backgroundColor: '#fdcb6e',
+        backgroundColor: 'rgba(0,0,0,0)',
         paddingVertical: 10,
         marginBottom:10
     },
