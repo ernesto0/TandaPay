@@ -13,6 +13,7 @@ import HomeScreen from './src/screens/HomeScreen';
 import LoadScreen from './src/screens/LoadScreen';
 import PayScreen from './src/screens/PayScreen';
 import ClaimScreen from './src/screens/ClaimScreen';
+import ClaimNew from './src/screens/ClaimNew';
 import {Provider} from 'react-redux';
 import reducers from './src/reducers/index';
 import {createStore, applyMiddleware, compose} from 'redux';
@@ -35,7 +36,8 @@ const RootStack = createStackNavigator(
     Home: HomeScreen,
     Load: LoadScreen,
     Pay: PayScreen,
-    Claim: ClaimScreen
+    Claim: ClaimScreen,
+    ClaimNew: ClaimNew
   },
   {
     initialRouteName: 'Load',

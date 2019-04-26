@@ -1,9 +1,8 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Button, Text, ListView, TouchableOpacity, Linking } from 'react-native';
+import { StyleSheet, View, TextInput, Button, Text, ListView, TouchableOpacity, Linking, Card, Icon, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import {removeTanda} from '../actions/tandaAction';
 import {removeSubgroup} from '../actions/subgroupAction';
-import {NavigationActions} from 'react-navigation';
 
 function mapDispatchToProps(dispatch){
   return{
@@ -27,20 +26,27 @@ class ClaimScreen extends React.Component {
       isLoaded: false,
       tableHead: ['Member', 'Status'],
       tableData: [],
-      members: []
+      members: [],
+      cards: []
     }
   }
 
-cList() {
-  return this.state.cards.map((claim) => {
-      return(
+_newClaim(){
+  this.props.navigation.navigate('ClaimNew');
+}
 
+cList() {
+  console.log("in clist");
+  console.log(this.state.cards);
+  if(this.state.cards.length > 0){
+    return this.state.cards.map((claim) => {
+      return(
           <Card title={claim.name}>
               <Text style={{marginBottom: 10}}>
               Claim Amount: {claim.amount}
               </Text>
               <Button
-                  onPress={()=>{ Linking.openURL('https://google.com')}}
+                  onPress={()=>{ Linking.openURL(claim.evidence)}}
                   icon={<Icon name='code' color='#ffffff' />}
                   backgroundColor='#03A9F4'
                   buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
@@ -48,20 +54,25 @@ cList() {
           </Card>
       )
   })
+  }
+  
 }
 
 componentDidMount() {
 
       let cards = [];
-          fetch('http://10.21.26.202:5000/api/subgroup/claimDetails', 
+      console.log("num: "+this.props.reducer.subgroup.subgroup['claims'].length);
+      for(let x = 0; x < this.props.reducer.subgroup.subgroup['claims'].length; x++){
+          fetch('http://10.21.75.178:5000/api/claim/getClaimByID', 
           {
               method: 'POST',
               headers: {'Accept': 'application/json','Content-Type': 'application/json'},
-              body: JSON.stringify({subgroupID: this.props.reducer.subgroup.subgroup['_id']})
+              body: JSON.stringify({claimID: this.props.reducer.subgroup.subgroup['claims'][x]})
           }).then(response => {
-              return response2.json();
+              return response.json();
           }).then(response => {
-              let b = {name: response['name'], amount: response['amount'], evidence: response['evidence'], user: this.props.reducer.auth.user['name']};
+              console.log(response);
+              let b = {user: response['claimant']['name'], evidence: response['evidence'], description: response['description']};
               cards.push(b);
               console.log("cards:"+cards);
               this.setState({cards: cards});
@@ -69,57 +80,36 @@ componentDidMount() {
           }).catch((error) => {
               console.log(error)
           })
-      
-
+      }
 }
-
-  _onPressLeave(){
-
-    fetch('http://10.21.26.202:5000/api/subgroup/deleteMember', 
-    {
-        method: 'DELETE',
-        headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.reducer.auth.user['token']},
-        body: JSON.stringify({id:this.props.reducer.subgroup.subgroup['_id'] , user:this.props.reducer.auth.user['_id']})
-    }).then(response => {
-        return response.json();
-    }).then(response => {
-        console.log(response);
-    }).catch((error) => {
-        console.log(error)
-    })
-
-    fetch('http://10.21.26.202:5000/api/tanda/deleteMember', 
-    {
-        method: 'DELETE',
-        headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.reducer.auth.user['token']},
-        body: JSON.stringify({tanda:this.props.reducer.tanda.tanda['_id'] , user:this.props.reducer.auth.user['_id']})
-    }).then(response => {
-        return response.json();
-    }).then(response => {
-        console.log(response);
-    }).catch((error) => {
-        console.log(error)
-    })
-
-    this.props.removeSubgroup();
-    this.props.removeTanda();
-    this.props.navigation.reset([NavigationActions.navigate({routeName: 'Start'})], 0);
-  }
 
   render() {
     return (
         <View>
-          <Text>My Tanda</Text>
-          <Text>{this.props.reducer.tanda.tanda['name']}</Text>
-          {this.cList()}
-          <TouchableOpacity 
-              onPress={() => this._onPressLeave()}
-              style={style.buttonContainer}
-        >
-        <Text style={style.buttonText}>Leave Tanda</Text> 
-        </TouchableOpacity>
+          <ScrollView>
+            {this.cList()} 
+            <TouchableOpacity
+                  style = {style.buttonContainer} onPress={() => this._newClaim()}>
+                  <Text style={style.buttonText}>
+                      New Claim
+                  </Text>
+            </TouchableOpacity>
+            </ScrollView>
         </View>
     );
+
+    // <View> 
+    //       <ScrollView>
+    //         {this.cList()} 
+    //         <TouchableOpacity
+    //             style = {style.buttonContainer} onPress={() => this._newSubgroup()}>
+    //             <Text style={style.buttonText}>
+    //                 New Subgroup
+    //             </Text>
+    //         </TouchableOpacity>
+    //       </ScrollView>
+    //   </View>
+
   }
 }
 

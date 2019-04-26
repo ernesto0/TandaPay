@@ -46,7 +46,7 @@ class SubgroupStatus extends React.Component {
 
   _onPressLeave(){
 
-    fetch('http://10.21.26.202:5000/api/subgroup/deleteMember', 
+    fetch('http://10.21.75.178:5000/api/subgroup/deleteMember', 
             {
                 method: 'DELETE',
                 headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.reducer.auth.user['token']},
@@ -62,7 +62,7 @@ class SubgroupStatus extends React.Component {
                   this.props.navigation.reset([NavigationActions.navigate({routeName: 'Subgroup'})], 0);
                 }
                 console.log("deleting");
-                return fetch('http://10.21.26.202:5000/api/subgroup/delete', 
+                return fetch('http://10.21.75.178:5000/api/subgroup/delete', 
                 {
                     method: 'POST',
                     headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.reducer.auth.user['token']},

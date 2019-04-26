@@ -16,14 +16,14 @@ const ClaimSchema = new Schema({
         type: String
     },
 
-    amount:{
-        type: Number
-    },
-
     status:{
         type: String,
         default: 'pending'
     },
+
+    description:{
+        type: String
+    }
 
     
 

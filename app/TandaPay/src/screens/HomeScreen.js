@@ -41,7 +41,7 @@ export default class HomeScreen extends React.Component {
 
         <TouchableOpacity 
               onPress={() => {
-                this.props.navigation.navigate("Claim");
+                this.props.navigation.navigate("ClaimNew");
               }}
               style={style.buttonContainer}
         >

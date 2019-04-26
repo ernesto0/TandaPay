@@ -21,12 +21,13 @@ function mapDispatchToProps(dispatch){
     };
   };
 
- class SubgroupNew extends React.Component {
+ class CLaimNew extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            avail_list: [],
-            subgroup_name: ''
+            description: '',
+            amount: '',
+            evidence: ''
         }
     }
     
@@ -45,76 +46,46 @@ function mapDispatchToProps(dispatch){
 
     _onPressCreate(){
         console.log("create");
-        fetch('http://10.21.75.178:5000/api/subgroup/create', 
+        fetch('http://10.21.75.178:5000/api/claim/create', 
             {
                 method: 'POST',
                 headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.reducer.auth.user['token']},
-                body: JSON.stringify({name: this.state.subgroup_name, id: this.props.reducer.auth.user['_id'], tandaID: this.props.reducer.tanda.tanda['_id'], userID: this.props.reducer.auth.user['_id'], userName: this.props.reducer.auth.user['name']})
-            }).then(response => {
-                return response.json();
-            }).then(response => {
-                this.props.setSubgroup(response);
-                return fetch('http://10.21.75.178:5000/api/tanda/getTandaByID', 
-                {
-                    method: 'POST',
-                    headers: {'Accept': 'application/json','Content-Type': 'application/json', 'Authorization': this.props.reducer.auth.user['token']},
-                    body: JSON.stringify({id: this.props.reducer.tanda.tanda['_id']})
-                }).then(response => {
-                    return response.json();
-                }).then(response => {
-                    this.props.setTanda(response);
-                    this.props.navigation.reset([NavigationActions.navigate({routeName: 'Home'})], 0);
-                })
-            }).catch((error) => {
-                console.log(error)
-            })
-
-    }
-
-    componentDidMount() {
-        fetch('http://10.21.75.178:5000/api/tanda', 
-            {
-                method: 'GET'
+                body: JSON.stringify({name: this.props.reducer.auth.user['name'], claimantID: this.props.reducer.auth.user['_id'], evidence: this.state.evidence, description: this.state.description, subgroupID: this.props.reducer.subgroup.subgroup['_id'] })
             }).then(response => {
                 return response.json();
             }).then(response => {
                 console.log(response);
-                console.log(response[0]['members']);
-                let avail_mem = [];
-                for(let x=0; x < response[0]['members'].length; x++){
-                    if(response[0]['members'][x]['isInSubgroup'] == false){
-                        avail_mem.push(response[0]['members'][x]);
-                    }
-                }
-                console.log(avail_mem);
-                this.setState({avail_list: avail_mem});
+                this.props.navigation.reset([NavigationActions.navigate({routeName: 'Home'})], 0);
+            }).then(response => {
+                console.log(response);
             }).catch((error) => {
                 console.log(error)
             })
+
     }
-
-    // componentWillUnmount(){
-    //     console.log('unmount');
-        
-
-    // }
-
     
     render() {
  
         return (
+
             <View>
+                <Text>New Claim</Text>
                 <TextInput 
-                placeholder="subgroup name"
-                placeholderTextColor="#fff" 
+                placeholder="description"
+                placeholderTextColor="#000000" 
                 style={style.input} 
-                secureTextEntry={true}
-                onChangeText={(text) => this.setState({subgroup_name:text})}
+                onChangeText={(text) => this.setState({description:text})}
+              />
+              <TextInput 
+                placeholder="evidence link"
+                placeholderTextColor="#000000" 
+                style={style.input} 
+                onChangeText={(text) => this.setState({evidence:text})}
               />
               <TouchableOpacity style = {style.buttonContainer}
                 onPress={() => this._onPressCreate()}>
                 <Text style = {style.buttonText}>
-                    Create
+                    Submit Claim
                 </Text>
               </TouchableOpacity>
             </View>
@@ -122,8 +93,8 @@ function mapDispatchToProps(dispatch){
     }
 }
 
-Subgroup = connect(mapStateToProps, mapDispatchToProps)(SubgroupNew);
-export default Subgroup;
+Claim = connect(mapStateToProps, mapDispatchToProps)(CLaimNew);
+export default Claim;
 
 
 const style = StyleSheet.create({

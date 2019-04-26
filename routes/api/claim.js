@@ -31,16 +31,18 @@ router.post('/create', passport.authenticate('jwt', {session: false}), (req, res
             name: req.body.name, 
         },
         evidence: req.body.evidence,
-        amount: req.body.amount
+        description: req.body.description
     })
     newClaim.save();
     
-    Subgroup.findByIdAndUpdate(req.body.subgroupID, 
-        {$push: {claims: newClaim}}, {new: true})
+    Subgroup.findById(req.body.subgroupID) 
         .then(subgroup => {
-            console.log(subgroup)
-            subgroup.save();
-        });
+        let claims = subgroup.claims;
+        console.log(claims);
+        claims.push(newClaim._id);
+        subgroup.claims = claims;
+        subgroup.save();
+    });
     
     return res.json(newClaim);
     
