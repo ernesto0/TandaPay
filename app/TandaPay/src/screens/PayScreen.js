@@ -1,9 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Button, Text, ListView, TouchableOpacity,Linking, Clipboard, Image} from 'react-native';
-import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
-//import {DrawerNavigator} from'react-navigation';
-import {DrawerNavigator,DrawerItems} from 'react-navigation';
-import LoginScreen from './LoginScreen';
+import { StyleSheet, View, Text, TouchableOpacity,Linking, Clipboard, Image} from 'react-native';
 
 
 const style = StyleSheet.create({

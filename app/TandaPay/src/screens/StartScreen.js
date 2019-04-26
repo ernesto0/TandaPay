@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Text, TouchableOpacity, Image, ImageBackground } from 'react-native';
+import { StyleSheet, View, TextInput, Text, TouchableOpacity, Image, } from 'react-native';
 
 import t from 'tcomb-form-native';
 

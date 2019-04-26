@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Button, Text, ListView, TouchableOpacity, Linking, Card, Icon, ScrollView } from 'react-native';
+import { StyleSheet, View, Button, Text,TouchableOpacity, Linking, Card, Icon, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import {removeTanda} from '../actions/tandaAction';
 import {removeSubgroup} from '../actions/subgroupAction';
@@ -97,18 +97,6 @@ componentDidMount() {
             </ScrollView>
         </View>
     );
-
-    // <View> 
-    //       <ScrollView>
-    //         {this.cList()} 
-    //         <TouchableOpacity
-    //             style = {style.buttonContainer} onPress={() => this._newSubgroup()}>
-    //             <Text style={style.buttonText}>
-    //                 New Subgroup
-    //             </Text>
-    //         </TouchableOpacity>
-    //       </ScrollView>
-    //   </View>
 
   }
 }

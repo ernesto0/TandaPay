@@ -3,7 +3,6 @@ import { StyleSheet, View, Image, Text} from 'react-native';
 import { connect } from 'react-redux';
 import {setTanda} from '../actions/tandaAction';
 import {removeTanda} from '../actions/tandaAction';
-import authReducer from '../reducers/authReducer';
 
 function mapDispatchToProps(dispatch){
     return{
@@ -62,18 +61,12 @@ function mapDispatchToProps(dispatch){
       }
 
       if (auth == true && tanda == true && subgroup == true){
-        this.props.navigation.navigate('Charter');
+        this.props.navigation.navigate('Home');
       }
 
     }
 
     render() {
-
-      // console.log(this.props.reducer);
-      // console.log(this.props.reducer.auth.isAuthenticated);
-      // if(this.props.reducer.auth.isAuthenticated == true){
-      //   console.log("yaaas");
-      // }
  
         return (
             <View style={style.container}>
