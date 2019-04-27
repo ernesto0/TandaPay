@@ -58,7 +58,7 @@ export default class PayScreen extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      text: '0x52E68c9c2E784Dd3303aE6f55E4A2764D998d4Db', //set the text value here to make it dynamic in the future
+      text: '0xb9017659AA781A6F516C4CCaA6E2D98D4359D3F4', //set the text value here to make it dynamic in the future
       clipboardContent: null,
     };
  }
@@ -73,7 +73,7 @@ export default class PayScreen extends React.Component {
       <View style={style.container}>
         <Text style={style.tandaLogo}>Pay</Text>
         <Text style={style.RegularText}>Your Secretary Address is:</Text>
-        <Text style={style.RegularText}>0x52E68c9c2E784Dd3303aE6f55E4A2764D998d4Db</Text>
+        <Text style={style.RegularText}>0xb9017659AA781A6F516C4CCaA6E2D98D4359D3F4</Text>
         <TouchableOpacity
         onPress={()=> {
           this.writeToClipboard()
