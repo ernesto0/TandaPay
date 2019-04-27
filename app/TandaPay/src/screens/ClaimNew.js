@@ -68,17 +68,17 @@ function mapDispatchToProps(dispatch){
  
         return (
 
-            <View>
-                <Text>New Claim</Text>
+            <View style={style.container}>
+                <Text style={style.tandaLogo}>New Claim</Text>
                 <TextInput 
                 placeholder="description"
-                placeholderTextColor="#000000" 
+                placeholderTextColor="#fff" 
                 style={style.input} 
                 onChangeText={(text) => this.setState({description:text})}
               />
               <TextInput 
                 placeholder="evidence link"
-                placeholderTextColor="#000000" 
+                placeholderTextColor="#fff" 
                 style={style.input} 
                 onChangeText={(text) => this.setState({evidence:text})}
               />
@@ -98,7 +98,14 @@ export default Claim;
 
 
 const style = StyleSheet.create({
-   
+      tandaLogo:{
+        textAlign: 'center',
+        color:'#FFF',
+        fontWeight: 'bold',
+        fontSize: 40,
+        justifyContent: 'center',
+        padding: 10
+      },
     container: {
         flex: 1,
         padding: 20,
@@ -118,11 +125,11 @@ const style = StyleSheet.create({
         color: '#000000',
         paddingHorizontal: 10,
         fontWeight: '700',
-        borderBottomColor: '#fdcb6e', // Add this to specify bottom border color
+        borderBottomColor: '#e17055', // Add this to specify bottom border color
         borderBottomWidth: 2     // Add this to specify bottom border thickness
       },
       buttonContainer:{
-          backgroundColor: '#fdcb6e',
+          backgroundColor: '#e17055',
           paddingVertical: 10,
           marginBottom:10
       },
