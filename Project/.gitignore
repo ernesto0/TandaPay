@@ -1,0 +1,15 @@
+**/node_modules
+package-lock.json
+**/.DS_Store
+
+# Android
+#
+**/build/
+./app/TandaPay/android/.idea
+./app/TandaPay/android/.gradle
+./app/TandaPay/android/local.properties
+*.iml
+
+
+# Bundle artifact
+*.jsbundle
