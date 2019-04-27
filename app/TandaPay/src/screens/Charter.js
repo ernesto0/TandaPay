@@ -42,7 +42,7 @@ Unauthorised use of this website may give rise to a claim for damages and/or be 
             </ScrollView>
 
             <TouchableOpacity disabled={ !this.state.accepted } onPress={() => {
-                this.props.navigation.navigate("Home");
+                this.props.navigation.navigate("Login");
               }} style={ this.state.accepted ? styles.button : styles.buttonDisabled }><Text style={styles.buttonLabel}>Accept</Text></TouchableOpacity>
       </View>
     );

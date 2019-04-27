@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Alert, KeyboardAvoidingView, TextInput, ScrollView} from 'react-native';
-import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 import { connect } from 'react-redux';
 import {setTanda} from '../actions/tandaAction';
 import {removeTanda} from '../actions/tandaAction';
@@ -92,12 +91,6 @@ function mapDispatchToProps(dispatch){
                 console.log(error)
             })
     }
-
-    // componentWillUnmount(){
-    //     console.log('unmount');
-        
-
-    // }
 
     
     render() {

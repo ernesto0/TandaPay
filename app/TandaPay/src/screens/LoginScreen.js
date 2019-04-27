@@ -1,6 +1,5 @@
 import React from 'react';
 import {StyleSheet, View, TextInput, Text, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
-// import decode from '../../../../decodeJwt';
 import decode from '../../decode';
 import { connect } from 'react-redux';
 import {setUser} from '../actions/authActions';

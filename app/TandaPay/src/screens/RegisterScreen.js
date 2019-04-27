@@ -25,7 +25,7 @@ export default class RegisterScreen extends React.Component {
         return response.json();
       }).then(response => {
         console.log('resp: ', response);
-        this.props.navigation.navigate('Login');
+        this.props.navigation.navigate('Charter');
       }).catch((error) => {
         console.log(error)
       })

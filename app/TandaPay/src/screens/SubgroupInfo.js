@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Alert } from 'react-native';
-import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 import { connect } from 'react-redux';
 import {setSubgroup} from '../actions/subgroupAction';
 
@@ -20,7 +19,6 @@ function mapDispatchToProps(dispatch){
     constructor(props) {
         super(props);
         this.state = {
-            // subgroupID: '5c817ab942a9b71988d68a69',
             name: '',
             num_mem: '',
             mem_list: ''

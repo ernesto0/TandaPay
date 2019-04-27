@@ -12,8 +12,6 @@ export default class LoginForm extends React.Component{
           navigation: this.props.navigation
         }
 
-        // this._onPressSubmit = this._onPressSubmit.bind(this);
-
 
     }
 
@@ -59,7 +57,6 @@ const styles = StyleSheet.create({
     },
     input:{
         height: 40,
-        //backgroundColor: 'rgba(255,255,255,0.7)',
         marginBottom: 20,
         color: '#2d3436',
         paddingHorizontal: 10,
