@@ -25,6 +25,7 @@ To run the app:
 
 ## Additional Details
 1. The app assumes that the Secretary has already created a Tanda with emails and access codes in the database. Use these values to get passes the code screen. 
+2. To clear persisemt storage (for development purposes), uncomment the line that says `persistor.purge();` in [App.js](./app/TandaPay/App.js).
 
 
 
